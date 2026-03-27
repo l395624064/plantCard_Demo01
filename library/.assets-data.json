@@ -1,0 +1,558 @@
+{
+  "219cef85-9ceb-4abd-9f82-ba00c1d0843d": {
+    "url": "db://assets/scene.scene",
+    "value": {
+      "depends": [
+        "219cef85-9ceb-4abd-9f82-ba00c1d0843d"
+      ],
+      "dependScripts": [
+        "1d5ed717-ed4a-4227-884b-cbaa5eb61ae6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "10ab8b7b-6222-463d-8394-98e7725e6b0d": {
+    "url": "db://assets/src",
+    "value": {},
+    "versionCode": 1
+  },
+  "1d5ed717-ed4a-4227-884b-cbaa5eb61ae6": {
+    "url": "db://assets/src/MainGame.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "18e9391b-4df5-4c51-9c93-7d6cb3c07974": {
+    "url": "db://assets/src/GameModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d80801e6-f16f-4311-8fd2-c040802cc2b1": {
+    "url": "db://assets/src/GameTypes.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "dffb95e3-e9f7-403b-a759-f4828cd608a9": {
+    "url": "db://assets/src/GameView.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8dc4730f-ab4e-4adf-92aa-a1d82f839acd": {
+    "url": "db://assets/src/managers",
+    "value": {},
+    "versionCode": 1
+  },
+  "e8667eb4-547a-4151-b14a-1cfaf3068c7d": {
+    "url": "db://assets/src/managers/buff",
+    "value": {},
+    "versionCode": 1
+  },
+  "d2429163-c550-4841-8f79-0fa4bde0784e": {
+    "url": "db://assets/src/managers/card",
+    "value": {},
+    "versionCode": 1
+  },
+  "8e343748-70c0-4bd9-9d0f-66ebcd6ab465": {
+    "url": "db://assets/src/managers/effect",
+    "value": {},
+    "versionCode": 1
+  },
+  "9835d81f-142c-47a6-811a-3a554fa514c4": {
+    "url": "db://assets/src/managers/flow",
+    "value": {},
+    "versionCode": 1
+  },
+  "478536cd-2f9f-471a-9182-757b67e52da8": {
+    "url": "db://assets/src/managers/game",
+    "value": {},
+    "versionCode": 1
+  },
+  "72d4cb31-2aaa-4a6d-b60f-554e2e39b20b": {
+    "url": "db://assets/src/managers/index.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c176f7a0-bb01-44b9-a2d6-db4838a845ae": {
+    "url": "db://assets/src/managers/score",
+    "value": {},
+    "versionCode": 1
+  },
+  "ad0b64c1-ea57-4bd0-b97a-40b2dd047bb3": {
+    "url": "db://assets/src/managers/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "1459e3ca-46e6-4552-90f7-ddee04062236": {
+    "url": "db://assets/src/managers/buff/BuffSkillManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8615aa13-c905-4735-99e9-6af683049cf7": {
+    "url": "db://assets/src/managers/card/CardManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a8ab9124-3e6a-4545-8973-2327e848955f": {
+    "url": "db://assets/src/managers/effect/EffectManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9349e45f-569f-48cc-aac5-fcafcca2d65f": {
+    "url": "db://assets/src/managers/flow/GameFlowManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f7e75c9c-c513-45cb-8803-514101d69a89": {
+    "url": "db://assets/src/managers/game/GameManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e54c217d-3211-438d-88c7-607201a61ef5": {
+    "url": "db://assets/src/managers/score/ScoreManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "89773a7b-5011-44fa-8807-d65df2c8fc09": {
+    "url": "db://assets/src/managers/ui/UIManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e5d71cbf-3290-4150-a387-41d26bcbf1b1": {
+    "url": "db://assets/src/README.md",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c9a53f5c-6908-42bf-9f0c-5b22d7134329": {
+    "url": "db://assets/src/managers/README.md",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "33c52aad-8790-4a45-a7ee-3f921cbf7d8a": {
+    "url": "db://assets/res",
+    "value": {},
+    "versionCode": 1
+  },
+  "e9541ed1-5c90-47dd-a141-047c1c84a2fa": {
+    "url": "db://assets/res/icon",
+    "value": {},
+    "versionCode": 1
+  },
+  "e4eae1e4-9ad3-4c85-bea7-4182763583ec": {
+    "url": "db://assets/res/icon/zhiwu",
+    "value": {},
+    "versionCode": 1
+  },
+  "d8d2b4e7-02fa-43d8-ae32-f88962512158": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b00fe362-b12a-4de5-9cd9-fac4b09c42e1": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_10.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9b73190d-d559-4748-863c-44d7cd0e1aec": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_11.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d8d2b4e7-02fa-43d8-ae32-f88962512158@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_1.png@6c48a",
+    "value": {
+      "depends": [
+        "d8d2b4e7-02fa-43d8-ae32-f88962512158"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_2.png@6c48a",
+    "value": {
+      "depends": [
+        "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b00fe362-b12a-4de5-9cd9-fac4b09c42e1@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_10.png@6c48a",
+    "value": {
+      "depends": [
+        "b00fe362-b12a-4de5-9cd9-fac4b09c42e1"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9b73190d-d559-4748-863c-44d7cd0e1aec@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_11.png@6c48a",
+    "value": {
+      "depends": [
+        "9b73190d-d559-4748-863c-44d7cd0e1aec"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_3.png@6c48a",
+    "value": {
+      "depends": [
+        "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d8d2b4e7-02fa-43d8-ae32-f88962512158@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_1.png@f9941",
+    "value": {
+      "depends": [
+        "d8d2b4e7-02fa-43d8-ae32-f88962512158@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bc1f8201-5074-41aa-8986-f4dd4bf5c678": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_2.png@f9941",
+    "value": {
+      "depends": [
+        "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b00fe362-b12a-4de5-9cd9-fac4b09c42e1@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_10.png@f9941",
+    "value": {
+      "depends": [
+        "b00fe362-b12a-4de5-9cd9-fac4b09c42e1@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a059e044-b835-4428-9ea2-be1de3d318ee": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_5.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "add56ff4-64f6-4e72-91ca-0ae96d294b70": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_6.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9b73190d-d559-4748-863c-44d7cd0e1aec@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_11.png@f9941",
+    "value": {
+      "depends": [
+        "9b73190d-d559-4748-863c-44d7cd0e1aec@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b739c0a5-a345-4f30-91eb-4db2a896f16e": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_7.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_3.png@f9941",
+    "value": {
+      "depends": [
+        "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b14ad91d-22b3-4ea4-b0ff-9b08aea89766": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_8.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "bc1f8201-5074-41aa-8986-f4dd4bf5c678@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_4.png@6c48a",
+    "value": {
+      "depends": [
+        "bc1f8201-5074-41aa-8986-f4dd4bf5c678"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b739c0a5-a345-4f30-91eb-4db2a896f16e@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_7.png@6c48a",
+    "value": {
+      "depends": [
+        "b739c0a5-a345-4f30-91eb-4db2a896f16e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a059e044-b835-4428-9ea2-be1de3d318ee@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_5.png@6c48a",
+    "value": {
+      "depends": [
+        "a059e044-b835-4428-9ea2-be1de3d318ee"
+      ]
+    },
+    "versionCode": 1
+  },
+  "add56ff4-64f6-4e72-91ca-0ae96d294b70@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_6.png@6c48a",
+    "value": {
+      "depends": [
+        "add56ff4-64f6-4e72-91ca-0ae96d294b70"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bc1f8201-5074-41aa-8986-f4dd4bf5c678@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_4.png@f9941",
+    "value": {
+      "depends": [
+        "bc1f8201-5074-41aa-8986-f4dd4bf5c678@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "767e3709-c821-4c56-999f-356bfb281fe9": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_9.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b739c0a5-a345-4f30-91eb-4db2a896f16e@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_7.png@f9941",
+    "value": {
+      "depends": [
+        "b739c0a5-a345-4f30-91eb-4db2a896f16e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a059e044-b835-4428-9ea2-be1de3d318ee@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_5.png@f9941",
+    "value": {
+      "depends": [
+        "a059e044-b835-4428-9ea2-be1de3d318ee@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "add56ff4-64f6-4e72-91ca-0ae96d294b70@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_6.png@f9941",
+    "value": {
+      "depends": [
+        "add56ff4-64f6-4e72-91ca-0ae96d294b70@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b14ad91d-22b3-4ea4-b0ff-9b08aea89766@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_8.png@6c48a",
+    "value": {
+      "depends": [
+        "b14ad91d-22b3-4ea4-b0ff-9b08aea89766"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b14ad91d-22b3-4ea4-b0ff-9b08aea89766@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_8.png@f9941",
+    "value": {
+      "depends": [
+        "b14ad91d-22b3-4ea4-b0ff-9b08aea89766@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "767e3709-c821-4c56-999f-356bfb281fe9@6c48a": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_9.png@6c48a",
+    "value": {
+      "depends": [
+        "767e3709-c821-4c56-999f-356bfb281fe9"
+      ]
+    },
+    "versionCode": 1
+  },
+  "767e3709-c821-4c56-999f-356bfb281fe9@f9941": {
+    "url": "db://assets/res/icon/zhiwu/zhiwu_9.png@f9941",
+    "value": {
+      "depends": [
+        "767e3709-c821-4c56-999f-356bfb281fe9@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a4ed6751-8f80-4c86-934b-a5498da41d46": {
+    "url": "db://assets/res/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "f8d10fc9-6122-43d2-8633-b9b9925d4aa3": {
+    "url": "db://assets/res/ui/timewheel",
+    "value": {},
+    "versionCode": 1
+  },
+  "80a4a037-4017-4329-8eed-bd732728e6ef": {
+    "url": "db://assets/res/ui/timewheel/cankaotu_image.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8": {
+    "url": "db://assets/res/ui/timewheel/jiantou_icon.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9d42f535-cb00-4762-9f8d-9724f9115dbb": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_neiquan.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "297f1be5-ff1f-4730-a82d-3d1e521c425e": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_waiquan.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "91ac284c-e776-42d2-8148-589a9c1d7ef9": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_zhongxin.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8@6c48a": {
+    "url": "db://assets/res/ui/timewheel/jiantou_icon.png@6c48a",
+    "value": {
+      "depends": [
+        "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "91ac284c-e776-42d2-8148-589a9c1d7ef9@6c48a": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_zhongxin.png@6c48a",
+    "value": {
+      "depends": [
+        "91ac284c-e776-42d2-8148-589a9c1d7ef9"
+      ]
+    },
+    "versionCode": 1
+  },
+  "297f1be5-ff1f-4730-a82d-3d1e521c425e@6c48a": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_waiquan.png@6c48a",
+    "value": {
+      "depends": [
+        "297f1be5-ff1f-4730-a82d-3d1e521c425e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9d42f535-cb00-4762-9f8d-9724f9115dbb@6c48a": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_neiquan.png@6c48a",
+    "value": {
+      "depends": [
+        "9d42f535-cb00-4762-9f8d-9724f9115dbb"
+      ]
+    },
+    "versionCode": 1
+  },
+  "91ac284c-e776-42d2-8148-589a9c1d7ef9@f9941": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_zhongxin.png@f9941",
+    "value": {
+      "depends": [
+        "91ac284c-e776-42d2-8148-589a9c1d7ef9@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8@f9941": {
+    "url": "db://assets/res/ui/timewheel/jiantou_icon.png@f9941",
+    "value": {
+      "depends": [
+        "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "297f1be5-ff1f-4730-a82d-3d1e521c425e@f9941": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_waiquan.png@f9941",
+    "value": {
+      "depends": [
+        "297f1be5-ff1f-4730-a82d-3d1e521c425e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9d42f535-cb00-4762-9f8d-9724f9115dbb@f9941": {
+    "url": "db://assets/res/ui/timewheel/zhuanpan_neiquan.png@f9941",
+    "value": {
+      "depends": [
+        "9d42f535-cb00-4762-9f8d-9724f9115dbb@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "80a4a037-4017-4329-8eed-bd732728e6ef@6c48a": {
+    "url": "db://assets/res/ui/timewheel/cankaotu_image.png@6c48a",
+    "value": {
+      "depends": [
+        "80a4a037-4017-4329-8eed-bd732728e6ef"
+      ]
+    },
+    "versionCode": 1
+  },
+  "80a4a037-4017-4329-8eed-bd732728e6ef@f9941": {
+    "url": "db://assets/res/ui/timewheel/cankaotu_image.png@f9941",
+    "value": {
+      "depends": [
+        "80a4a037-4017-4329-8eed-bd732728e6ef@6c48a"
+      ]
+    },
+    "versionCode": 1
+  }
+}

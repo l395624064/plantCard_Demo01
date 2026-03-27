@@ -1,0 +1,28 @@
+---
+description: Keep the demo playable before refactoring
+alwaysApply: true
+---
+
+# Demo Stability First
+
+- Highest priority: keep the current demo fully runnable and playable while adding features.
+- Prefer incremental changes over large rewrites.
+- When adding a feature, first integrate it into the existing flow in the safest way.
+- Do not split or migrate code aggressively if that risks breaking the current demo.
+- Only refactor after one of these is true:
+  - the feature set for the current stage is mostly complete
+  - the coupling is clearly too high and slows future development
+- During staged refactors, preserve behavior first, then improve structure.
+- New managers, folders, and abstractions should start as light scaffolding unless the migration is already justified.
+- If a tradeoff appears, prefer:
+  - stable demo behavior
+  - low-risk integration
+  - reversible changes
+  over ideal architecture.
+
+## Working Rule
+
+1. Add or adjust gameplay/UI behavior with minimal disruption.
+2. Verify the demo still runs through the main loop.
+3. Record scaffolding for future migration if needed.
+4. Refactor only when the stage is stable enough.

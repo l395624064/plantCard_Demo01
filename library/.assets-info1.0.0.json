@@ -1,0 +1,321 @@
+{
+  "version": "1.0.0",
+  "map": {
+    "E:\\cocos\\cardDemo\\assets\\scene.scene.meta": {
+      "time": 1774253494743.3237
+    },
+    "E:\\cocos\\cardDemo\\assets\\scene.scene": {
+      "time": 1774424212930.3503,
+      "uuid": "219cef85-9ceb-4abd-9f82-ba00c1d0843d"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src.meta": {
+      "time": 1774253654465.5298
+    },
+    "E:\\cocos\\cardDemo\\assets\\src": {
+      "time": 1774333167599.8806,
+      "uuid": "10ab8b7b-6222-463d-8394-98e7725e6b0d"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts.meta": {
+      "time": 1774253664643.247
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts": {
+      "time": 1774496354517.0203,
+      "uuid": "1d5ed717-ed4a-4227-884b-cbaa5eb61ae6"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts": {
+      "time": 1774519491729.3481,
+      "uuid": "18e9391b-4df5-4c51-9c93-7d6cb3c07974"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts": {
+      "time": 1774592454403.193,
+      "uuid": "d80801e6-f16f-4311-8fd2-c040802cc2b1"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts": {
+      "time": 1774592483516.9668,
+      "uuid": "dffb95e3-e9f7-403b-a759-f4828cd608a9"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts.meta": {
+      "time": 1774258533135.778
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts.meta": {
+      "time": 1774258533136.775
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts.meta": {
+      "time": 1774258533137.7717
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers.meta": {
+      "time": 1774333167578.9365
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff.meta": {
+      "time": 1774333167578.9365
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card.meta": {
+      "time": 1774333167579.934
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect.meta": {
+      "time": 1774333167579.934
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow.meta": {
+      "time": 1774333167580.9314
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game.meta": {
+      "time": 1774333167582.9263
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\index.ts.meta": {
+      "time": 1774333167589.9097
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score.meta": {
+      "time": 1774333167584.922
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui.meta": {
+      "time": 1774333167585.9177
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff\\BuffSkillManager.ts.meta": {
+      "time": 1774333167590.904
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card\\CardManager.ts.meta": {
+      "time": 1774333167591.9019
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect\\EffectManager.ts.meta": {
+      "time": 1774333167592.8994
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow\\GameFlowManager.ts.meta": {
+      "time": 1774333167593.896
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game\\GameManager.ts.meta": {
+      "time": 1774333167594.8943
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score\\ScoreManager.ts.meta": {
+      "time": 1774333167595.8926
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui\\UIManager.ts.meta": {
+      "time": 1774333167597.8862
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers": {
+      "time": 1774333167600.8784,
+      "uuid": "8dc4730f-ab4e-4adf-92aa-a1d82f839acd"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff": {
+      "time": 1774333167570.9573,
+      "uuid": "e8667eb4-547a-4151-b14a-1cfaf3068c7d"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card": {
+      "time": 1774333167570.9573,
+      "uuid": "d2429163-c550-4841-8f79-0fa4bde0784e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect": {
+      "time": 1774333167571.9553,
+      "uuid": "8e343748-70c0-4bd9-9d0f-66ebcd6ab465"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow": {
+      "time": 1774333167572.9521,
+      "uuid": "9835d81f-142c-47a6-811a-3a554fa514c4"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game": {
+      "time": 1774333167573.95,
+      "uuid": "478536cd-2f9f-471a-9182-757b67e52da8"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score": {
+      "time": 1774333167573.95,
+      "uuid": "c176f7a0-bb01-44b9-a2d6-db4838a845ae"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui": {
+      "time": 1774333167574.947,
+      "uuid": "ad0b64c1-ea57-4bd0-b97a-40b2dd047bb3"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\index.ts": {
+      "time": 1774322675882.8203,
+      "uuid": "72d4cb31-2aaa-4a6d-b60f-554e2e39b20b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff\\BuffSkillManager.ts": {
+      "time": 1774322649518.4746,
+      "uuid": "1459e3ca-46e6-4552-90f7-ddee04062236"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card\\CardManager.ts": {
+      "time": 1774322631079.3342,
+      "uuid": "8615aa13-c905-4735-99e9-6af683049cf7"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect\\EffectManager.ts": {
+      "time": 1774322643952.1,
+      "uuid": "a8ab9124-3e6a-4545-8973-2327e848955f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow\\GameFlowManager.ts": {
+      "time": 1774322662804.6018,
+      "uuid": "9349e45f-569f-48cc-aac5-fcafcca2d65f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game\\GameManager.ts": {
+      "time": 1774322669088.6536,
+      "uuid": "f7e75c9c-c513-45cb-8803-514101d69a89"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score\\ScoreManager.ts": {
+      "time": 1774322657595.8672,
+      "uuid": "e54c217d-3211-438d-88c7-607201a61ef5"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui\\UIManager.ts": {
+      "time": 1774322636655.4795,
+      "uuid": "89773a7b-5011-44fa-8807-d65df2c8fc09"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\README.md.meta": {
+      "time": 1774333167613.843
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\README.md.meta": {
+      "time": 1774333167615.8376
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\README.md": {
+      "time": 1774322690885.615,
+      "uuid": "e5d71cbf-3290-4150-a387-41d26bcbf1b1"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\managers\\README.md": {
+      "time": 1774322701549.43,
+      "uuid": "c9a53f5c-6908-42bf-9f0c-5b22d7134329"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res.meta": {
+      "time": 1774441229659.7625
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon.meta": {
+      "time": 1774441229659.7625
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu.meta": {
+      "time": 1774441229660.7603
+    },
+    "E:\\cocos\\cardDemo\\assets\\res": {
+      "time": 1774493701519.4746,
+      "uuid": "33c52aad-8790-4a45-a7ee-3f921cbf7d8a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon": {
+      "time": 1774441229656.7698,
+      "uuid": "e9541ed1-5c90-47dd-a141-047c1c84a2fa"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu": {
+      "time": 1774441229669.7346,
+      "uuid": "e4eae1e4-9ad3-4c85-bea7-4182763583ec"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_1.png.meta": {
+      "time": 1774441230207.3535
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_10.png.meta": {
+      "time": 1774441230212.341
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_11.png.meta": {
+      "time": 1774441230215.3325
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_2.png.meta": {
+      "time": 1774441230211.3435
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_3.png.meta": {
+      "time": 1774441230218.3247
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_4.png.meta": {
+      "time": 1774441230246.2502
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_5.png.meta": {
+      "time": 1774441230253.2317
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_6.png.meta": {
+      "time": 1774441230255.2278
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_7.png.meta": {
+      "time": 1774441230248.2449
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_8.png.meta": {
+      "time": 1774441230262.2085
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_9.png.meta": {
+      "time": 1774441230272.1804
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_1.png": {
+      "time": 1774429294802.9602,
+      "uuid": "d8d2b4e7-02fa-43d8-ae32-f88962512158"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_2.png": {
+      "time": 1774429324326.745,
+      "uuid": "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_10.png": {
+      "time": 1774439765833.5479,
+      "uuid": "b00fe362-b12a-4de5-9cd9-fac4b09c42e1"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_11.png": {
+      "time": 1774439786137.9922,
+      "uuid": "9b73190d-d559-4748-863c-44d7cd0e1aec"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_3.png": {
+      "time": 1774429387559.097,
+      "uuid": "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_4.png": {
+      "time": 1774429430389.3882,
+      "uuid": "bc1f8201-5074-41aa-8986-f4dd4bf5c678"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_7.png": {
+      "time": 1774439694197.926,
+      "uuid": "b739c0a5-a345-4f30-91eb-4db2a896f16e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_5.png": {
+      "time": 1774439652545.423,
+      "uuid": "a059e044-b835-4428-9ea2-be1de3d318ee"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_6.png": {
+      "time": 1774439673810.2222,
+      "uuid": "add56ff4-64f6-4e72-91ca-0ae96d294b70"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_8.png": {
+      "time": 1774439713987.0132,
+      "uuid": "b14ad91d-22b3-4ea4-b0ff-9b08aea89766"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_9.png": {
+      "time": 1774439745672.0176,
+      "uuid": "767e3709-c821-4c56-999f-356bfb281fe9"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui.meta": {
+      "time": 1774493701537.4583
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel.meta": {
+      "time": 1774493701538.4553
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui": {
+      "time": 1774493701535.4634,
+      "uuid": "a4ed6751-8f80-4c86-934b-a5498da41d46"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel": {
+      "time": 1774493701543.4424,
+      "uuid": "f8d10fc9-6122-43d2-8633-b9b9925d4aa3"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\cankaotu_image.png.meta": {
+      "time": 1774493701712.989
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\jiantou_icon.png.meta": {
+      "time": 1774493701640.1833
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_neiquan.png.meta": {
+      "time": 1774493701663.122
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_waiquan.png.meta": {
+      "time": 1774493701661.1282
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_zhongxin.png.meta": {
+      "time": 1774493701637.1914
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_zhongxin.png": {
+      "time": 1774492611534.0457,
+      "uuid": "91ac284c-e776-42d2-8148-589a9c1d7ef9"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\jiantou_icon.png": {
+      "time": 1774492531608.7478,
+      "uuid": "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_waiquan.png": {
+      "time": 1774494065205.8752,
+      "uuid": "297f1be5-ff1f-4730-a82d-3d1e521c425e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_neiquan.png": {
+      "time": 1774493065340.581,
+      "uuid": "9d42f535-cb00-4762-9f8d-9724f9115dbb"
+    },
+    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\cankaotu_image.png": {
+      "time": 1774493388278.92,
+      "uuid": "80a4a037-4017-4329-8eed-bd732728e6ef"
+    }
+  },
+  "missing": {}
+}
