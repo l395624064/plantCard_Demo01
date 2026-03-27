@@ -147,37 +147,27 @@
   },
   "d8d2b4e7-02fa-43d8-ae32-f88962512158": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_1.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "b00fe362-b12a-4de5-9cd9-fac4b09c42e1": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_10.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "9b73190d-d559-4748-863c-44d7cd0e1aec": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_11.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_2.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_3.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "d8d2b4e7-02fa-43d8-ae32-f88962512158@6c48a": {
@@ -236,9 +226,7 @@
   },
   "bc1f8201-5074-41aa-8986-f4dd4bf5c678": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_4.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3@f9941": {
@@ -261,16 +249,12 @@
   },
   "a059e044-b835-4428-9ea2-be1de3d318ee": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_5.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "add56ff4-64f6-4e72-91ca-0ae96d294b70": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_6.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "9b73190d-d559-4748-863c-44d7cd0e1aec@f9941": {
@@ -284,9 +268,7 @@
   },
   "b739c0a5-a345-4f30-91eb-4db2a896f16e": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_7.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe@f9941": {
@@ -300,9 +282,7 @@
   },
   "b14ad91d-22b3-4ea4-b0ff-9b08aea89766": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_8.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "bc1f8201-5074-41aa-8986-f4dd4bf5c678@6c48a": {
@@ -352,9 +332,7 @@
   },
   "767e3709-c821-4c56-999f-356bfb281fe9": {
     "url": "db://assets/res/icon/zhiwu/zhiwu_9.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "b739c0a5-a345-4f30-91eb-4db2a896f16e@f9941": {
@@ -432,37 +410,27 @@
   },
   "80a4a037-4017-4329-8eed-bd732728e6ef": {
     "url": "db://assets/res/ui/timewheel/cankaotu_image.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8": {
     "url": "db://assets/res/ui/timewheel/jiantou_icon.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "9d42f535-cb00-4762-9f8d-9724f9115dbb": {
     "url": "db://assets/res/ui/timewheel/zhuanpan_neiquan.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "297f1be5-ff1f-4730-a82d-3d1e521c425e": {
     "url": "db://assets/res/ui/timewheel/zhuanpan_waiquan.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "91ac284c-e776-42d2-8148-589a9c1d7ef9": {
     "url": "db://assets/res/ui/timewheel/zhuanpan_zhongxin.png",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8@6c48a": {
@@ -551,6 +519,406 @@
     "value": {
       "depends": [
         "80a4a037-4017-4329-8eed-bd732728e6ef@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "ac9c2052-1bdf-446c-921d-d4e0a10fed6c": {
+    "url": "db://assets/resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "b6b83404-ac56-420e-ac45-16e538aeda51": {
+    "url": "db://assets/resources/icon",
+    "value": {},
+    "versionCode": 1
+  },
+  "d739c945-334f-485b-b492-3c9568b758e0": {
+    "url": "db://assets/resources/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "502c0527-4719-4a83-990f-36102a4978f5": {
+    "url": "db://assets/resources/icon/zhiwu",
+    "value": {},
+    "versionCode": 1
+  },
+  "409a1713-a7d4-48c4-8ec5-a648d1c5170f": {
+    "url": "db://assets/resources/ui/timewheel",
+    "value": {},
+    "versionCode": 1
+  },
+  "56568a07-467d-454d-aa3e-223d5e06ca6c": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e0aa25ea-4d75-40eb-971a-ee244f6c927e": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_10.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "86d14988-5b73-44f1-9299-213075473526": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_11.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "ad8c6535-6cc5-4815-83a5-86e5b857cae7": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "7c122d28-1bb0-4eb0-ab04-73d8e3f05479": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "56568a07-467d-454d-aa3e-223d5e06ca6c@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_1.png@6c48a",
+    "value": {
+      "depends": [
+        "56568a07-467d-454d-aa3e-223d5e06ca6c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "ad8c6535-6cc5-4815-83a5-86e5b857cae7@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_2.png@6c48a",
+    "value": {
+      "depends": [
+        "ad8c6535-6cc5-4815-83a5-86e5b857cae7"
+      ]
+    },
+    "versionCode": 1
+  },
+  "86d14988-5b73-44f1-9299-213075473526@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_11.png@6c48a",
+    "value": {
+      "depends": [
+        "86d14988-5b73-44f1-9299-213075473526"
+      ]
+    },
+    "versionCode": 1
+  },
+  "7c122d28-1bb0-4eb0-ab04-73d8e3f05479@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_3.png@6c48a",
+    "value": {
+      "depends": [
+        "7c122d28-1bb0-4eb0-ab04-73d8e3f05479"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e0aa25ea-4d75-40eb-971a-ee244f6c927e@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_10.png@6c48a",
+    "value": {
+      "depends": [
+        "e0aa25ea-4d75-40eb-971a-ee244f6c927e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "56568a07-467d-454d-aa3e-223d5e06ca6c@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_1.png@f9941",
+    "value": {
+      "depends": [
+        "56568a07-467d-454d-aa3e-223d5e06ca6c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0cc6f43e-53dd-401f-b372-2daba15c7693": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "ad8c6535-6cc5-4815-83a5-86e5b857cae7@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_2.png@f9941",
+    "value": {
+      "depends": [
+        "ad8c6535-6cc5-4815-83a5-86e5b857cae7@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "86d14988-5b73-44f1-9299-213075473526@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_11.png@f9941",
+    "value": {
+      "depends": [
+        "86d14988-5b73-44f1-9299-213075473526@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "07a5a810-cbe4-4f33-bf57-34059b99fea7": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_5.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3346de74-8b9d-4f56-999f-2d812acbb616": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_6.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "7c122d28-1bb0-4eb0-ab04-73d8e3f05479@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_3.png@f9941",
+    "value": {
+      "depends": [
+        "7c122d28-1bb0-4eb0-ab04-73d8e3f05479@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bf4c28f0-5a35-4a95-b64b-0300ad483347": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_7.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e0aa25ea-4d75-40eb-971a-ee244f6c927e@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_10.png@f9941",
+    "value": {
+      "depends": [
+        "e0aa25ea-4d75-40eb-971a-ee244f6c927e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1031e79b-ea04-4d3a-8142-dcaa17c3628c": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_8.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0cc6f43e-53dd-401f-b372-2daba15c7693@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_4.png@6c48a",
+    "value": {
+      "depends": [
+        "0cc6f43e-53dd-401f-b372-2daba15c7693"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3346de74-8b9d-4f56-999f-2d812acbb616@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_6.png@6c48a",
+    "value": {
+      "depends": [
+        "3346de74-8b9d-4f56-999f-2d812acbb616"
+      ]
+    },
+    "versionCode": 1
+  },
+  "07a5a810-cbe4-4f33-bf57-34059b99fea7@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_5.png@6c48a",
+    "value": {
+      "depends": [
+        "07a5a810-cbe4-4f33-bf57-34059b99fea7"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bf4c28f0-5a35-4a95-b64b-0300ad483347@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_7.png@6c48a",
+    "value": {
+      "depends": [
+        "bf4c28f0-5a35-4a95-b64b-0300ad483347"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0cc6f43e-53dd-401f-b372-2daba15c7693@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_4.png@f9941",
+    "value": {
+      "depends": [
+        "0cc6f43e-53dd-401f-b372-2daba15c7693@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "335959c3-b96a-4ae8-83e5-da692cc8eb3f": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_9.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3346de74-8b9d-4f56-999f-2d812acbb616@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_6.png@f9941",
+    "value": {
+      "depends": [
+        "3346de74-8b9d-4f56-999f-2d812acbb616@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "f6c90430-c062-433e-a375-637cd02cba4f": {
+    "url": "db://assets/resources/ui/timewheel/jiantou_icon.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "1031e79b-ea04-4d3a-8142-dcaa17c3628c@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_8.png@6c48a",
+    "value": {
+      "depends": [
+        "1031e79b-ea04-4d3a-8142-dcaa17c3628c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "07a5a810-cbe4-4f33-bf57-34059b99fea7@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_5.png@f9941",
+    "value": {
+      "depends": [
+        "07a5a810-cbe4-4f33-bf57-34059b99fea7@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d7720e54-fb5c-4232-93b7-06218b1fc64d": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_neiquan.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "bf4c28f0-5a35-4a95-b64b-0300ad483347@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_7.png@f9941",
+    "value": {
+      "depends": [
+        "bf4c28f0-5a35-4a95-b64b-0300ad483347@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6495d55a-988a-40da-a91a-fcde7423295c": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_waiquan.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "1031e79b-ea04-4d3a-8142-dcaa17c3628c@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_8.png@f9941",
+    "value": {
+      "depends": [
+        "1031e79b-ea04-4d3a-8142-dcaa17c3628c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a7c6bfeb-9936-4583-8295-dbe5e3cb0560": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_zhongxin.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "f6c90430-c062-433e-a375-637cd02cba4f@6c48a": {
+    "url": "db://assets/resources/ui/timewheel/jiantou_icon.png@6c48a",
+    "value": {
+      "depends": [
+        "f6c90430-c062-433e-a375-637cd02cba4f"
+      ]
+    },
+    "versionCode": 1
+  },
+  "335959c3-b96a-4ae8-83e5-da692cc8eb3f@6c48a": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_9.png@6c48a",
+    "value": {
+      "depends": [
+        "335959c3-b96a-4ae8-83e5-da692cc8eb3f"
+      ]
+    },
+    "versionCode": 1
+  },
+  "f6c90430-c062-433e-a375-637cd02cba4f@f9941": {
+    "url": "db://assets/resources/ui/timewheel/jiantou_icon.png@f9941",
+    "value": {
+      "depends": [
+        "f6c90430-c062-433e-a375-637cd02cba4f@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a7c6bfeb-9936-4583-8295-dbe5e3cb0560@6c48a": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_zhongxin.png@6c48a",
+    "value": {
+      "depends": [
+        "a7c6bfeb-9936-4583-8295-dbe5e3cb0560"
+      ]
+    },
+    "versionCode": 1
+  },
+  "335959c3-b96a-4ae8-83e5-da692cc8eb3f@f9941": {
+    "url": "db://assets/resources/icon/zhiwu/zhiwu_9.png@f9941",
+    "value": {
+      "depends": [
+        "335959c3-b96a-4ae8-83e5-da692cc8eb3f@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d7720e54-fb5c-4232-93b7-06218b1fc64d@6c48a": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_neiquan.png@6c48a",
+    "value": {
+      "depends": [
+        "d7720e54-fb5c-4232-93b7-06218b1fc64d"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a7c6bfeb-9936-4583-8295-dbe5e3cb0560@f9941": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_zhongxin.png@f9941",
+    "value": {
+      "depends": [
+        "a7c6bfeb-9936-4583-8295-dbe5e3cb0560@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d7720e54-fb5c-4232-93b7-06218b1fc64d@f9941": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_neiquan.png@f9941",
+    "value": {
+      "depends": [
+        "d7720e54-fb5c-4232-93b7-06218b1fc64d@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6495d55a-988a-40da-a91a-fcde7423295c@6c48a": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_waiquan.png@6c48a",
+    "value": {
+      "depends": [
+        "6495d55a-988a-40da-a91a-fcde7423295c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6495d55a-988a-40da-a91a-fcde7423295c@f9941": {
+    "url": "db://assets/resources/ui/timewheel/zhuanpan_waiquan.png@f9941",
+    "value": {
+      "depends": [
+        "6495d55a-988a-40da-a91a-fcde7423295c@6c48a"
       ]
     },
     "versionCode": 1

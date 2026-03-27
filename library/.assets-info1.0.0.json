@@ -31,7 +31,7 @@
       "uuid": "d80801e6-f16f-4311-8fd2-c040802cc2b1"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts": {
-      "time": 1774592483516.9668,
+      "time": 1774602305146.5042,
       "uuid": "dffb95e3-e9f7-403b-a759-f4828cd608a9"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts.meta": {
@@ -169,153 +169,252 @@
       "time": 1774322701549.43,
       "uuid": "c9a53f5c-6908-42bf-9f0c-5b22d7134329"
     },
-    "E:\\cocos\\cardDemo\\assets\\res.meta": {
-      "time": 1774441229659.7625
+    "E:\\cocos\\cardDemo\\assets\\resources.meta": {
+      "time": 1774602393040.5933
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon.meta": {
-      "time": 1774441229659.7625
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon.meta": {
+      "time": 1774602393041.56
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu.meta": {
-      "time": 1774441229660.7603
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui.meta": {
+      "time": 1774602393041.56
     },
-    "E:\\cocos\\cardDemo\\assets\\res": {
-      "time": 1774493701519.4746,
-      "uuid": "33c52aad-8790-4a45-a7ee-3f921cbf7d8a"
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu.meta": {
+      "time": 1774602393042.589
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon": {
-      "time": 1774441229656.7698,
-      "uuid": "e9541ed1-5c90-47dd-a141-047c1c84a2fa"
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel.meta": {
+      "time": 1774602393042.589
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu": {
-      "time": 1774441229669.7346,
-      "uuid": "e4eae1e4-9ad3-4c85-bea7-4182763583ec"
+    "E:\\cocos\\cardDemo\\assets\\resources": {
+      "time": 1774602393035.6047,
+      "uuid": "ac9c2052-1bdf-446c-921d-d4e0a10fed6c"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_1.png.meta": {
-      "time": 1774441230207.3535
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon": {
+      "time": 1774602393036.6023,
+      "uuid": "b6b83404-ac56-420e-ac45-16e538aeda51"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_10.png.meta": {
-      "time": 1774441230212.341
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui": {
+      "time": 1774602393036.6023,
+      "uuid": "d739c945-334f-485b-b492-3c9568b758e0"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_11.png.meta": {
-      "time": 1774441230215.3325
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu": {
+      "time": 1774602393052.5303,
+      "uuid": "502c0527-4719-4a83-990f-36102a4978f5"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_2.png.meta": {
-      "time": 1774441230211.3435
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel": {
+      "time": 1774602393056.5188,
+      "uuid": "409a1713-a7d4-48c4-8ec5-a648d1c5170f"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_3.png.meta": {
-      "time": 1774441230218.3247
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_1.png.meta": {
+      "time": 1774602393116.3608
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_4.png.meta": {
-      "time": 1774441230246.2502
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_10.png.meta": {
+      "time": 1774602393129.3247
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_5.png.meta": {
-      "time": 1774441230253.2317
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_11.png.meta": {
+      "time": 1774602393120.35
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_6.png.meta": {
-      "time": 1774441230255.2278
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_2.png.meta": {
+      "time": 1774602393118.3538
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_7.png.meta": {
-      "time": 1774441230248.2449
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_3.png.meta": {
+      "time": 1774602393125.3374
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_8.png.meta": {
-      "time": 1774441230262.2085
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_4.png.meta": {
+      "time": 1774602393161.2397
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_9.png.meta": {
-      "time": 1774441230272.1804
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_5.png.meta": {
+      "time": 1774602393169.219
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_1.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_6.png.meta": {
+      "time": 1774602393165.2295
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_7.png.meta": {
+      "time": 1774602393175.2046
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_8.png.meta": {
+      "time": 1774602393178.196
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_9.png.meta": {
+      "time": 1774602393228.062
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\jiantou_icon.png.meta": {
+      "time": 1774602393223.2556
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_neiquan.png.meta": {
+      "time": 1774602393274.0144
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_waiquan.png.meta": {
+      "time": 1774602393298.8718
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_zhongxin.png.meta": {
+      "time": 1774602393240.1062
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_1.png": {
       "time": 1774429294802.9602,
-      "uuid": "d8d2b4e7-02fa-43d8-ae32-f88962512158"
+      "uuid": "56568a07-467d-454d-aa3e-223d5e06ca6c"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_2.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_2.png": {
       "time": 1774429324326.745,
-      "uuid": "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3"
+      "uuid": "ad8c6535-6cc5-4815-83a5-86e5b857cae7"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_10.png": {
-      "time": 1774439765833.5479,
-      "uuid": "b00fe362-b12a-4de5-9cd9-fac4b09c42e1"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_11.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_11.png": {
       "time": 1774439786137.9922,
-      "uuid": "9b73190d-d559-4748-863c-44d7cd0e1aec"
+      "uuid": "86d14988-5b73-44f1-9299-213075473526"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_3.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_3.png": {
       "time": 1774429387559.097,
-      "uuid": "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe"
+      "uuid": "7c122d28-1bb0-4eb0-ab04-73d8e3f05479"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_4.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_10.png": {
+      "time": 1774439765833.5479,
+      "uuid": "e0aa25ea-4d75-40eb-971a-ee244f6c927e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_4.png": {
       "time": 1774429430389.3882,
-      "uuid": "bc1f8201-5074-41aa-8986-f4dd4bf5c678"
+      "uuid": "0cc6f43e-53dd-401f-b372-2daba15c7693"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_7.png": {
-      "time": 1774439694197.926,
-      "uuid": "b739c0a5-a345-4f30-91eb-4db2a896f16e"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_5.png": {
-      "time": 1774439652545.423,
-      "uuid": "a059e044-b835-4428-9ea2-be1de3d318ee"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_6.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_6.png": {
       "time": 1774439673810.2222,
-      "uuid": "add56ff4-64f6-4e72-91ca-0ae96d294b70"
+      "uuid": "3346de74-8b9d-4f56-999f-2d812acbb616"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_8.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_5.png": {
+      "time": 1774439652545.423,
+      "uuid": "07a5a810-cbe4-4f33-bf57-34059b99fea7"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_7.png": {
+      "time": 1774439694197.926,
+      "uuid": "bf4c28f0-5a35-4a95-b64b-0300ad483347"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_8.png": {
       "time": 1774439713987.0132,
-      "uuid": "b14ad91d-22b3-4ea4-b0ff-9b08aea89766"
+      "uuid": "1031e79b-ea04-4d3a-8142-dcaa17c3628c"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_9.png": {
-      "time": 1774439745672.0176,
-      "uuid": "767e3709-c821-4c56-999f-356bfb281fe9"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui.meta": {
-      "time": 1774493701537.4583
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel.meta": {
-      "time": 1774493701538.4553
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui": {
-      "time": 1774493701535.4634,
-      "uuid": "a4ed6751-8f80-4c86-934b-a5498da41d46"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel": {
-      "time": 1774493701543.4424,
-      "uuid": "f8d10fc9-6122-43d2-8633-b9b9925d4aa3"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\cankaotu_image.png.meta": {
-      "time": 1774493701712.989
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\jiantou_icon.png.meta": {
-      "time": 1774493701640.1833
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_neiquan.png.meta": {
-      "time": 1774493701663.122
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_waiquan.png.meta": {
-      "time": 1774493701661.1282
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_zhongxin.png.meta": {
-      "time": 1774493701637.1914
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_zhongxin.png": {
-      "time": 1774492611534.0457,
-      "uuid": "91ac284c-e776-42d2-8148-589a9c1d7ef9"
-    },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\jiantou_icon.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\jiantou_icon.png": {
       "time": 1774492531608.7478,
-      "uuid": "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8"
+      "uuid": "f6c90430-c062-433e-a375-637cd02cba4f"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_waiquan.png": {
-      "time": 1774494065205.8752,
-      "uuid": "297f1be5-ff1f-4730-a82d-3d1e521c425e"
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\zhiwu\\zhiwu_9.png": {
+      "time": 1774439745672.0176,
+      "uuid": "335959c3-b96a-4ae8-83e5-da692cc8eb3f"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_neiquan.png": {
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_zhongxin.png": {
+      "time": 1774492611534.0457,
+      "uuid": "a7c6bfeb-9936-4583-8295-dbe5e3cb0560"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_neiquan.png": {
       "time": 1774493065340.581,
-      "uuid": "9d42f535-cb00-4762-9f8d-9724f9115dbb"
+      "uuid": "d7720e54-fb5c-4232-93b7-06218b1fc64d"
     },
-    "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\cankaotu_image.png": {
-      "time": 1774493388278.92,
-      "uuid": "80a4a037-4017-4329-8eed-bd732728e6ef"
+    "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_waiquan.png": {
+      "time": 1774494065205.8752,
+      "uuid": "6495d55a-988a-40da-a91a-fcde7423295c"
     }
   },
-  "missing": {}
+  "missing": {
+    "33c52aad-8790-4a45-a7ee-3f921cbf7d8a": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res",
+      "time": 1774493701519.4746,
+      "removeTime": 1774602404736
+    },
+    "e9541ed1-5c90-47dd-a141-047c1c84a2fa": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon",
+      "time": 1774441229656.7698,
+      "removeTime": 1774602404737
+    },
+    "e4eae1e4-9ad3-4c85-bea7-4182763583ec": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu",
+      "time": 1774441229669.7346,
+      "removeTime": 1774602404737
+    },
+    "d8d2b4e7-02fa-43d8-ae32-f88962512158": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_1.png",
+      "time": 1774429294802.9602,
+      "removeTime": 1774602404737
+    },
+    "b00fe362-b12a-4de5-9cd9-fac4b09c42e1": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_10.png",
+      "time": 1774439765833.5479,
+      "removeTime": 1774602404737
+    },
+    "9b73190d-d559-4748-863c-44d7cd0e1aec": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_11.png",
+      "time": 1774439786137.9922,
+      "removeTime": 1774602404737
+    },
+    "e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_2.png",
+      "time": 1774429324326.745,
+      "removeTime": 1774602404737
+    },
+    "dc847cb1-176d-44ee-87d1-3ecd68a5dbfe": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_3.png",
+      "time": 1774429387559.097,
+      "removeTime": 1774602404737
+    },
+    "bc1f8201-5074-41aa-8986-f4dd4bf5c678": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_4.png",
+      "time": 1774429430389.3882,
+      "removeTime": 1774602404737
+    },
+    "a059e044-b835-4428-9ea2-be1de3d318ee": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_5.png",
+      "time": 1774439652545.423,
+      "removeTime": 1774602404737
+    },
+    "add56ff4-64f6-4e72-91ca-0ae96d294b70": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_6.png",
+      "time": 1774439673810.2222,
+      "removeTime": 1774602404737
+    },
+    "b739c0a5-a345-4f30-91eb-4db2a896f16e": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_7.png",
+      "time": 1774439694197.926,
+      "removeTime": 1774602404738
+    },
+    "b14ad91d-22b3-4ea4-b0ff-9b08aea89766": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_8.png",
+      "time": 1774439713987.0132,
+      "removeTime": 1774602404738
+    },
+    "767e3709-c821-4c56-999f-356bfb281fe9": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\icon\\zhiwu\\zhiwu_9.png",
+      "time": 1774439745672.0176,
+      "removeTime": 1774602404738
+    },
+    "a4ed6751-8f80-4c86-934b-a5498da41d46": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui",
+      "time": 1774493701535.4634,
+      "removeTime": 1774602404738
+    },
+    "f8d10fc9-6122-43d2-8633-b9b9925d4aa3": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel",
+      "time": 1774493701543.4424,
+      "removeTime": 1774602404738
+    },
+    "80a4a037-4017-4329-8eed-bd732728e6ef": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\cankaotu_image.png",
+      "time": 1774493388278.92,
+      "removeTime": 1774602404738
+    },
+    "75e5a02b-e1ac-4795-b04e-4c82f8bae4a8": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\jiantou_icon.png",
+      "time": 1774492531608.7478,
+      "removeTime": 1774602404738
+    },
+    "9d42f535-cb00-4762-9f8d-9724f9115dbb": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_neiquan.png",
+      "time": 1774493065340.581,
+      "removeTime": 1774602404738
+    },
+    "297f1be5-ff1f-4730-a82d-3d1e521c425e": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_waiquan.png",
+      "time": 1774494065205.8752,
+      "removeTime": 1774602404738
+    },
+    "91ac284c-e776-42d2-8148-589a9c1d7ef9": {
+      "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_zhongxin.png",
+      "time": 1774492611534.0457,
+      "removeTime": 1774602404738
+    }
+  }
 }

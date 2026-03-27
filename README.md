@@ -22,6 +22,15 @@
 2. 进入编辑器后运行预览
 3. Web 构建产物可输出到对应的网页目录
 
+## Cloud Studio 预览
+
+- 当前预览地址：`http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io`
+- 推荐发布目录：`build/web-mobile`
+- 发布后在 Cloud Studio 中进入构建目录并执行：`node server.js`
+- 详细发布步骤见：`CLOUDSTUDIO.md`
+- 如果静态资源有缓存，可在地址后追加查询参数强制刷新，例如：
+  `http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io/?v=20260327`
+
 ## 说明
 
 当前仓库以 Demo 可运行和迭代验证为优先，后续功能会继续在保持可运行的前提下逐步优化。

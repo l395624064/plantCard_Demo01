@@ -1,7 +1,7 @@
 System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _context) {
   "use strict";
 
-  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, assetManager, Color, EventMouse, Graphics, HorizontalTextAlignment, Input, Label, Layers, Node, Sprite, Tween, UIOpacity, UITransform, Vec3, VerticalTextAlignment, input, tween, BOARD_COLS, BOARD_ROWS, CARD_TEMPLATE_COLS, CARD_TEMPLATE_ROWS, HAND_SIZE, getCardBounds, rotateCardCells, GameView, _crd, TIME_WHEEL_YEAR_COUNT, TIME_WHEEL_YEAR_LABELS, TIME_WHEEL_SEASONS, PLANT_SPRITE_UUIDS, TIME_WHEEL_SPRITE_UUIDS;
+  var _reporterNs, _cclegacy, __checkObsolete__, __checkObsoleteInNamespace__, Color, EventMouse, Graphics, HorizontalTextAlignment, Input, Label, Layers, Node, Sprite, SpriteFrame, Tween, UIOpacity, UITransform, Vec3, VerticalTextAlignment, input, resources, tween, BOARD_COLS, BOARD_ROWS, CARD_TEMPLATE_COLS, CARD_TEMPLATE_ROWS, HAND_SIZE, getCardBounds, rotateCardCells, GameView, _crd, TIME_WHEEL_YEAR_COUNT, TIME_WHEEL_YEAR_LABELS, TIME_WHEEL_SEASONS, PLANT_SPRITE_PATHS, TIME_WHEEL_SPRITE_PATHS;
 
   function makeColor(r, g, b, a = 255) {
     return new Color(r, g, b, a);
@@ -95,7 +95,6 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
       _cclegacy = _cc.cclegacy;
       __checkObsolete__ = _cc.__checkObsolete__;
       __checkObsoleteInNamespace__ = _cc.__checkObsoleteInNamespace__;
-      assetManager = _cc.assetManager;
       Color = _cc.Color;
       EventMouse = _cc.EventMouse;
       Graphics = _cc.Graphics;
@@ -105,12 +104,14 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
       Layers = _cc.Layers;
       Node = _cc.Node;
       Sprite = _cc.Sprite;
+      SpriteFrame = _cc.SpriteFrame;
       Tween = _cc.Tween;
       UIOpacity = _cc.UIOpacity;
       UITransform = _cc.UITransform;
       Vec3 = _cc.Vec3;
       VerticalTextAlignment = _cc.VerticalTextAlignment;
       input = _cc.input;
+      resources = _cc.resources;
       tween = _cc.tween;
     }, function (_unresolved_2) {
       BOARD_COLS = _unresolved_2.BOARD_COLS;
@@ -126,19 +127,19 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
 
       _cclegacy._RF.push({}, "dffb9Xj6fdAO6dZ9IKM1gip", "GameView", undefined);
 
-      __checkObsolete__(['assetManager', 'Color', 'EventMouse', 'EventTouch', 'Graphics', 'HorizontalTextAlignment', 'Input', 'Label', 'Layers', 'Node', 'Sprite', 'SpriteFrame', 'Tween', 'UIOpacity', 'UITransform', 'Vec3', 'VerticalTextAlignment', 'input', 'tween']);
+      __checkObsolete__(['Color', 'EventMouse', 'EventTouch', 'Graphics', 'HorizontalTextAlignment', 'Input', 'Label', 'Layers', 'Node', 'Sprite', 'SpriteFrame', 'Tween', 'UIOpacity', 'UITransform', 'Vec3', 'VerticalTextAlignment', 'input', 'resources', 'tween']);
 
       TIME_WHEEL_YEAR_COUNT = 12;
       TIME_WHEEL_YEAR_LABELS = Array.from({
         length: TIME_WHEEL_YEAR_COUNT
       }, (_, index) => `第${index + 1}年`);
       TIME_WHEEL_SEASONS = ['春', '夏', '秋', '冬'];
-      PLANT_SPRITE_UUIDS = ['d8d2b4e7-02fa-43d8-ae32-f88962512158@f9941', 'e7f3ab4d-6043-48c1-96d4-51b9bd5d34d3@f9941', 'dc847cb1-176d-44ee-87d1-3ecd68a5dbfe@f9941', 'bc1f8201-5074-41aa-8986-f4dd4bf5c678@f9941', 'a059e044-b835-4428-9ea2-be1de3d318ee@f9941', 'add56ff4-64f6-4e72-91ca-0ae96d294b70@f9941', 'b739c0a5-a345-4f30-91eb-4db2a896f16e@f9941', 'b14ad91d-22b3-4ea4-b0ff-9b08aea89766@f9941', '767e3709-c821-4c56-999f-356bfb281fe9@f9941', 'b00fe362-b12a-4de5-9cd9-fac4b09c42e1@f9941', '9b73190d-d559-4748-863c-44d7cd0e1aec@f9941'];
-      TIME_WHEEL_SPRITE_UUIDS = {
-        outer: '297f1be5-ff1f-4730-a82d-3d1e521c425e@f9941',
-        inner: '9d42f535-cb00-4762-9f8d-9724f9115dbb@f9941',
-        center: '91ac284c-e776-42d2-8148-589a9c1d7ef9@f9941',
-        pointer: '75e5a02b-e1ac-4795-b04e-4c82f8bae4a8@f9941'
+      PLANT_SPRITE_PATHS = ['icon/zhiwu/zhiwu_1/spriteFrame', 'icon/zhiwu/zhiwu_2/spriteFrame', 'icon/zhiwu/zhiwu_3/spriteFrame', 'icon/zhiwu/zhiwu_4/spriteFrame', 'icon/zhiwu/zhiwu_5/spriteFrame', 'icon/zhiwu/zhiwu_6/spriteFrame', 'icon/zhiwu/zhiwu_7/spriteFrame', 'icon/zhiwu/zhiwu_8/spriteFrame', 'icon/zhiwu/zhiwu_9/spriteFrame', 'icon/zhiwu/zhiwu_10/spriteFrame', 'icon/zhiwu/zhiwu_11/spriteFrame'];
+      TIME_WHEEL_SPRITE_PATHS = {
+        outer: 'ui/timewheel/zhuanpan_waiquan/spriteFrame',
+        inner: 'ui/timewheel/zhuanpan_neiquan/spriteFrame',
+        center: 'ui/timewheel/zhuanpan_zhongxin/spriteFrame',
+        pointer: 'ui/timewheel/jiantou_icon/spriteFrame'
       };
 
       _export("GameView", GameView = class GameView {
@@ -284,8 +285,10 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           this.previewRotateLogical = 0;
         }
 
-        loadSpriteFrameByUuid(uuid, sprite) {
-          const cached = this.spriteFrameCache.get(uuid);
+        loadSpriteFrameByPath(path, sprite) {
+          const spriteNode = sprite.node;
+          spriteNode.__spriteFramePath = path;
+          const cached = this.spriteFrameCache.get(path);
 
           if (cached) {
             sprite.spriteFrame = cached;
@@ -293,14 +296,14 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
             return;
           }
 
-          assetManager.loadAny(uuid, (error, asset) => {
+          resources.load(path, SpriteFrame, (error, asset) => {
             var _sprite$node;
 
-            if (error || !((_sprite$node = sprite.node) != null && _sprite$node.isValid)) {
+            if (error || !asset || !((_sprite$node = sprite.node) != null && _sprite$node.isValid) || spriteNode.__spriteFramePath !== path) {
               return;
             }
 
-            this.spriteFrameCache.set(uuid, asset);
+            this.spriteFrameCache.set(path, asset);
             sprite.spriteFrame = asset;
             this.applyPlantSpriteFitFromNode(sprite);
           });
@@ -315,9 +318,9 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           this.applyPlantSpriteFitFromNode(sprite);
         }
 
-        getPlantSpriteUuidByVariant(variant) {
-          const safeIndex = Math.abs(variant != null ? variant : 0) % PLANT_SPRITE_UUIDS.length;
-          return PLANT_SPRITE_UUIDS[safeIndex];
+        getPlantSpritePathByVariant(variant) {
+          const safeIndex = Math.abs(variant != null ? variant : 0) % PLANT_SPRITE_PATHS.length;
+          return PLANT_SPRITE_PATHS[safeIndex];
         }
 
         applyPlantSpriteFitFromNode(sprite) {
@@ -409,10 +412,10 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
           timeWheelYearLabel.color = makeColor(112, 78, 52, 255);
           const timeWheelSeasonLabel = this.createLabel(timeWheelCenterNode, 'TimeWheelSeasonLabel', wheelCenterSize * 1.2, 38, 0, -20, clamp(this.rootWidth * 0.05, 28, 40), HorizontalTextAlignment.CENTER, VerticalTextAlignment.CENTER);
           timeWheelSeasonLabel.color = makeColor(112, 78, 52, 255);
-          this.loadSpriteFrameByUuid(TIME_WHEEL_SPRITE_UUIDS.outer, timeWheelOuterSprite);
-          this.loadSpriteFrameByUuid(TIME_WHEEL_SPRITE_UUIDS.inner, timeWheelInnerSprite);
-          this.loadSpriteFrameByUuid(TIME_WHEEL_SPRITE_UUIDS.center, timeWheelCenterSprite);
-          this.loadSpriteFrameByUuid(TIME_WHEEL_SPRITE_UUIDS.pointer, timeWheelPointerSprite);
+          this.loadSpriteFrameByPath(TIME_WHEEL_SPRITE_PATHS.outer, timeWheelOuterSprite);
+          this.loadSpriteFrameByPath(TIME_WHEEL_SPRITE_PATHS.inner, timeWheelInnerSprite);
+          this.loadSpriteFrameByPath(TIME_WHEEL_SPRITE_PATHS.center, timeWheelCenterSprite);
+          this.loadSpriteFrameByPath(TIME_WHEEL_SPRITE_PATHS.pointer, timeWheelPointerSprite);
           const contentLeft = wheelX + wheelSize / 2 + 22;
           const contentRight = panelRight - 16;
           const contentWidth = contentRight - contentLeft;
@@ -1565,7 +1568,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
               const spriteMaxWidth = cellW * 0.82;
               const spriteMaxHeight = cellH * 0.88;
               this.setPlantSpriteFit(artCell.sprite, spriteMaxWidth, spriteMaxHeight, -cellH * 0.34);
-              this.loadSpriteFrameByUuid(this.getPlantSpriteUuidByVariant((_cell$plantVariant = cell.plantVariant) != null ? _cell$plantVariant : 0), artCell.sprite);
+              this.loadSpriteFrameByPath(this.getPlantSpritePathByVariant((_cell$plantVariant = cell.plantVariant) != null ? _cell$plantVariant : 0), artCell.sprite);
             }
 
             view.costLabel.string = '0';
@@ -1966,7 +1969,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
               view.graphics.stroke();
               view.sprite.color = makeColor(255, 255, 255, 255);
               this.setPlantSpriteFit(view.sprite, cellSize * 0.8, cellSize * 1.18, -cellSize * 0.36);
-              this.loadSpriteFrameByUuid(this.getPlantSpriteUuidByVariant(cell.plantVariant), view.sprite);
+              this.loadSpriteFrameByPath(this.getPlantSpritePathByVariant(cell.plantVariant), view.sprite);
               visible.push(view);
             }
           }
@@ -2006,7 +2009,7 @@ System.register(["__unresolved_0", "cc", "__unresolved_1"], function (_export, _
               view.graphics.stroke();
               view.sprite.color = makeColor(255, 255, 255, state.preplaceLocked ? 220 : 170);
               this.setPlantSpriteFit(view.sprite, cellSize * 0.8, cellSize * 1.12, -cellSize * 0.36);
-              this.loadSpriteFrameByUuid(this.getPlantSpriteUuidByVariant(cell.plantVariant), view.sprite);
+              this.loadSpriteFrameByPath(this.getPlantSpritePathByVariant(cell.plantVariant), view.sprite);
               visible.push(view);
             }
           }

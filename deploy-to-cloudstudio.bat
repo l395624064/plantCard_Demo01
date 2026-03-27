@@ -15,6 +15,7 @@ set BIN_FILES=cocos-js\assets\spine-17c81aa0.wasm,cocos-js\assets\spine.js.mem-d
 
 :: 服务器监听端口
 set PORT=8080
+set PREVIEW_URL=http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io
 
 :: ============================================================
 :: 脚本主体
@@ -122,7 +123,7 @@ echo     return;
 echo   }
 echo   let fp = path.join^(__dirname, url === '/' ? 'index.html' : url^);
 echo   fs.stat^(fp, ^(err, stat^) =^> {
-echo     if ^(err ^|^| !stat.isFile^(^)^) { res.writeHead^(404^); res.end^('Not Found'^); return; }
+echo     if ^(err ^|^| stat.isFile^(^)^ === false^) { res.writeHead^(404^); res.end^('Not Found'^); return; }
 echo     const mime = MIME[path.extname^(fp^).toLowerCase^(^)] ^|^| 'application/octet-stream';
 echo     res.writeHead^(200, { 'Content-Type': mime, 'Access-Control-Allow-Origin': '*' }^);
 echo     fs.createReadStream^(fp^).pipe^(res^);
@@ -142,24 +143,29 @@ if exist "%SETTINGS_FILE%" (
 
 echo.
 echo ============================================================
-echo  准备完成！
-echo  构建目录: %BUILD_DIR%
-echo  将目录内所有文件上传到 CloudStudio 后，执行:
-echo    node server.js
-echo  即可启动服务（端口 %PORT%）
+echo [INFO] Build output: %BUILD_DIR%
+echo [INFO] Upload all files in this directory to CloudStudio.
+echo [INFO] Then run: node server.js
+echo [INFO] Server port: %PORT%
+echo [INFO] Preview URL: %PREVIEW_URL%
 echo ============================================================
 echo.
-echo [INFO] 正在本地验证服务器能否启动...
+echo [INFO] Running local server check...
 cd /d "%BUILD_DIR%"
-start /B node server.js
+set "SERVER_PID="
+for /f %%i in ('powershell -NoProfile -Command "$p = Start-Process node -ArgumentList 'server.js' -WorkingDirectory '%BUILD_DIR%' -PassThru -WindowStyle Hidden; $p.Id"') do set SERVER_PID=%%i
 timeout /t 2 /nobreak >nul
-for /f %%i in ('curl -s -o nul -w "%%{http_code}" http://127.0.0.1:%PORT%/') do set HTTP_STATUS=%%i
-taskkill /F /IM node.exe /FI "WINDOWTITLE eq server.js" >nul 2>&1
+set "HTTP_STATUS=0"
+for /f %%i in ('powershell -NoProfile -Command "try { (Invoke-WebRequest -UseBasicParsing 'http://127.0.0.1:%PORT%/').StatusCode } catch { if ($_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 0 } }"') do set HTTP_STATUS=%%i
+if defined SERVER_PID (
+    powershell -NoProfile -Command "Stop-Process -Id !SERVER_PID! -Force -ErrorAction SilentlyContinue"
+)
 
 if "%HTTP_STATUS%"=="200" (
-    echo [OK] 本地验证通过，HTTP 200
+    echo [OK] Local check passed with HTTP 200
+    echo [INFO] Cloud Studio preview URL: %PREVIEW_URL%
 ) else (
-    echo [WARN] 本地验证返回: %HTTP_STATUS%（可能 node 未安装或端口被占用）
+    echo [WARN] Local check returned: %HTTP_STATUS%
 )
 
 echo.
