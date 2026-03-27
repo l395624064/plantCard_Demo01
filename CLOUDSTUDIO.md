@@ -18,9 +18,17 @@
 
 - 检查 `build/web-mobile` 是否存在
 - 检查 `index.html` 和 `Node.js`
+- 默认要求完整上传 `build/web-mobile/assets/resources/*`
 - 为 `.wasm`、`.bin` 等资源生成 `.b64.txt`
 - 自动生成 `server.js`
 - 本地做一次 HTTP 200 启动验证
+
+## 可选参数
+
+- `deploy-to-cloudstudio.bat` 或 `deploy-to-cloudstudio.bat --with-resources`
+  默认模式，要求完整上传 `assets/resources/*`
+- `deploy-to-cloudstudio.bat --skip-resources`
+  跳过 `assets/resources/*` 的上传要求提示
 
 ## 发布后验证
 

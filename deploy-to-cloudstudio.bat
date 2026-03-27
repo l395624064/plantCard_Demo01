@@ -7,6 +7,7 @@ chcp 65001 >nul
 :: ============================================================
 :: 构建输出目录（相对于脚本所在目录，或使用绝对路径）
 set BUILD_DIR=%~dp0build\web-mobile
+set RESOURCES_DIR=%BUILD_DIR%\assets\resources
 
 :: 需要 base64 编码处理的二进制文件列表
 :: 格式: 相对于 BUILD_DIR 的路径，用逗号分隔
@@ -16,11 +17,27 @@ set BIN_FILES=cocos-js\assets\spine-17c81aa0.wasm,cocos-js\assets\spine.js.mem-d
 :: 服务器监听端口
 set PORT=8080
 set PREVIEW_URL=http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io
+set UPLOAD_RESOURCES=1
+set UPLOAD_RESOURCES_LABEL=YES
+
+if /I "%~1"=="--skip-resources" (
+    set UPLOAD_RESOURCES=0
+    set UPLOAD_RESOURCES_LABEL=NO
+) else if /I "%~1"=="--with-resources" (
+    set UPLOAD_RESOURCES=1
+    set UPLOAD_RESOURCES_LABEL=YES
+) else if not "%~1"=="" (
+    echo [WARN] 未识别的参数: %~1
+    echo [WARN] 支持的参数:
+    echo [WARN]   --with-resources ^(默认，要求完整上传 assets/resources/*^)
+    echo [WARN]   --skip-resources ^(跳过 assets/resources/* 上传要求提示^)
+)
 
 :: ============================================================
 :: 脚本主体
 :: ============================================================
 echo [INFO] 构建目录: %BUILD_DIR%
+echo [INFO] Upload assets/resources/*: %UPLOAD_RESOURCES_LABEL%
 
 :: 检查构建目录是否存在
 if not exist "%BUILD_DIR%" (
@@ -43,6 +60,21 @@ if not exist "%BUILD_DIR%\index.html" (
     echo [ERROR] %BUILD_DIR%\index.html 不存在，请确认构建已完成
     pause
     exit /b 1
+)
+
+if "%UPLOAD_RESOURCES%"=="1" (
+    if not exist "%RESOURCES_DIR%\config.json" (
+        echo [ERROR] 缺少 %RESOURCES_DIR%\config.json
+        echo [ERROR] 当前参数要求完整上传 assets/resources/*，请先确认构建已生成 resources 资源包
+        pause
+        exit /b 1
+    )
+    if not exist "%RESOURCES_DIR%\index.js" (
+        echo [ERROR] 缺少 %RESOURCES_DIR%\index.js
+        echo [ERROR] 当前参数要求完整上传 assets/resources/*，请先确认构建已生成 resources 资源包
+        pause
+        exit /b 1
+    )
 )
 
 echo [INFO] 正在生成二进制文件的 base64 编码...
@@ -145,6 +177,11 @@ echo.
 echo ============================================================
 echo [INFO] Build output: %BUILD_DIR%
 echo [INFO] Upload all files in this directory to CloudStudio.
+if "%UPLOAD_RESOURCES%"=="1" (
+    echo [INFO] Must upload: build/web-mobile/assets/resources/*
+) else (
+    echo [INFO] assets/resources/* upload requirement skipped by parameter.
+)
 echo [INFO] Then run: node server.js
 echo [INFO] Server port: %PORT%
 echo [INFO] Preview URL: %PREVIEW_URL%
