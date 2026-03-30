@@ -1962,7 +1962,7 @@ export class GameView {
                 continue;
             }
 
-            const rightX = this.panelWidth * 0.52 + this.handCardWidth;
+            const rightX = this.rootWidth / 2 - this.handCardWidth * 0.22;
             const midX = (rightX + target.x) * 0.55;
             const midY = Math.max(target.y, -this.handPanelHeight * 0.1) + clamp(this.handCardHeight * 0.55, 70, 110);
             const p0 = new Vec3(rightX, target.y + 40, 0);

@@ -1,4 +1,4 @@
-import { _decorator, Canvas, Component, Layers, Node, UITransform, Vec3 } from 'cc';
+import { _decorator, Canvas, Color, Component, Graphics, Layers, Node, UITransform, Vec3 } from 'cc';
 import { GameModel } from './GameModel';
 import { GameView } from './GameView';
 import {
@@ -13,6 +13,12 @@ import {
     rotateCardCells,
 } from './GameTypes';
 const { ccclass } = _decorator;
+const DESIGN_WIDTH = 720;
+const DESIGN_HEIGHT = 1280;
+const SAFE_FRAME_PADDING = 14;
+const SAFE_FRAME_RADIUS = 26;
+const SAFE_CONTENT_MARGIN_X = 28;
+const SAFE_CONTENT_MARGIN_Y = 40;
 
 @ccclass('MainGame')
 export class MainGame extends Component {
@@ -58,28 +64,101 @@ export class MainGame extends Component {
     }
 
     private ensureUiRoot(): Node {
-        let uiRoot = this.node.getChildByName('DemoRoot');
-        if (!uiRoot) {
-            uiRoot = new Node('DemoRoot');
-            uiRoot.layer = Layers.Enum.UI_2D;
-            const canvasTransform = this.node.getComponent(UITransform);
-            const uiTransform = uiRoot.addComponent(UITransform);
-            if (canvasTransform) {
-                uiTransform.setContentSize(canvasTransform.contentSize);
-            }
-            uiRoot.setPosition(new Vec3(0, 0, 0));
-            this.node.addChild(uiRoot);
-        }
-
+        const safeContentWidth = DESIGN_WIDTH - SAFE_CONTENT_MARGIN_X * 2;
+        const safeContentHeight = DESIGN_HEIGHT - SAFE_CONTENT_MARGIN_Y * 2;
         const canvasTransform = this.node.getComponent(UITransform);
-        const uiTransform = uiRoot.getComponent(UITransform);
-        if (canvasTransform && uiTransform) {
-            uiTransform.setContentSize(canvasTransform.contentSize);
-            this.lastRootWidth = canvasTransform.contentSize.width;
-            this.lastRootHeight = canvasTransform.contentSize.height;
+        if (!canvasTransform) {
+            const fallbackRoot = new Node('DemoContent');
+            fallbackRoot.layer = Layers.Enum.UI_2D;
+            fallbackRoot.addComponent(UITransform).setContentSize(safeContentWidth, safeContentHeight);
+            return fallbackRoot;
         }
 
-        return uiRoot;
+        let shell = this.node.getChildByName('DemoRoot');
+        if (!shell) {
+            shell = new Node('DemoRoot');
+            shell.layer = Layers.Enum.UI_2D;
+            shell.addComponent(UITransform);
+            this.node.addChild(shell);
+        }
+
+        const shellTransform = shell.getComponent(UITransform)!;
+        shellTransform.setContentSize(canvasTransform.contentSize);
+        this.lastRootWidth = canvasTransform.contentSize.width;
+        this.lastRootHeight = canvasTransform.contentSize.height;
+
+        let shellBackground = shell.getChildByName('ViewportBackground');
+        if (!shellBackground) {
+            shellBackground = new Node('ViewportBackground');
+            shellBackground.layer = Layers.Enum.UI_2D;
+            shellBackground.addComponent(UITransform);
+            shellBackground.addComponent(Graphics);
+            shell.addChild(shellBackground);
+        }
+        shellBackground.setPosition(Vec3.ZERO);
+        const shellBgTransform = shellBackground.getComponent(UITransform)!;
+        shellBgTransform.setContentSize(canvasTransform.contentSize);
+        const shellBgGraphics = shellBackground.getComponent(Graphics)!;
+        shellBgGraphics.clear();
+        shellBgGraphics.fillColor = new Color(250, 245, 232, 255);
+        shellBgGraphics.rect(
+            -canvasTransform.contentSize.width / 2,
+            -canvasTransform.contentSize.height / 2,
+            canvasTransform.contentSize.width,
+            canvasTransform.contentSize.height,
+        );
+        shellBgGraphics.fill();
+
+        const scale = Math.min(
+            canvasTransform.contentSize.width / DESIGN_WIDTH,
+            canvasTransform.contentSize.height / DESIGN_HEIGHT,
+        );
+
+        let safeArea = shell.getChildByName('DemoSafeArea');
+        if (!safeArea) {
+            safeArea = new Node('DemoSafeArea');
+            safeArea.layer = Layers.Enum.UI_2D;
+            safeArea.addComponent(UITransform).setContentSize(DESIGN_WIDTH, DESIGN_HEIGHT);
+            shell.addChild(safeArea);
+        }
+        safeArea.setPosition(Vec3.ZERO);
+        safeArea.setScale(scale, scale, 1);
+        safeArea.getComponent(UITransform)?.setContentSize(DESIGN_WIDTH, DESIGN_HEIGHT);
+
+        let contentRoot = safeArea.getChildByName('DemoContent');
+        if (!contentRoot) {
+            contentRoot = new Node('DemoContent');
+            contentRoot.layer = Layers.Enum.UI_2D;
+            contentRoot.addComponent(UITransform);
+            safeArea.addChild(contentRoot);
+        }
+        contentRoot.setPosition(Vec3.ZERO);
+        contentRoot.getComponent(UITransform)?.setContentSize(safeContentWidth, safeContentHeight);
+
+        let safeFrame = shell.getChildByName('DemoSafeFrame');
+        if (!safeFrame) {
+            safeFrame = new Node('DemoSafeFrame');
+            safeFrame.layer = Layers.Enum.UI_2D;
+            safeFrame.addComponent(UITransform).setContentSize(DESIGN_WIDTH, DESIGN_HEIGHT);
+            safeFrame.addComponent(Graphics);
+            shell.addChild(safeFrame);
+        }
+        safeFrame.setPosition(Vec3.ZERO);
+        safeFrame.setScale(scale, scale, 1);
+        const safeFrameGraphics = safeFrame.getComponent(Graphics)!;
+        safeFrameGraphics.clear();
+        safeFrameGraphics.lineWidth = 4;
+        safeFrameGraphics.strokeColor = new Color(160, 146, 112, 220);
+        safeFrameGraphics.roundRect(
+            -DESIGN_WIDTH / 2 + SAFE_FRAME_PADDING,
+            -DESIGN_HEIGHT / 2 + SAFE_FRAME_PADDING,
+            DESIGN_WIDTH - SAFE_FRAME_PADDING * 2,
+            DESIGN_HEIGHT - SAFE_FRAME_PADDING * 2,
+            SAFE_FRAME_RADIUS,
+        );
+        safeFrameGraphics.stroke();
+
+        return contentRoot;
     }
 
     private rebuildView(): void {

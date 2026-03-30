@@ -117,7 +117,7 @@ echo.
 echo [INFO] Running local server check...
 cd /d "%BUILD_DIR%"
 set "SERVER_PID="
-for /f %%i in ('powershell -NoProfile -Command "$p = Start-Process cmd.exe -ArgumentList '/c node \"%BUILD_DIR%\\server.js\" ^< nul ^> nul 2^>^&1' -WorkingDirectory '%BUILD_DIR%' -PassThru -WindowStyle Hidden; $p.Id"') do set "SERVER_PID=%%i"
+for /f %%i in ('powershell -NoProfile -Command "$p = Start-Process node -ArgumentList 'server.js' -WorkingDirectory '%BUILD_DIR%' -PassThru -WindowStyle Hidden; $p.Id"') do set "SERVER_PID=%%i"
 timeout /t 2 /nobreak >nul
 set "HTTP_STATUS=0"
 for /f %%i in ('powershell -NoProfile -Command "try { (Invoke-WebRequest -UseBasicParsing 'http://127.0.0.1:%PORT%/').StatusCode } catch { if ($_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 0 } }"') do set "HTTP_STATUS=%%i"
