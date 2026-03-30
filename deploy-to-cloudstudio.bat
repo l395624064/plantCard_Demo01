@@ -16,7 +16,9 @@ set BIN_FILES=cocos-js\assets\spine-17c81aa0.wasm,cocos-js\assets\spine.js.mem-d
 
 :: 服务器监听端口
 set PORT=8080
-set PREVIEW_URL=http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io
+set PREVIEW_URL=https://my-gameserver-4gkm6efr1a71bbc1-1258142635.tcloudbaseapp.com/gameDemo/
+set REMOTE_UPLOAD_DIR=gameDemo/
+set CLOUDBASE_ENV_ID=my-gameserver-4gkm6efr1a71bbc1
 set UPLOAD_RESOURCES=1
 set UPLOAD_RESOURCES_LABEL=YES
 
@@ -51,6 +53,14 @@ if not exist "%BUILD_DIR%" (
 where node >nul 2>&1
 if %errorlevel% neq 0 (
     echo [ERROR] 未找到 Node.js，请先安装 Node.js
+    pause
+    exit /b 1
+)
+
+where tcb >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [ERROR] 未找到 CloudBase CLI（tcb），无法自动上传静态托管
+    echo [ERROR] 请先安装并登录 CloudBase CLI
     pause
     exit /b 1
 )
@@ -176,14 +186,14 @@ if exist "%SETTINGS_FILE%" (
 echo.
 echo ============================================================
 echo [INFO] Build output: %BUILD_DIR%
-echo [INFO] Upload all files in this directory to CloudStudio.
+echo [INFO] Upload target: CloudBase hosting path %REMOTE_UPLOAD_DIR%
 if "%UPLOAD_RESOURCES%"=="1" (
     echo [INFO] Must upload: build/web-mobile/assets/resources/*
 ) else (
     echo [INFO] assets/resources/* upload requirement skipped by parameter.
 )
-echo [INFO] Then run: node server.js
-echo [INFO] Server port: %PORT%
+echo [INFO] CloudBase env: %CLOUDBASE_ENV_ID%
+echo [INFO] Local server.js is only for local verification before upload.
 echo [INFO] Preview URL: %PREVIEW_URL%
 echo ============================================================
 echo.
@@ -203,7 +213,21 @@ if "%HTTP_STATUS%"=="200" (
     echo [INFO] Cloud Studio preview URL: %PREVIEW_URL%
 ) else (
     echo [WARN] Local check returned: %HTTP_STATUS%
+    pause
+    exit /b 1
 )
+
+echo.
+echo [INFO] Deploying build/web-mobile to CloudBase hosting...
+tcb hosting deploy "%BUILD_DIR%" "gameDemo" -e %CLOUDBASE_ENV_ID%
+if %errorlevel% neq 0 (
+    echo [ERROR] CloudBase hosting deploy failed
+    pause
+    exit /b 1
+)
+echo [OK] CloudBase hosting deploy completed
+echo [INFO] Opening preview URL...
+start "" "%PREVIEW_URL%"
 
 echo.
 echo [DONE] 脚本执行完毕。

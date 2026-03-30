@@ -24,12 +24,12 @@
 
 ## Cloud Studio 预览
 
-- 当前预览地址：`http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io`
+- 当前预览地址：`https://my-gameserver-4gkm6efr1a71bbc1-1258142635.tcloudbaseapp.com/gameDemo/`
 - 推荐发布目录：`build/web-mobile`
-- 发布后在 Cloud Studio 中进入构建目录并执行：`node server.js`
+- 执行 `deploy-to-cloudstudio.bat` 后会自动上传 `build/web-mobile` 到 CloudBase 静态托管目录 `gameDemo/`
 - 详细发布步骤见：`CLOUDSTUDIO.md`
 - 如果静态资源有缓存，可在地址后追加查询参数强制刷新，例如：
-  `http://5ed886311638440282d2323ab9766d3e.ap-singapore.myide.io/?v=20260327`
+  `https://my-gameserver-4gkm6efr1a71bbc1-1258142635.tcloudbaseapp.com/gameDemo/?v=20260327`
 
 ## 说明
 
