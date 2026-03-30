@@ -1,4 +1,4 @@
-import { _decorator, Canvas, Color, Component, Graphics, Layers, Node, UITransform, Vec3 } from 'cc';
+import { _decorator, Canvas, Color, Component, Graphics, Layers, Mask, Node, UITransform, Vec3 } from 'cc';
 import { GameModel } from './GameModel';
 import { GameView } from './GameView';
 import {
@@ -130,10 +130,23 @@ export class MainGame extends Component {
             contentRoot = new Node('DemoContent');
             contentRoot.layer = Layers.Enum.UI_2D;
             contentRoot.addComponent(UITransform);
+            contentRoot.addComponent(Graphics);
+            const mask = contentRoot.addComponent(Mask);
+            mask.type = Mask.Type.GRAPHICS_RECT;
             safeArea.addChild(contentRoot);
         }
         contentRoot.setPosition(Vec3.ZERO);
         contentRoot.getComponent(UITransform)?.setContentSize(safeContentWidth, safeContentHeight);
+        const contentGraphics = contentRoot.getComponent(Graphics)!;
+        contentGraphics.clear();
+        contentGraphics.fillColor = new Color(255, 255, 255, 255);
+        contentGraphics.rect(
+            -safeContentWidth / 2,
+            -safeContentHeight / 2,
+            safeContentWidth,
+            safeContentHeight,
+        );
+        contentGraphics.fill();
 
         let safeFrame = shell.getChildByName('DemoSafeFrame');
         if (!safeFrame) {
