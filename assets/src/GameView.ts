@@ -163,6 +163,7 @@ export class GameView {
     private readonly root: Node;
     private readonly callbacks: GameViewCallbacks;
     private readonly spriteFrameCache = new Map<string, SpriteFrame>();
+    private readonly spriteFrameWaiters = new Map<string, Set<Sprite>>();
 
     private rootWidth = 720;
     private rootHeight = 1280;
@@ -307,17 +308,33 @@ export class GameView {
         spriteNode.__spriteFramePath = path;
         const cached = this.spriteFrameCache.get(path);
         if (cached) {
-            sprite.spriteFrame = cached;
+            if (sprite.spriteFrame !== cached) {
+                sprite.spriteFrame = cached;
+            }
             this.applyPlantSpriteFitFromNode(sprite);
             return;
         }
+        const waiters = this.spriteFrameWaiters.get(path);
+        if (waiters) {
+            waiters.add(sprite);
+            return;
+        }
+        this.spriteFrameWaiters.set(path, new Set([sprite]));
         resources.load(path, SpriteFrame, (error: Error | null, asset: SpriteFrame | null) => {
-            if (error || !asset || !sprite.node?.isValid || spriteNode.__spriteFramePath !== path) {
+            const pendingSprites = this.spriteFrameWaiters.get(path);
+            this.spriteFrameWaiters.delete(path);
+            if (error || !asset || !pendingSprites) {
                 return;
             }
             this.spriteFrameCache.set(path, asset);
-            sprite.spriteFrame = asset;
-            this.applyPlantSpriteFitFromNode(sprite);
+            pendingSprites.forEach((pendingSprite) => {
+                const pendingNode = pendingSprite.node as Node & { __spriteFramePath?: string };
+                if (!pendingSprite.node?.isValid || pendingNode.__spriteFramePath !== path) {
+                    return;
+                }
+                pendingSprite.spriteFrame = asset;
+                this.applyPlantSpriteFitFromNode(pendingSprite);
+            });
         });
     }
 
