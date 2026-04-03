@@ -3,23 +3,51 @@ import {
     BOARD_ROWS,
     CARD_TEMPLATE_COLS,
     CARD_TEMPLATE_ROWS,
+    CardData,
     DICE_VALUES,
     FruitColor,
     GameStatus,
     GridPos,
     HAND_SIZE,
     MAX_ROTTEN,
+    ParcelType,
     PlacementCell,
     PlacementHit,
     PlacementPreview,
     Rotation,
     TARGET_SCORE,
     BoardCell,
-    CardData,
+    isBoardPlacementCard,
     getCardBounds,
     normalizeCardCells,
     rotateCardCells,
 } from './GameTypes';
+
+const PARCEL_SPRITE_PATHS: Record<ParcelType, string[]> = {
+    Crackedland: ['icon/parcel/Crackedland_1/spriteFrame'],
+    desert: ['icon/parcel/desert_1/spriteFrame'],
+    grassland: [
+        'icon/parcel/grassland_1/spriteFrame',
+        'icon/parcel/grassland_3/spriteFrame',
+    ],
+    mossland: ['icon/parcel/mossland_1/spriteFrame'],
+    snowfield: ['icon/parcel/snowfield_1/spriteFrame'],
+    wasteland: ['icon/parcel/wasteland_1/spriteFrame'],
+    mudland: [
+        'icon/parcel/mudland_1/spriteFrame',
+        'icon/parcel/mudland_2/spriteFrame',
+    ],
+};
+
+const DEFAULT_PARCEL_WEIGHTS: Record<ParcelType, number> = {
+    Crackedland: 0,
+    desert: 0,
+    grassland: 100,
+    mossland: 0,
+    snowfield: 0,
+    wasteland: 0,
+    mudland: 0,
+};
 
 function createEmptyBoard(): BoardCell[][] {
     return Array.from({ length: BOARD_ROWS }, () =>
@@ -28,6 +56,13 @@ function createEmptyBoard(): BoardCell[][] {
             diceIndex: -1,
             rotten: false,
             plantVariant: null,
+            plantId: null,
+            parcelType: 'grassland',
+            parcelSpritePath: PARCEL_SPRITE_PATHS.grassland[0],
+            fertilizerBlockedTurns: 0,
+            fertilityLevel: 0,
+            moistureLevel: 0,
+            terrainStructure: 'none',
         })),
     );
 }
@@ -41,6 +76,7 @@ function createCard(id: number, label: string, colors: FruitColor[][]): CardData
                 y,
                 color: colors[y][x],
                 plantVariant: null,
+                plantId: null,
             });
         }
     }
@@ -49,6 +85,15 @@ function createCard(id: number, label: string, colors: FruitColor[][]): CardData
         id: `card-${id}`,
         label,
         cells,
+        mainType: 'plant',
+        playMode: 'board_placement',
+        summary: '植物牌：可放置到种植区，并通过叠加提升等级。',
+        profile: {
+            kind: 'plant',
+            plantId: `plant-card-${id}`,
+            canStackUpgrade: true,
+            mismatchCreatesFertilizer: true,
+        },
         cardKind: 'placement',
     };
 }
@@ -74,6 +119,7 @@ function createRandomShapeCard(id: number, label: string): CardData {
                 y: cy,
                 color: randomColor(),
                 plantVariant: null,
+                plantId: null,
             });
         }
         const candidates = [
@@ -94,6 +140,15 @@ function createRandomShapeCard(id: number, label: string): CardData {
         id: `card-${id}`,
         label,
         cells: normalizeCardCells(cells),
+        mainType: 'plant',
+        playMode: 'board_placement',
+        summary: '植物牌：当前 Demo 的基础可放置卡。',
+        profile: {
+            kind: 'plant',
+            plantId: `plant-card-${id}`,
+            canStackUpgrade: true,
+            mismatchCreatesFertilizer: true,
+        },
         cardKind: 'placement',
     };
 }
@@ -125,6 +180,7 @@ export class GameModel {
     private readonly cardLibrary: CardData[];
     private readonly startCard: CardData;
     private nextCardInstanceId = 1;
+    private parcelTypeWeights: Record<ParcelType, number> = { ...DEFAULT_PARCEL_WEIGHTS };
 
     private hashString(value: string): number {
         let hash = 0;
@@ -139,13 +195,75 @@ export class GameModel {
         return this.hashString(seed) % 11;
     }
 
+    private getPlantId(cardId: string, cellX: number, cellY: number, color: FruitColor, plantVariant?: number | null): string {
+        const variant = plantVariant ?? this.getPlantVariant(cardId, cellX, cellY, color);
+        return `plant-${variant + 1}`;
+    }
+
     private assignPlantVariants(cardId: string, cells: CardData['cells']): CardData['cells'] {
         return cells.map((cell) => ({
             x: cell.x,
             y: cell.y,
             color: cell.color,
             plantVariant: cell.plantVariant ?? this.getPlantVariant(cardId, cell.x, cell.y, cell.color),
+            plantId: cell.plantId ?? this.getPlantId(cardId, cell.x, cell.y, cell.color, cell.plantVariant ?? null),
         }));
+    }
+
+    private pickWeightedParcelType(): ParcelType {
+        const entries: [ParcelType, number][] = [
+            ['Crackedland', this.parcelTypeWeights.Crackedland],
+            ['desert', this.parcelTypeWeights.desert],
+            ['grassland', this.parcelTypeWeights.grassland],
+            ['mossland', this.parcelTypeWeights.mossland],
+            ['snowfield', this.parcelTypeWeights.snowfield],
+            ['wasteland', this.parcelTypeWeights.wasteland],
+            ['mudland', this.parcelTypeWeights.mudland],
+        ];
+        const totalWeight = entries.reduce((sum, [, weight]) => sum + Math.max(0, weight), 0);
+        if (totalWeight <= 0) {
+            return 'grassland';
+        }
+        let roll = Math.random() * totalWeight;
+        for (const [type, weight] of entries) {
+            const safeWeight = Math.max(0, weight);
+            if (roll < safeWeight) {
+                return type;
+            }
+            roll -= safeWeight;
+        }
+        return 'grassland';
+    }
+
+    private pickParcelSpritePath(type: ParcelType): string {
+        const pool = PARCEL_SPRITE_PATHS[type];
+        if (!pool || pool.length === 0) {
+            return PARCEL_SPRITE_PATHS.grassland[0];
+        }
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    private assignParcelAt(x: number, y: number, type?: ParcelType): void {
+        const nextType = type ?? this.pickWeightedParcelType();
+        const boardCell = this.board[y][x];
+        boardCell.parcelType = nextType;
+        boardCell.parcelSpritePath = this.pickParcelSpritePath(nextType);
+    }
+
+    private rerollBoardParcels(): void {
+        for (let y = 0; y < BOARD_ROWS; y++) {
+            for (let x = 0; x < BOARD_COLS; x++) {
+                this.assignParcelAt(x, y);
+            }
+        }
+    }
+
+    private fillBoardParcels(type: ParcelType): void {
+        for (let y = 0; y < BOARD_ROWS; y++) {
+            for (let x = 0; x < BOARD_COLS; x++) {
+                this.assignParcelAt(x, y, type);
+            }
+        }
     }
 
     constructor() {
@@ -158,6 +276,7 @@ export class GameModel {
 
     public startNewGame(): void {
         this.board = createEmptyBoard();
+        this.fillBoardParcels('grassland');
         this.hand = [];
         this.nextCardInstanceId = 1;
         this.deck = shuffle(this.cardLibrary).map((card) => this.cloneCardInstance(card));
@@ -176,11 +295,31 @@ export class GameModel {
         this.updateStatus();
     }
 
+    public setParcelTypeWeights(weights: Partial<Record<ParcelType, number>>, reroll = true): void {
+        this.parcelTypeWeights = {
+            ...this.parcelTypeWeights,
+            ...weights,
+        };
+        if (reroll) {
+            this.rerollBoardParcels();
+        }
+    }
+
+    public setParcelTypeAt(x: number, y: number, type: ParcelType): void {
+        if (x < 0 || y < 0 || x >= BOARD_COLS || y >= BOARD_ROWS) {
+            return;
+        }
+        this.assignParcelAt(x, y, type);
+    }
+
     public getCardAtHand(index: number): CardData | null {
         return this.hand[index] ?? null;
     }
 
     public canCardBePlaced(card: CardData): boolean {
+        if (!isBoardPlacementCard(card)) {
+            return false;
+        }
         for (let rotation = 0 as Rotation; rotation < 4; rotation = (rotation + 1) as Rotation) {
             const rotated = rotateCardCells(card.cells, rotation);
             const bounds = getCardBounds(rotated);
@@ -198,6 +337,20 @@ export class GameModel {
     }
 
     public evaluatePlacement(card: CardData, anchor: GridPos, rotation: Rotation): PlacementPreview {
+        if (!isBoardPlacementCard(card)) {
+            return {
+                isValid: false,
+                reason: '当前仅植物牌可放置到种植区',
+                anchor,
+                rotation,
+                occupiedOverlapCount: 0,
+                scoreGain: 0,
+                requiredRotten: 0,
+                sameColorHits: [],
+                diffColorHits: [],
+                cells: [],
+            };
+        }
         const rotatedCells = rotateCardCells(card.cells, rotation);
         const sameColorHits: PlacementHit[] = [];
         const diffColorHits: PlacementHit[] = [];
@@ -226,14 +379,15 @@ export class GameModel {
             }
 
             const boardCell = this.board[y][x];
+            const cellPlantId = cell.plantId ?? this.getPlantId(card.id, cell.x, cell.y, cell.color, cell.plantVariant ?? null);
             const overlapsSame = !boardCell.rotten
                 && !!boardCell.baseColor
-                && boardCell.plantVariant !== null
-                && boardCell.plantVariant === (cell.plantVariant ?? null);
+                && boardCell.plantId !== null
+                && boardCell.plantId === cellPlantId;
             const overlapsDiff = !boardCell.rotten
                 && !!boardCell.baseColor
-                && boardCell.plantVariant !== null
-                && boardCell.plantVariant !== (cell.plantVariant ?? null);
+                && boardCell.plantId !== null
+                && boardCell.plantId !== cellPlantId;
             const blocked = boardCell.rotten;
 
             placementCells.push({
@@ -244,6 +398,7 @@ export class GameModel {
                 overlapsSame,
                 overlapsDiff,
                 plantVariant: cell.plantVariant ?? this.getPlantVariant(card.id, cell.x, cell.y, cell.color),
+                plantId: cellPlantId,
             });
 
             if (blocked) {
@@ -324,17 +479,23 @@ export class GameModel {
                 boardCell.baseColor = cell.color;
                 boardCell.diceIndex = Math.min(boardCell.diceIndex + 1, DICE_VALUES.length - 1);
                 boardCell.plantVariant = boardCell.plantVariant ?? cell.plantVariant;
+                boardCell.plantId = boardCell.plantId ?? cell.plantId;
+                boardCell.fertilizerBlockedTurns = 0;
             } else if (cell.overlapsDiff) {
                 boardCell.baseColor = null;
                 boardCell.diceIndex = -1;
                 boardCell.rotten = true;
                 boardCell.plantVariant = null;
+                boardCell.plantId = null;
+                boardCell.fertilizerBlockedTurns = 1;
                 this.remainingRotten -= 1;
             } else {
                 boardCell.baseColor = cell.color;
                 boardCell.diceIndex = -1;
                 boardCell.rotten = false;
                 boardCell.plantVariant = cell.plantVariant;
+                boardCell.plantId = cell.plantId;
+                boardCell.fertilizerBlockedTurns = 0;
             }
         }
 
@@ -402,6 +563,7 @@ export class GameModel {
             const y = anchor.y + cell.y;
             this.board[y][x].baseColor = cell.color;
             this.board[y][x].plantVariant = cell.plantVariant ?? this.getPlantVariant(card.id, cell.x, cell.y, cell.color);
+            this.board[y][x].plantId = cell.plantId ?? this.getPlantId(card.id, cell.x, cell.y, cell.color, cell.plantVariant ?? null);
         }
     }
 
@@ -431,6 +593,10 @@ export class GameModel {
         return {
             id: `${card.id}-inst-${instanceId}`,
             label: card.label,
+            mainType: card.mainType,
+            playMode: card.playMode,
+            summary: card.summary,
+            profile: card.profile,
             cardKind: card.cardKind,
             cells: this.assignPlantVariants(`${card.id}-inst-${instanceId}`, card.cells),
         };

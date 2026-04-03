@@ -30,6 +30,8 @@ import {
     HAND_SIZE,
     HandSlotState,
     Rotation,
+    getCardMainTypeLabel,
+    isBoardPlacementCard,
     getCardBounds,
     rotateCardCells,
 } from './GameTypes';
@@ -73,6 +75,13 @@ interface BoardPlantCellView {
     row: number;
     col: number;
     preview: boolean;
+}
+
+interface BoardParcelCellView {
+    node: Node;
+    sprite: Sprite;
+    row: number;
+    col: number;
 }
 
 interface TopInfoView {
@@ -180,7 +189,7 @@ export class GameView {
     private readonly boardGraphics: Graphics;
     private readonly cellLabels: Label[][] = [];
     private readonly levelLabels: Label[][] = [];
-    private readonly boardPlantLayer: Node;
+    private readonly boardParcelViews: BoardParcelCellView[] = [];
     private readonly boardPlantViews: BoardPlantCellView[] = [];
     private readonly previewPlantViews: BoardPlantCellView[] = [];
     private readonly topInfoView: TopInfoView;
@@ -235,8 +244,7 @@ export class GameView {
         this.topInfoView = this.createTopInfo();
         this.messageLabel = this.createMessage();
         this.boardNode = this.createBoard();
-        this.boardGraphics = this.boardNode.getComponent(Graphics)!;
-        this.boardPlantLayer = this.boardNode.getChildByName('BoardPlantLayer')!;
+        this.boardGraphics = this.boardNode.getChildByName('BoardOverlay')!.getComponent(Graphics)!;
         this.createHandArea();
         this.createDragArrowOnly();
         this.createPreplaceBar();
@@ -678,6 +686,13 @@ export class GameView {
         });
 
         const cellSize = this.boardSize / BOARD_COLS;
+        const parcelLayer = this.makeNode('BoardParcelLayer', this.boardSize, this.boardSize, 0, 0);
+        board.addChild(parcelLayer);
+        for (let y = 0; y < BOARD_ROWS; y++) {
+            for (let x = 0; x < BOARD_COLS; x++) {
+                this.boardParcelViews.push(this.createBoardParcelCellView(parcelLayer, `BoardParcel-${x}-${y}`, x, y));
+            }
+        }
         const plantLayer = this.makeNode('BoardPlantLayer', this.boardSize, this.boardSize, 0, 0);
         board.addChild(plantLayer);
         for (let y = 0; y < BOARD_ROWS; y++) {
@@ -688,6 +703,9 @@ export class GameView {
         for (let i = 0; i < 8; i++) {
             this.previewPlantViews.push(this.createBoardPlantCellView(plantLayer, `PreviewPlant-${i}`, 0, 0, true));
         }
+        const overlayNode = this.makeNode('BoardOverlay', this.boardSize, this.boardSize, 0, 0);
+        overlayNode.addComponent(Graphics);
+        board.addChild(overlayNode);
         for (let y = 0; y < BOARD_ROWS; y++) {
             const row: Label[] = [];
             const levelRow: Label[] = [];
@@ -726,6 +744,21 @@ export class GameView {
         return board;
     }
 
+    private createBoardParcelCellView(parent: Node, name: string, col: number, row: number): BoardParcelCellView {
+        const node = this.makeNode(name, 10, 10, 0, 0);
+        const spriteNode = this.makeNode(`${name}-Sprite`, 10, 10, 0, 0);
+        const sprite = spriteNode.addComponent(Sprite);
+        sprite.sizeMode = Sprite.SizeMode.CUSTOM;
+        node.addChild(spriteNode);
+        parent.addChild(node);
+        return {
+            node,
+            sprite,
+            row,
+            col,
+        };
+    }
+
     private createBoardPlantCellView(parent: Node, name: string, col: number, row: number, preview: boolean): BoardPlantCellView {
         const node = this.makeNode(name, 10, 10, 0, 0);
         const graphics = node.addComponent(Graphics);
@@ -747,6 +780,9 @@ export class GameView {
 
     private onBoardPointerDown(boardTransform: UITransform, uiX: number, uiY: number): void {
         if (this.preplacePhase !== 'preplace2' || this.preplace2PointerDown || this.isPreplaceBoardInputSuppressed()) {
+            return;
+        }
+        if (this.preplaceBar && this.isPointInsideNode(this.preplaceBar, uiX, uiY)) {
             return;
         }
         if (!this.isPointerNearLockedPreview(boardTransform, uiX, uiY)) {
@@ -1083,11 +1119,17 @@ export class GameView {
 
     private onGlobalTouchStart(event: EventTouch): void {
         const loc = event.getUILocation();
+        if (this.preplaceBar && this.isPointInsideNode(this.preplaceBar, loc.x, loc.y)) {
+            return;
+        }
         this.tryCloseGmPopup(loc.x, loc.y);
     }
 
     private onGlobalMouseDown(event: EventMouse): void {
         const loc = event.getUILocation();
+        if (this.preplaceBar && this.isPointInsideNode(this.preplaceBar, loc.x, loc.y)) {
+            return;
+        }
         this.tryCloseGmPopup(loc.x, loc.y);
         if (this.preplacePhase === 'idle') {
             return;
@@ -1200,7 +1242,7 @@ export class GameView {
         if (!card) {
             return;
         }
-        if (card.cardKind === 'spell') {
+        if (!isBoardPlacementCard(card)) {
             return;
         }
 
@@ -1659,14 +1701,19 @@ export class GameView {
 
             view.costLabel.string = '0';
             view.title.string = card.label;
-            const kind = card.cardKind === 'spell' ? '法术卡' : '放置卡';
-            view.typeLabel.string = kind;
-            if (card.cardKind === 'spell') {
-                view.descLabel.string = '暂未开放';
-                view.descLabel.color = makeColor(120, 120, 120, 255);
-            } else {
+            view.typeLabel.string = getCardMainTypeLabel(card.mainType);
+            if (isBoardPlacementCard(card)) {
                 view.descLabel.string = '拖出后在放置区松手进入确认，可在棋盘拖动改位';
                 view.descLabel.color = slot.canPlace ? makeColor(76, 126, 65, 255) : makeColor(170, 83, 69, 255);
+            } else if (card.mainType === 'vegetation') {
+                view.descLabel.string = '基础概念已建立：后续用于调整地块状态';
+                view.descLabel.color = makeColor(84, 118, 82, 255);
+            } else if (card.mainType === 'technology') {
+                view.descLabel.string = '基础概念已建立：后续用于改造水渠、墙壁等结构';
+                view.descLabel.color = makeColor(88, 102, 148, 255);
+            } else {
+                view.descLabel.string = '基础概念已建立：后续用于抽牌、置换、降雨等战术操作';
+                view.descLabel.color = makeColor(146, 102, 66, 255);
             }
         }
     }
@@ -2095,15 +2142,44 @@ export class GameView {
         }
     }
 
+    private syncBoardParcels(state: GameViewState, cellSize: number): void {
+        const visible: BoardParcelCellView[] = [];
+        for (let y = 0; y < BOARD_ROWS; y++) {
+            for (let x = 0; x < BOARD_COLS; x++) {
+                const cell = state.board[y][x];
+                const view = this.boardParcelViews[y * BOARD_COLS + x];
+                const centerX = -this.boardSize / 2 + cellSize * (x + 0.5);
+                const centerY = this.boardSize / 2 - cellSize * (y + 0.5);
+                view.row = y;
+                view.col = x;
+                view.node.active = true;
+                view.node.setPosition(centerX, centerY, 0);
+                view.node.getComponent(UITransform)?.setContentSize(cellSize, cellSize);
+                view.sprite.color = makeColor(255, 255, 255, 255);
+                // Parcel art is width-constrained first and aligned near the tile bottom edge.
+                this.setPlantSpriteFit(view.sprite, cellSize * 1.08, cellSize * 1.1, -cellSize * 0.58);
+                this.loadSpriteFrameByPath(cell.parcelSpritePath, view.sprite);
+                visible.push(view);
+            }
+        }
+
+        visible.sort((a, b) => {
+            if (a.row !== b.row) {
+                return a.row - b.row;
+            }
+            return a.col - b.col;
+        });
+        for (let i = 0; i < visible.length; i++) {
+            visible[i].node.setSiblingIndex(i);
+        }
+    }
+
     private drawBoard(state: GameViewState): void {
         const graphics = this.boardGraphics;
         const cellSize = this.boardSize / BOARD_COLS;
         const phase = state.flashPhase;
+        this.syncBoardParcels(state, cellSize);
         graphics.clear();
-
-        graphics.fillColor = makeColor(234, 223, 194, 255);
-        graphics.roundRect(-this.boardSize / 2, -this.boardSize / 2, this.boardSize, this.boardSize, 20);
-        graphics.fill();
 
         for (let y = 0; y < BOARD_ROWS; y++) {
             for (let x = 0; x < BOARD_COLS; x++) {

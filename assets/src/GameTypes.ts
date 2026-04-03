@@ -4,6 +4,12 @@ export type Rotation = 0 | 1 | 2 | 3;
 
 export type GameStatus = 'playing' | 'win' | 'lose';
 
+export type ParcelType = 'Crackedland' | 'desert' | 'grassland' | 'mossland' | 'snowfield' | 'wasteland' | 'mudland';
+export type CardMainType = 'plant' | 'vegetation' | 'technology' | 'farming';
+export type CardPlayMode = 'board_placement' | 'parcel_target' | 'structure_target' | 'instant_effect';
+export type ParcelModifierType = 'fertile' | 'moist';
+export type ParcelStructureType = 'none' | 'waterway' | 'wall';
+
 export interface GridPos {
     x: number;
     y: number;
@@ -14,16 +20,47 @@ export interface CardCell {
     y: number;
     color: FruitColor;
     plantVariant?: number | null;
+    plantId?: string | null;
 }
 
 /** 放置卡：可拖入格子的果丛卡；法术卡：后续版本启用 */
 export type CardKind = 'placement' | 'spell';
 
+export interface PlantCardProfile {
+    kind: 'plant';
+    plantId: string;
+    canStackUpgrade: boolean;
+    mismatchCreatesFertilizer: boolean;
+}
+
+export interface VegetationCardProfile {
+    kind: 'vegetation';
+    parcelModifiers: ParcelModifierType[];
+    allowPlantOnModifiedParcel: boolean;
+}
+
+export interface TechnologyCardProfile {
+    kind: 'technology';
+    structures: Exclude<ParcelStructureType, 'none'>[];
+    blocksPlanting: boolean;
+}
+
+export interface FarmingCardProfile {
+    kind: 'farming';
+    actionTags: string[];
+}
+
+export type CardProfile = PlantCardProfile | VegetationCardProfile | TechnologyCardProfile | FarmingCardProfile;
+
 export interface CardData {
     id: string;
     label: string;
     cells: CardCell[];
-    /** 默认 placement */
+    mainType: CardMainType;
+    playMode: CardPlayMode;
+    summary: string;
+    profile: CardProfile;
+    /** 兼容现有 Demo 逻辑，后续可逐步移除 */
     cardKind?: CardKind;
 }
 
@@ -41,6 +78,13 @@ export interface BoardCell {
     diceIndex: number;
     rotten: boolean;
     plantVariant: number | null;
+    plantId: string | null;
+    parcelType: ParcelType;
+    parcelSpritePath: string;
+    fertilizerBlockedTurns: number;
+    fertilityLevel: number;
+    moistureLevel: number;
+    terrainStructure: ParcelStructureType;
 }
 
 export interface PlacementHit extends GridPos {
@@ -53,6 +97,7 @@ export interface PlacementCell extends GridPos {
     overlapsSame: boolean;
     overlapsDiff: boolean;
     plantVariant: number | null;
+    plantId: string | null;
 }
 
 export interface PlacementPreview {
@@ -149,6 +194,7 @@ export function normalizeCardCells(cells: CardCell[]): CardCell[] {
         y: cell.y - bounds.minY,
         color: cell.color,
         plantVariant: cell.plantVariant ?? null,
+        plantId: cell.plantId ?? null,
     }));
 }
 
@@ -164,6 +210,7 @@ export function rotateCardCells(cells: CardCell[], rotation: Rotation): CardCell
             y: cell.x,
             color: cell.color,
             plantVariant: cell.plantVariant ?? null,
+            plantId: cell.plantId ?? null,
         }));
         const oldWidth = width;
         width = height;
@@ -172,4 +219,23 @@ export function rotateCardCells(cells: CardCell[], rotation: Rotation): CardCell
     }
 
     return next;
+}
+
+export function getCardMainTypeLabel(mainType: CardMainType): string {
+    switch (mainType) {
+        case 'plant':
+            return '植物牌';
+        case 'vegetation':
+            return '植被牌';
+        case 'technology':
+            return '科技牌';
+        case 'farming':
+            return '农术牌';
+        default:
+            return '卡牌';
+    }
+}
+
+export function isBoardPlacementCard(card: CardData | null | undefined): boolean {
+    return !!card && card.mainType === 'plant' && card.playMode === 'board_placement';
 }

@@ -125,9 +125,7 @@
   },
   "c9a53f5c-6908-42bf-9f0c-5b22d7134329": {
     "url": "db://assets/src/managers/README.md",
-    "value": {
-      "depends": []
-    },
+    "value": {},
     "versionCode": 1
   },
   "33c52aad-8790-4a45-a7ee-3f921cbf7d8a": {
@@ -919,6 +917,411 @@
     "value": {
       "depends": [
         "6495d55a-988a-40da-a91a-fcde7423295c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "882cbcfc-8828-4ed4-a522-5f42b309053a": {
+    "url": "db://assets/resources/icon/parcel",
+    "value": {},
+    "versionCode": 1
+  },
+  "87005bcc-ec60-477c-8e2c-be71593c586d": {
+    "url": "db://assets/resources/icon/parcel/Crackedland_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2da2a11f-394d-4d7d-95f9-91600cc0f38c": {
+    "url": "db://assets/resources/icon/parcel/desert_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "970e956b-da83-4b38-a795-8f34235b2f52": {
+    "url": "db://assets/resources/icon/parcel/desert_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5b2d6ee9-5340-42cb-a5d3-7c6009a45532": {
+    "url": "db://assets/resources/icon/parcel/desert_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "47a443a3-de8b-4d59-9454-00ca19feace1": {
+    "url": "db://assets/resources/icon/parcel/desert_4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2da2a11f-394d-4d7d-95f9-91600cc0f38c@6c48a": {
+    "url": "db://assets/resources/icon/parcel/desert_1.png@6c48a",
+    "value": {
+      "depends": [
+        "2da2a11f-394d-4d7d-95f9-91600cc0f38c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "970e956b-da83-4b38-a795-8f34235b2f52@6c48a": {
+    "url": "db://assets/resources/icon/parcel/desert_2.png@6c48a",
+    "value": {
+      "depends": [
+        "970e956b-da83-4b38-a795-8f34235b2f52"
+      ]
+    },
+    "versionCode": 1
+  },
+  "87005bcc-ec60-477c-8e2c-be71593c586d@6c48a": {
+    "url": "db://assets/resources/icon/parcel/Crackedland_1.png@6c48a",
+    "value": {
+      "depends": [
+        "87005bcc-ec60-477c-8e2c-be71593c586d"
+      ]
+    },
+    "versionCode": 1
+  },
+  "47a443a3-de8b-4d59-9454-00ca19feace1@6c48a": {
+    "url": "db://assets/resources/icon/parcel/desert_4.png@6c48a",
+    "value": {
+      "depends": [
+        "47a443a3-de8b-4d59-9454-00ca19feace1"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2da2a11f-394d-4d7d-95f9-91600cc0f38c@f9941": {
+    "url": "db://assets/resources/icon/parcel/desert_1.png@f9941",
+    "value": {
+      "depends": [
+        "2da2a11f-394d-4d7d-95f9-91600cc0f38c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b924db0f-cae0-4018-b1d7-1016bac90ed9": {
+    "url": "db://assets/resources/icon/parcel/grassland_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "87005bcc-ec60-477c-8e2c-be71593c586d@f9941": {
+    "url": "db://assets/resources/icon/parcel/Crackedland_1.png@f9941",
+    "value": {
+      "depends": [
+        "87005bcc-ec60-477c-8e2c-be71593c586d@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "47a443a3-de8b-4d59-9454-00ca19feace1@f9941": {
+    "url": "db://assets/resources/icon/parcel/desert_4.png@f9941",
+    "value": {
+      "depends": [
+        "47a443a3-de8b-4d59-9454-00ca19feace1@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e6b76f34-1baf-474e-87bd-877ec4f61760": {
+    "url": "db://assets/resources/icon/parcel/grassland_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c28ea2c8-d336-4d82-910a-d055c9f1d4f6": {
+    "url": "db://assets/resources/icon/parcel/grassland_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5b2d6ee9-5340-42cb-a5d3-7c6009a45532@6c48a": {
+    "url": "db://assets/resources/icon/parcel/desert_3.png@6c48a",
+    "value": {
+      "depends": [
+        "5b2d6ee9-5340-42cb-a5d3-7c6009a45532"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5b2d6ee9-5340-42cb-a5d3-7c6009a45532@f9941": {
+    "url": "db://assets/resources/icon/parcel/desert_3.png@f9941",
+    "value": {
+      "depends": [
+        "5b2d6ee9-5340-42cb-a5d3-7c6009a45532@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "970e956b-da83-4b38-a795-8f34235b2f52@f9941": {
+    "url": "db://assets/resources/icon/parcel/desert_2.png@f9941",
+    "value": {
+      "depends": [
+        "970e956b-da83-4b38-a795-8f34235b2f52@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2c95dc7a-913b-4b99-9c18-34f9fac6dfeb": {
+    "url": "db://assets/resources/icon/parcel/grassland_4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "bbf33f15-253f-4832-9e26-270f3f0d0219": {
+    "url": "db://assets/resources/icon/parcel/mossland_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b924db0f-cae0-4018-b1d7-1016bac90ed9@6c48a": {
+    "url": "db://assets/resources/icon/parcel/grassland_1.png@6c48a",
+    "value": {
+      "depends": [
+        "b924db0f-cae0-4018-b1d7-1016bac90ed9"
+      ]
+    },
+    "versionCode": 1
+  },
+  "c28ea2c8-d336-4d82-910a-d055c9f1d4f6@6c48a": {
+    "url": "db://assets/resources/icon/parcel/grassland_3.png@6c48a",
+    "value": {
+      "depends": [
+        "c28ea2c8-d336-4d82-910a-d055c9f1d4f6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e6b76f34-1baf-474e-87bd-877ec4f61760@6c48a": {
+    "url": "db://assets/resources/icon/parcel/grassland_2.png@6c48a",
+    "value": {
+      "depends": [
+        "e6b76f34-1baf-474e-87bd-877ec4f61760"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b924db0f-cae0-4018-b1d7-1016bac90ed9@f9941": {
+    "url": "db://assets/resources/icon/parcel/grassland_1.png@f9941",
+    "value": {
+      "depends": [
+        "b924db0f-cae0-4018-b1d7-1016bac90ed9@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "224ef2c3-0c1d-4159-a17b-c5a9718557fc": {
+    "url": "db://assets/resources/icon/parcel/mudland_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c28ea2c8-d336-4d82-910a-d055c9f1d4f6@f9941": {
+    "url": "db://assets/resources/icon/parcel/grassland_3.png@f9941",
+    "value": {
+      "depends": [
+        "c28ea2c8-d336-4d82-910a-d055c9f1d4f6@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d9682913-b2a8-4c2a-9596-342356fbab29": {
+    "url": "db://assets/resources/icon/parcel/mudland_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e6b76f34-1baf-474e-87bd-877ec4f61760@f9941": {
+    "url": "db://assets/resources/icon/parcel/grassland_2.png@f9941",
+    "value": {
+      "depends": [
+        "e6b76f34-1baf-474e-87bd-877ec4f61760@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e845871-3c64-4425-9214-5a624a0ff189": {
+    "url": "db://assets/resources/icon/parcel/mudland_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "bbf33f15-253f-4832-9e26-270f3f0d0219@6c48a": {
+    "url": "db://assets/resources/icon/parcel/mossland_1.png@6c48a",
+    "value": {
+      "depends": [
+        "bbf33f15-253f-4832-9e26-270f3f0d0219"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2c95dc7a-913b-4b99-9c18-34f9fac6dfeb@6c48a": {
+    "url": "db://assets/resources/icon/parcel/grassland_4.png@6c48a",
+    "value": {
+      "depends": [
+        "2c95dc7a-913b-4b99-9c18-34f9fac6dfeb"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bbf33f15-253f-4832-9e26-270f3f0d0219@f9941": {
+    "url": "db://assets/resources/icon/parcel/mossland_1.png@f9941",
+    "value": {
+      "depends": [
+        "bbf33f15-253f-4832-9e26-270f3f0d0219@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5f22eea9-c69a-4130-8f05-8a9224cf54aa": {
+    "url": "db://assets/resources/icon/parcel/mudland_4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2c95dc7a-913b-4b99-9c18-34f9fac6dfeb@f9941": {
+    "url": "db://assets/resources/icon/parcel/grassland_4.png@f9941",
+    "value": {
+      "depends": [
+        "2c95dc7a-913b-4b99-9c18-34f9fac6dfeb@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "7b620862-f5d0-4094-b231-aa4b9035e169": {
+    "url": "db://assets/resources/icon/parcel/snowfield_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "224ef2c3-0c1d-4159-a17b-c5a9718557fc@6c48a": {
+    "url": "db://assets/resources/icon/parcel/mudland_1.png@6c48a",
+    "value": {
+      "depends": [
+        "224ef2c3-0c1d-4159-a17b-c5a9718557fc"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d9682913-b2a8-4c2a-9596-342356fbab29@6c48a": {
+    "url": "db://assets/resources/icon/parcel/mudland_2.png@6c48a",
+    "value": {
+      "depends": [
+        "d9682913-b2a8-4c2a-9596-342356fbab29"
+      ]
+    },
+    "versionCode": 1
+  },
+  "224ef2c3-0c1d-4159-a17b-c5a9718557fc@f9941": {
+    "url": "db://assets/resources/icon/parcel/mudland_1.png@f9941",
+    "value": {
+      "depends": [
+        "224ef2c3-0c1d-4159-a17b-c5a9718557fc@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d3f1412d-204a-474e-a0a9-b2f4242adb5b": {
+    "url": "db://assets/resources/icon/parcel/wasteland_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4e845871-3c64-4425-9214-5a624a0ff189@6c48a": {
+    "url": "db://assets/resources/icon/parcel/mudland_3.png@6c48a",
+    "value": {
+      "depends": [
+        "4e845871-3c64-4425-9214-5a624a0ff189"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d9682913-b2a8-4c2a-9596-342356fbab29@f9941": {
+    "url": "db://assets/resources/icon/parcel/mudland_2.png@f9941",
+    "value": {
+      "depends": [
+        "d9682913-b2a8-4c2a-9596-342356fbab29@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5f22eea9-c69a-4130-8f05-8a9224cf54aa@6c48a": {
+    "url": "db://assets/resources/icon/parcel/mudland_4.png@6c48a",
+    "value": {
+      "depends": [
+        "5f22eea9-c69a-4130-8f05-8a9224cf54aa"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e845871-3c64-4425-9214-5a624a0ff189@f9941": {
+    "url": "db://assets/resources/icon/parcel/mudland_3.png@f9941",
+    "value": {
+      "depends": [
+        "4e845871-3c64-4425-9214-5a624a0ff189@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "7b620862-f5d0-4094-b231-aa4b9035e169@6c48a": {
+    "url": "db://assets/resources/icon/parcel/snowfield_1.png@6c48a",
+    "value": {
+      "depends": [
+        "7b620862-f5d0-4094-b231-aa4b9035e169"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5f22eea9-c69a-4130-8f05-8a9224cf54aa@f9941": {
+    "url": "db://assets/resources/icon/parcel/mudland_4.png@f9941",
+    "value": {
+      "depends": [
+        "5f22eea9-c69a-4130-8f05-8a9224cf54aa@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "7b620862-f5d0-4094-b231-aa4b9035e169@f9941": {
+    "url": "db://assets/resources/icon/parcel/snowfield_1.png@f9941",
+    "value": {
+      "depends": [
+        "7b620862-f5d0-4094-b231-aa4b9035e169@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d3f1412d-204a-474e-a0a9-b2f4242adb5b@6c48a": {
+    "url": "db://assets/resources/icon/parcel/wasteland_1.png@6c48a",
+    "value": {
+      "depends": [
+        "d3f1412d-204a-474e-a0a9-b2f4242adb5b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d3f1412d-204a-474e-a0a9-b2f4242adb5b@f9941": {
+    "url": "db://assets/resources/icon/parcel/wasteland_1.png@f9941",
+    "value": {
+      "depends": [
+        "d3f1412d-204a-474e-a0a9-b2f4242adb5b@6c48a"
       ]
     },
     "versionCode": 1

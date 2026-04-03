@@ -12,7 +12,7 @@
       "time": 1774253654465.5298
     },
     "E:\\cocos\\cardDemo\\assets\\src": {
-      "time": 1774333167599.8806,
+      "time": 1775197808818.6228,
       "uuid": "10ab8b7b-6222-463d-8394-98e7725e6b0d"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts.meta": {
@@ -23,15 +23,15 @@
       "uuid": "1d5ed717-ed4a-4227-884b-cbaa5eb61ae6"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts": {
-      "time": 1774519491729.3481,
+      "time": 1775198224024.4163,
       "uuid": "18e9391b-4df5-4c51-9c93-7d6cb3c07974"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts": {
-      "time": 1774592454403.193,
+      "time": 1775198169646.807,
       "uuid": "d80801e6-f16f-4311-8fd2-c040802cc2b1"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts": {
-      "time": 1774854711896.201,
+      "time": 1775198240642.9836,
       "uuid": "dffb95e3-e9f7-403b-a759-f4828cd608a9"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts.meta": {
@@ -43,131 +43,12 @@
     "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts.meta": {
       "time": 1774258533137.7717
     },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers.meta": {
-      "time": 1774333167578.9365
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff.meta": {
-      "time": 1774333167578.9365
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card.meta": {
-      "time": 1774333167579.934
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect.meta": {
-      "time": 1774333167579.934
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow.meta": {
-      "time": 1774333167580.9314
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game.meta": {
-      "time": 1774333167582.9263
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\index.ts.meta": {
-      "time": 1774333167589.9097
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score.meta": {
-      "time": 1774333167584.922
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui.meta": {
-      "time": 1774333167585.9177
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff\\BuffSkillManager.ts.meta": {
-      "time": 1774333167590.904
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card\\CardManager.ts.meta": {
-      "time": 1774333167591.9019
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect\\EffectManager.ts.meta": {
-      "time": 1774333167592.8994
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow\\GameFlowManager.ts.meta": {
-      "time": 1774333167593.896
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game\\GameManager.ts.meta": {
-      "time": 1774333167594.8943
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score\\ScoreManager.ts.meta": {
-      "time": 1774333167595.8926
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui\\UIManager.ts.meta": {
-      "time": 1774333167597.8862
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers": {
-      "time": 1774333167600.8784,
-      "uuid": "8dc4730f-ab4e-4adf-92aa-a1d82f839acd"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff": {
-      "time": 1774333167570.9573,
-      "uuid": "e8667eb4-547a-4151-b14a-1cfaf3068c7d"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card": {
-      "time": 1774333167570.9573,
-      "uuid": "d2429163-c550-4841-8f79-0fa4bde0784e"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect": {
-      "time": 1774333167571.9553,
-      "uuid": "8e343748-70c0-4bd9-9d0f-66ebcd6ab465"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow": {
-      "time": 1774333167572.9521,
-      "uuid": "9835d81f-142c-47a6-811a-3a554fa514c4"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game": {
-      "time": 1774333167573.95,
-      "uuid": "478536cd-2f9f-471a-9182-757b67e52da8"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score": {
-      "time": 1774333167573.95,
-      "uuid": "c176f7a0-bb01-44b9-a2d6-db4838a845ae"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui": {
-      "time": 1774333167574.947,
-      "uuid": "ad0b64c1-ea57-4bd0-b97a-40b2dd047bb3"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\index.ts": {
-      "time": 1774322675882.8203,
-      "uuid": "72d4cb31-2aaa-4a6d-b60f-554e2e39b20b"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff\\BuffSkillManager.ts": {
-      "time": 1774322649518.4746,
-      "uuid": "1459e3ca-46e6-4552-90f7-ddee04062236"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\card\\CardManager.ts": {
-      "time": 1774322631079.3342,
-      "uuid": "8615aa13-c905-4735-99e9-6af683049cf7"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect\\EffectManager.ts": {
-      "time": 1774322643952.1,
-      "uuid": "a8ab9124-3e6a-4545-8973-2327e848955f"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow\\GameFlowManager.ts": {
-      "time": 1774322662804.6018,
-      "uuid": "9349e45f-569f-48cc-aac5-fcafcca2d65f"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\game\\GameManager.ts": {
-      "time": 1774322669088.6536,
-      "uuid": "f7e75c9c-c513-45cb-8803-514101d69a89"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\score\\ScoreManager.ts": {
-      "time": 1774322657595.8672,
-      "uuid": "e54c217d-3211-438d-88c7-607201a61ef5"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui\\UIManager.ts": {
-      "time": 1774322636655.4795,
-      "uuid": "89773a7b-5011-44fa-8807-d65df2c8fc09"
-    },
     "E:\\cocos\\cardDemo\\assets\\src\\README.md.meta": {
       "time": 1774333167613.843
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\README.md.meta": {
-      "time": 1774333167615.8376
     },
     "E:\\cocos\\cardDemo\\assets\\src\\README.md": {
       "time": 1774322690885.615,
       "uuid": "e5d71cbf-3290-4150-a387-41d26bcbf1b1"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\managers\\README.md": {
-      "time": 1774856838437.314,
-      "uuid": "c9a53f5c-6908-42bf-9f0c-5b22d7134329"
     },
     "E:\\cocos\\cardDemo\\assets\\resources.meta": {
       "time": 1774602393040.5933
@@ -189,7 +70,7 @@
       "uuid": "ac9c2052-1bdf-446c-921d-d4e0a10fed6c"
     },
     "E:\\cocos\\cardDemo\\assets\\resources\\icon": {
-      "time": 1774602393036.6023,
+      "time": 1775134380184.6982,
       "uuid": "b6b83404-ac56-420e-ac45-16e538aeda51"
     },
     "E:\\cocos\\cardDemo\\assets\\resources\\ui": {
@@ -308,6 +189,125 @@
     "E:\\cocos\\cardDemo\\assets\\resources\\ui\\timewheel\\zhuanpan_waiquan.png": {
       "time": 1774494065205.8752,
       "uuid": "6495d55a-988a-40da-a91a-fcde7423295c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel.meta": {
+      "time": 1775134380211.6633
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel": {
+      "time": 1775134380225.6267,
+      "uuid": "882cbcfc-8828-4ed4-a522-5f42b309053a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\Crackedland_1.png.meta": {
+      "time": 1775134381628.7668
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_1.png.meta": {
+      "time": 1775134381626.771
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_2.png.meta": {
+      "time": 1775134381647.7178
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_3.png.meta": {
+      "time": 1775134381646.7202
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_4.png.meta": {
+      "time": 1775134381629.7644
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_1.png.meta": {
+      "time": 1775134381663.6743
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_2.png.meta": {
+      "time": 1775134381669.657
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_3.png.meta": {
+      "time": 1775134381666.6658
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_4.png.meta": {
+      "time": 1775134381684.6162
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mossland_1.png.meta": {
+      "time": 1775134381680.6292
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_1.png.meta": {
+      "time": 1775134381722.9995
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_2.png.meta": {
+      "time": 1775134381727.986
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_3.png.meta": {
+      "time": 1775134381755.9128
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_4.png.meta": {
+      "time": 1775134381767.8801
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\snowfield_1.png.meta": {
+      "time": 1775134381781.8423
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\wasteland_1.png.meta": {
+      "time": 1775134381789.821
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_1.png": {
+      "time": 1775133706000.168,
+      "uuid": "2da2a11f-394d-4d7d-95f9-91600cc0f38c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\Crackedland_1.png": {
+      "time": 1775133853117.3945,
+      "uuid": "87005bcc-ec60-477c-8e2c-be71593c586d"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_4.png": {
+      "time": 1775133765245.5386,
+      "uuid": "47a443a3-de8b-4d59-9454-00ca19feace1"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_3.png": {
+      "time": 1775133745017.3228,
+      "uuid": "5b2d6ee9-5340-42cb-a5d3-7c6009a45532"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\desert_2.png": {
+      "time": 1775133725550.6956,
+      "uuid": "970e956b-da83-4b38-a795-8f34235b2f52"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_1.png": {
+      "time": 1775133526677.564,
+      "uuid": "b924db0f-cae0-4018-b1d7-1016bac90ed9"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_3.png": {
+      "time": 1775133600687.1516,
+      "uuid": "c28ea2c8-d336-4d82-910a-d055c9f1d4f6"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_2.png": {
+      "time": 1775133566158.1526,
+      "uuid": "e6b76f34-1baf-474e-87bd-877ec4f61760"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mossland_1.png": {
+      "time": 1775133887780.5442,
+      "uuid": "bbf33f15-253f-4832-9e26-270f3f0d0219"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\grassland_4.png": {
+      "time": 1775133619731.501,
+      "uuid": "2c95dc7a-913b-4b99-9c18-34f9fac6dfeb"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_1.png": {
+      "time": 1775133782906.9934,
+      "uuid": "224ef2c3-0c1d-4159-a17b-c5a9718557fc"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_2.png": {
+      "time": 1775133799959.4373,
+      "uuid": "d9682913-b2a8-4c2a-9596-342356fbab29"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_3.png": {
+      "time": 1775133817212.486,
+      "uuid": "4e845871-3c64-4425-9214-5a624a0ff189"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\mudland_4.png": {
+      "time": 1775133836338.4204,
+      "uuid": "5f22eea9-c69a-4130-8f05-8a9224cf54aa"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\snowfield_1.png": {
+      "time": 1775133904533.6135,
+      "uuid": "7b620862-f5d0-4094-b231-aa4b9035e169"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\wasteland_1.png": {
+      "time": 1775133870345.9414,
+      "uuid": "d3f1412d-204a-474e-a0a9-b2f4242adb5b"
     }
   },
   "missing": {
@@ -415,6 +415,91 @@
       "path": "E:\\cocos\\cardDemo\\assets\\res\\ui\\timewheel\\zhuanpan_zhongxin.png",
       "time": 1774492611534.0457,
       "removeTime": 1774602404738
+    },
+    "8dc4730f-ab4e-4adf-92aa-a1d82f839acd": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers",
+      "time": 1774333167600.8784,
+      "removeTime": 1775197808818
+    },
+    "e8667eb4-547a-4151-b14a-1cfaf3068c7d": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff",
+      "time": 1774333167570.9573,
+      "removeTime": 1775197808819
+    },
+    "d2429163-c550-4841-8f79-0fa4bde0784e": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\card",
+      "time": 1774333167570.9573,
+      "removeTime": 1775197808819
+    },
+    "8e343748-70c0-4bd9-9d0f-66ebcd6ab465": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect",
+      "time": 1774333167571.9553,
+      "removeTime": 1775197808819
+    },
+    "9835d81f-142c-47a6-811a-3a554fa514c4": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow",
+      "time": 1774333167572.9521,
+      "removeTime": 1775197808819
+    },
+    "478536cd-2f9f-471a-9182-757b67e52da8": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\game",
+      "time": 1774333167573.95,
+      "removeTime": 1775197808819
+    },
+    "c176f7a0-bb01-44b9-a2d6-db4838a845ae": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\score",
+      "time": 1774333167573.95,
+      "removeTime": 1775197808819
+    },
+    "ad0b64c1-ea57-4bd0-b97a-40b2dd047bb3": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui",
+      "time": 1774333167574.947,
+      "removeTime": 1775197808819
+    },
+    "72d4cb31-2aaa-4a6d-b60f-554e2e39b20b": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\index.ts",
+      "time": 1774322675882.8203,
+      "removeTime": 1775197808819
+    },
+    "1459e3ca-46e6-4552-90f7-ddee04062236": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\buff\\BuffSkillManager.ts",
+      "time": 1774322649518.4746,
+      "removeTime": 1775197808819
+    },
+    "8615aa13-c905-4735-99e9-6af683049cf7": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\card\\CardManager.ts",
+      "time": 1774322631079.3342,
+      "removeTime": 1775197808819
+    },
+    "a8ab9124-3e6a-4545-8973-2327e848955f": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\effect\\EffectManager.ts",
+      "time": 1774322643952.1,
+      "removeTime": 1775197808819
+    },
+    "9349e45f-569f-48cc-aac5-fcafcca2d65f": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\flow\\GameFlowManager.ts",
+      "time": 1774322662804.6018,
+      "removeTime": 1775197808820
+    },
+    "f7e75c9c-c513-45cb-8803-514101d69a89": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\game\\GameManager.ts",
+      "time": 1774322669088.6536,
+      "removeTime": 1775197808820
+    },
+    "e54c217d-3211-438d-88c7-607201a61ef5": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\score\\ScoreManager.ts",
+      "time": 1774322657595.8672,
+      "removeTime": 1775197808820
+    },
+    "89773a7b-5011-44fa-8807-d65df2c8fc09": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\ui\\UIManager.ts",
+      "time": 1774322636655.4795,
+      "removeTime": 1775197808820
+    },
+    "c9a53f5c-6908-42bf-9f0c-5b22d7134329": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\README.md",
+      "time": 1774856838437.314,
+      "removeTime": 1775197808820
     }
   }
 }
