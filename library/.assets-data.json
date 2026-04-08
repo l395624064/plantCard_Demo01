@@ -1325,5 +1325,220 @@
       ]
     },
     "versionCode": 1
+  },
+  "8d7d1b28-70cf-4a51-be0a-5f8f1d7fbb77": {
+    "url": "db://assets/src/board",
+    "value": {},
+    "versionCode": 1
+  },
+  "05ed0266-c306-4273-8e50-a31644d172f1": {
+    "url": "db://assets/src/card",
+    "value": {},
+    "versionCode": 1
+  },
+  "98b05bb9-b9d6-4bee-a044-36508728e0bc": {
+    "url": "db://assets/src/board/TerrainPresets.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7b573085-eb90-4b4f-9bd9-907079684047": {
+    "url": "db://assets/src/card/CardPackPresets.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "483f9247-7e1c-4696-bbea-ceb4fb71cd22": {
+    "url": "db://assets/src/card/PlantCatalog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e99d68df-0b62-4a3a-b5ae-406603f9de12": {
+    "url": "db://assets/src/card/SupportCardCatalog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "37356cc7-39cd-42fe-9f5a-80d2ade0a6ac": {
+    "url": "db://assets/resources/icon/cardbag",
+    "value": {},
+    "versionCode": 1
+  },
+  "a1b4c854-528f-4ba3-a933-83b19bcf27db": {
+    "url": "db://assets/resources/icon/parcelbag",
+    "value": {},
+    "versionCode": 1
+  },
+  "1a70186b-845d-47cb-b055-99adb7f39512": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "53983cb4-ba90-4a1b-9f58-5b7e32f7dfb0": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3d258f97-3b73-41a9-955e-09e49122b2e5": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "725f5ddf-b1db-4d55-b9fe-863aeec1b470": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "036fb279-4783-4fa3-9708-31db2e93d1af": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "036fb279-4783-4fa3-9708-31db2e93d1af@6c48a": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_1.png@6c48a",
+    "value": {
+      "depends": [
+        "036fb279-4783-4fa3-9708-31db2e93d1af"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1a70186b-845d-47cb-b055-99adb7f39512@6c48a": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_1.png@6c48a",
+    "value": {
+      "depends": [
+        "1a70186b-845d-47cb-b055-99adb7f39512"
+      ]
+    },
+    "versionCode": 1
+  },
+  "53983cb4-ba90-4a1b-9f58-5b7e32f7dfb0@6c48a": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_2.png@6c48a",
+    "value": {
+      "depends": [
+        "53983cb4-ba90-4a1b-9f58-5b7e32f7dfb0"
+      ]
+    },
+    "versionCode": 1
+  },
+  "725f5ddf-b1db-4d55-b9fe-863aeec1b470@6c48a": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_4.png@6c48a",
+    "value": {
+      "depends": [
+        "725f5ddf-b1db-4d55-b9fe-863aeec1b470"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3d258f97-3b73-41a9-955e-09e49122b2e5@6c48a": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_3.png@6c48a",
+    "value": {
+      "depends": [
+        "3d258f97-3b73-41a9-955e-09e49122b2e5"
+      ]
+    },
+    "versionCode": 1
+  },
+  "036fb279-4783-4fa3-9708-31db2e93d1af@f9941": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_1.png@f9941",
+    "value": {
+      "depends": [
+        "036fb279-4783-4fa3-9708-31db2e93d1af@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "041021b1-a291-4ba3-ba79-e1db2b287747": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "725f5ddf-b1db-4d55-b9fe-863aeec1b470@f9941": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_4.png@f9941",
+    "value": {
+      "depends": [
+        "725f5ddf-b1db-4d55-b9fe-863aeec1b470@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1a70186b-845d-47cb-b055-99adb7f39512@f9941": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_1.png@f9941",
+    "value": {
+      "depends": [
+        "1a70186b-845d-47cb-b055-99adb7f39512@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cb4b7c90-9e3c-4156-a7fb-2a18a18a124e": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3d258f97-3b73-41a9-955e-09e49122b2e5@f9941": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_3.png@f9941",
+    "value": {
+      "depends": [
+        "3d258f97-3b73-41a9-955e-09e49122b2e5@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "53983cb4-ba90-4a1b-9f58-5b7e32f7dfb0@f9941": {
+    "url": "db://assets/resources/icon/cardbag/cardbag_2.png@f9941",
+    "value": {
+      "depends": [
+        "53983cb4-ba90-4a1b-9f58-5b7e32f7dfb0@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cb4b7c90-9e3c-4156-a7fb-2a18a18a124e@6c48a": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_3.png@6c48a",
+    "value": {
+      "depends": [
+        "cb4b7c90-9e3c-4156-a7fb-2a18a18a124e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "041021b1-a291-4ba3-ba79-e1db2b287747@6c48a": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_2.png@6c48a",
+    "value": {
+      "depends": [
+        "041021b1-a291-4ba3-ba79-e1db2b287747"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cb4b7c90-9e3c-4156-a7fb-2a18a18a124e@f9941": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_3.png@f9941",
+    "value": {
+      "depends": [
+        "cb4b7c90-9e3c-4156-a7fb-2a18a18a124e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "041021b1-a291-4ba3-ba79-e1db2b287747@f9941": {
+    "url": "db://assets/resources/icon/parcelbag/parcel_2.png@f9941",
+    "value": {
+      "depends": [
+        "041021b1-a291-4ba3-ba79-e1db2b287747@6c48a"
+      ]
+    },
+    "versionCode": 1
   }
 }

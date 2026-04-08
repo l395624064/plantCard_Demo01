@@ -12,26 +12,26 @@
       "time": 1774253654465.5298
     },
     "E:\\cocos\\cardDemo\\assets\\src": {
-      "time": 1775197808818.6228,
+      "time": 1775638809988.836,
       "uuid": "10ab8b7b-6222-463d-8394-98e7725e6b0d"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts.meta": {
       "time": 1774253664643.247
     },
     "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts": {
-      "time": 1774855709877.4006,
+      "time": 1775638785432.6729,
       "uuid": "1d5ed717-ed4a-4227-884b-cbaa5eb61ae6"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts": {
-      "time": 1775198224024.4163,
+      "time": 1775555282469.7295,
       "uuid": "18e9391b-4df5-4c51-9c93-7d6cb3c07974"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts": {
-      "time": 1775198169646.807,
+      "time": 1775555284769.611,
       "uuid": "d80801e6-f16f-4311-8fd2-c040802cc2b1"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts": {
-      "time": 1775198240642.9836,
+      "time": 1775555286842.3806,
       "uuid": "dffb95e3-e9f7-403b-a759-f4828cd608a9"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts.meta": {
@@ -70,7 +70,7 @@
       "uuid": "ac9c2052-1bdf-446c-921d-d4e0a10fed6c"
     },
     "E:\\cocos\\cardDemo\\assets\\resources\\icon": {
-      "time": 1775134380184.6982,
+      "time": 1775638963749.099,
       "uuid": "b6b83404-ac56-420e-ac45-16e538aeda51"
     },
     "E:\\cocos\\cardDemo\\assets\\resources\\ui": {
@@ -308,6 +308,69 @@
     "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcel\\wasteland_1.png": {
       "time": 1775133870345.9414,
       "uuid": "d3f1412d-204a-474e-a0a9-b2f4242adb5b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag.meta": {
+      "time": 1775638963754.0857
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag.meta": {
+      "time": 1775638963755.086
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag": {
+      "time": 1775638914937.4414,
+      "uuid": "37356cc7-39cd-42fe-9f5a-80d2ade0a6ac"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag": {
+      "time": 1775638947837.4585,
+      "uuid": "a1b4c854-528f-4ba3-a933-83b19bcf27db"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_1.png.meta": {
+      "time": 1775638964188.5837
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_2.png.meta": {
+      "time": 1775638964196.5632
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_3.png.meta": {
+      "time": 1775638964194.5684
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_4.png.meta": {
+      "time": 1775638964187.586
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_1.png.meta": {
+      "time": 1775638964184.5945
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_2.png.meta": {
+      "time": 1775638964230.5227
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_3.png.meta": {
+      "time": 1775638964228.5276
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_1.png": {
+      "time": 1775638826613.8206,
+      "uuid": "036fb279-4783-4fa3-9708-31db2e93d1af"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_4.png": {
+      "time": 1775638722398.2158,
+      "uuid": "725f5ddf-b1db-4d55-b9fe-863aeec1b470"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_1.png": {
+      "time": 1775638652510.6147,
+      "uuid": "1a70186b-845d-47cb-b055-99adb7f39512"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_3.png": {
+      "time": 1775638696471.7046,
+      "uuid": "3d258f97-3b73-41a9-955e-09e49122b2e5"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\cardbag\\cardbag_2.png": {
+      "time": 1775638675960.7625,
+      "uuid": "53983cb4-ba90-4a1b-9f58-5b7e32f7dfb0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_3.png": {
+      "time": 1775638875371.9404,
+      "uuid": "cb4b7c90-9e3c-4156-a7fb-2a18a18a124e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_2.png": {
+      "time": 1775638854621.8643,
+      "uuid": "041021b1-a291-4ba3-ba79-e1db2b287747"
     }
   },
   "missing": {
@@ -500,6 +563,36 @@
       "path": "E:\\cocos\\cardDemo\\assets\\src\\managers\\README.md",
       "time": 1774856838437.314,
       "removeTime": 1775197808820
+    },
+    "98b05bb9-b9d6-4bee-a044-36508728e0bc": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\board\\TerrainPresets.ts",
+      "time": 1775544412690.3008,
+      "removeTime": 1775555315864
+    },
+    "7b573085-eb90-4b4f-9bd9-907079684047": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\card\\CardPackPresets.ts",
+      "time": 1775544969343.0886,
+      "removeTime": 1775555315864
+    },
+    "483f9247-7e1c-4696-bbea-ceb4fb71cd22": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\card\\PlantCatalog.ts",
+      "time": 1775553907799.3108,
+      "removeTime": 1775555315864
+    },
+    "e99d68df-0b62-4a3a-b5ae-406603f9de12": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\card\\SupportCardCatalog.ts",
+      "time": 1775553423958.7014,
+      "removeTime": 1775555315864
+    },
+    "8d7d1b28-70cf-4a51-be0a-5f8f1d7fbb77": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\board",
+      "time": 1775555293717.1797,
+      "removeTime": 1775638963743
+    },
+    "05ed0266-c306-4273-8e50-a31644d172f1": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\card",
+      "time": 1775555306813.305,
+      "removeTime": 1775638963745
     }
   }
 }
