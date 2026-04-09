@@ -13,6 +13,7 @@ description: Enforces this project's highest-priority coding conventions: MVC-st
 ## Scope
 
 - This is a **project skill** and only applies to this project.
+- Module root path in this repository is unified as `assets/src/<module>/*`.
 
 ## Core Architecture Rule
 
@@ -24,20 +25,37 @@ description: Enforces this project's highest-priority coding conventions: MVC-st
 
 ## Baseline Managers (create only when missing)
 
+- Global manager location is unified as:
+  - `assets/src/core/ui/UIManager.ts`
+  - `assets/src/core/event/EventManager.ts`
+  - `assets/src/core/model/ModelManager.ts`
+
 - **UI manager**
-  - If no global `uiManager.ts` and no reusable UI base component exist, create a minimal `uiManager.ts`.
-  - Must provide open/close APIs.
-  - Must expose the last opened UI for debugging via `uiManager.curui`.
+  - If no global UI manager and no reusable UI base component exist, create a minimal `UIManager.ts`.
+  - Minimum interfaces:
+    - `open(uiKey, data?)`
+    - `close(uiKey?)`
+    - `closeAll()`
+    - `curui` (the last opened UI instance, for debugging and console access)
+  - Additional methods are allowed later when UI flow becomes more complex.
 
 - **Event manager**
-  - If no global `eventManager.ts`, create a minimal version.
-  - Must support:
-    - `on` for subscribe/listen,
-    - `emit` for dispatch.
+  - If no global event manager exists, create a minimal `EventManager.ts`.
+  - Minimum interfaces:
+    - `on(event, handler, target?)`
+    - `off(event, handler?, target?)`
+    - `emit(event, payload?)`
+    - `once(event, handler, target?)`
   - Custom events must be registrable and usable across modules.
 
 - **Model manager**
-  - If no global `modelManager.ts`, create a minimal version.
+  - If no global model manager exists, create a minimal `ModelManager.ts`.
+  - Minimum interfaces:
+    - `register(type, ctor)`
+    - `enable(type)`
+    - `get(type)`
+    - `disable(type)`
+    - `destroy(type)`
   - Model usage rule:
     - module model types must be registered in `modelManager`,
     - module model data source/store must be enabled before module features use it.
@@ -46,14 +64,14 @@ description: Enforces this project's highest-priority coding conventions: MVC-st
 
 When creating a feature module (example: `card`), use:
 
-- `src/card/CardManager.ts`
-- `src/card/model/CardModelBase.ts`
-- `src/card/model/CardModelBuilder.ts`
-- `src/card/view/ui/*`
-- `src/card/view/item/*`
-- `src/card/view/panel/*`
-- `src/card/utils/*`
-- `src/card/CardEnum.ts`
+- `assets/src/card/CardManager.ts`
+- `assets/src/card/model/CardModelBase.ts`
+- `assets/src/card/model/CardModelBuilder.ts`
+- `assets/src/card/view/ui/*`
+- `assets/src/card/view/item/*`
+- `assets/src/card/view/panel/*`
+- `assets/src/card/utils/*`
+- `assets/src/card/CardEnum.ts`
 
 For another module (example: `parcel`), keep the same structure with module name replacement.
 
@@ -61,16 +79,21 @@ For another module (example: `parcel`), keep the same structure with module name
 
 Inside `<ModuleName>Enum.ts`, follow:
 
-- `type` naming: `type_<模块名称>_xxx`
-- `enum` naming: `enum_<模块名称>_xxx`
-- `interface` naming: `interface_<模块名称>_xxx`
+- `type` naming: `type_<module>_xxx`
+- `enum` naming: `enum_<module>_xxx`
+- `interface` naming: `interface_<module>_xxx`
+- `<module>` must be lowercase (for example: `card`, `parcel`, `audio`).
 - Use camelCase style for meaningful name segments.
 
 ## View File Size Rule
 
 - Files under `view/*` should stay within about 300 lines.
-- If a view grows too large, split complex pieces into `item` or `panel`.
+- This is a soft limit. Decide by readability and complexity, not by hard cutoff only.
+- If a view contains complex internal components, prefer splitting into `item` or `panel`.
 - Goal: lower reading and maintenance complexity.
+- For `Manager` files, keep single-responsibility and uniqueness:
+  - for example, `AudioManager` manages audio only,
+  - do not mix unrelated module logic into one manager.
 
 ## Utility Placement Rule
 
@@ -79,6 +102,28 @@ Inside `<ModuleName>Enum.ts`, follow:
   - `ArrayUtils.ts`,
   - `ColorUtils.ts`.
 - Module-specific helpers must stay in that module’s `utils/*`.
+
+## Temporary Test Code Rule
+
+- Temporary or experimental code for a module must be placed under:
+  - `assets/src/<module>/tmp/*`
+- Code inside `<module>/tmp/*` is considered disposable test scaffolding.
+- It may be deleted at any time and must not become a dependency of stable module runtime.
+- Do not let core module logic rely on files from `<module>/tmp/*`.
+
+## Event System Rule
+
+- Event definition remains in a single centralized file, do not split by module.
+- Unified event definition path for this project:
+  - `assets/src/core/event/EventEnum.ts`
+- Event naming uses underscore style (snake-like segments):
+  - module events: `card_xxx`, `parcel_xxx`, `audio_xxx`
+  - common/app events: `app_xxx` or `global_xxx`
+- `EventManager` is a global singleton style service (no Sender wrapper layer).
+- Manager event lifecycle must follow:
+  - register in `addEvents()`
+  - unregister in `offEvents()`
+  - `dispose()` must call `offEvents()`
 
 ## Project Git Management
 
@@ -94,6 +139,7 @@ Inside `<ModuleName>Enum.ts`, follow:
   - `feat(parcel): add parcel manager skeleton`
   - `refactor(card): split card view into item and panel`
 - If repository has uncommitted unrelated work, preserve it and avoid rollback.
+- Branch naming / PR workflow is not mandatory in this skill for now.
 
 ## Execution Workflow
 
@@ -119,7 +165,16 @@ After coding:
 If any of these are unclear, stop and ask user before proceeding:
 
 - exact location/path for global managers in the current project,
-- expected interface signatures for ui/event/model managers,
+- expected interface signatures beyond the minimum ui/event/model manager set,
 - whether 300-line view limit is strict or soft,
 - exceptions to naming prefixes in `<ModuleName>Enum.ts`,
-- project-specific git branching/commit strategy preferences.
+- whether any manager needs temporary cross-module orchestration.
+
+## Skill Change Governance (Mandatory)
+
+- Any future modification to this `code-style-skill` must be discussed with the user first.
+- Only after the user confirms the full change plan can the skill file be updated.
+- This skill uses two synchronized documents:
+  - `SKILL.md` (current English-oriented master)
+  - `SKILL.zh-CN.md` (Chinese simplified version)
+- Any maintenance must update both files in the same change, and keep semantics consistent.
