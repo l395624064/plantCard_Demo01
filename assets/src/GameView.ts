@@ -782,10 +782,7 @@ export class GameView {
         if (this.preplacePhase !== 'preplace2' || this.preplace2PointerDown || this.isPreplaceBoardInputSuppressed()) {
             return;
         }
-        if (this.preplaceBar && this.isPointInsideNode(this.preplaceBar, uiX, uiY)) {
-            return;
-        }
-        if (!this.isPointerNearLockedPreview(boardTransform, uiX, uiY)) {
+        if (this.isPointInsideAnyPreplaceButton(uiX, uiY)) {
             return;
         }
         const anchor = this.resolveAnchor(boardTransform, uiX, uiY);
@@ -795,11 +792,12 @@ export class GameView {
         this.preplace2PointerDown = true;
         this.preplace2PointerStartX = uiX;
         this.preplace2PointerStartY = uiY;
-        this.root.on(Node.EventType.TOUCH_MOVE, this.onState2BoardDragMoveTouch, this);
-        this.root.on(Node.EventType.TOUCH_END, this.onState2BoardDragEndTouch, this);
-        this.root.on(Node.EventType.TOUCH_CANCEL, this.onState2BoardDragEndTouch, this);
-        this.root.on(Node.EventType.MOUSE_MOVE, this.onState2BoardDragMoveMouse, this);
-        this.root.on(Node.EventType.MOUSE_UP, this.onState2BoardDragEndMouse, this);
+        this.callbacks.onLockedPreplaceAnchorUpdate(anchor);
+        input.on(Input.EventType.TOUCH_MOVE, this.onState2BoardDragMoveTouch, this);
+        input.on(Input.EventType.TOUCH_END, this.onState2BoardDragEndTouch, this);
+        input.on(Input.EventType.TOUCH_CANCEL, this.onState2BoardDragEndTouch, this);
+        input.on(Input.EventType.MOUSE_MOVE, this.onState2BoardDragMoveMouse, this);
+        input.on(Input.EventType.MOUSE_UP, this.onState2BoardDragEndMouse, this);
     }
 
     private onState2BoardDragMoveTouch(event: EventTouch): void {
@@ -850,11 +848,11 @@ export class GameView {
     private endState2BoardDrag(): void {
         this.preplace2PointerDown = false;
         this.preplace2BoardDragging = false;
-        this.root.off(Node.EventType.TOUCH_MOVE, this.onState2BoardDragMoveTouch, this);
-        this.root.off(Node.EventType.TOUCH_END, this.onState2BoardDragEndTouch, this);
-        this.root.off(Node.EventType.TOUCH_CANCEL, this.onState2BoardDragEndTouch, this);
-        this.root.off(Node.EventType.MOUSE_MOVE, this.onState2BoardDragMoveMouse, this);
-        this.root.off(Node.EventType.MOUSE_UP, this.onState2BoardDragEndMouse, this);
+        input.off(Input.EventType.TOUCH_MOVE, this.onState2BoardDragMoveTouch, this);
+        input.off(Input.EventType.TOUCH_END, this.onState2BoardDragEndTouch, this);
+        input.off(Input.EventType.TOUCH_CANCEL, this.onState2BoardDragEndTouch, this);
+        input.off(Input.EventType.MOUSE_MOVE, this.onState2BoardDragMoveMouse, this);
+        input.off(Input.EventType.MOUSE_UP, this.onState2BoardDragEndMouse, this);
     }
 
     private createHandArea(): void {
@@ -972,6 +970,7 @@ export class GameView {
         arrowTransform.setContentSize(this.rootWidth, this.rootHeight);
         arrowNode.setPosition(Vec3.ZERO);
         this.dragArrow = arrowNode.addComponent(Graphics);
+        arrowNode.active = false;
         this.root.addChild(arrowNode);
     }
 
@@ -1119,18 +1118,26 @@ export class GameView {
 
     private onGlobalTouchStart(event: EventTouch): void {
         const loc = event.getUILocation();
-        if (this.preplaceBar && this.isPointInsideNode(this.preplaceBar, loc.x, loc.y)) {
+        if (this.isPointInsideAnyPreplaceButton(loc.x, loc.y)) {
             return;
         }
         this.tryCloseGmPopup(loc.x, loc.y);
+        if (this.preplacePhase === 'preplace2') {
+            const boardTransform = this.boardNode.getComponent(UITransform)!;
+            this.onBoardPointerDown(boardTransform, loc.x, loc.y);
+        }
     }
 
     private onGlobalMouseDown(event: EventMouse): void {
         const loc = event.getUILocation();
-        if (this.preplaceBar && this.isPointInsideNode(this.preplaceBar, loc.x, loc.y)) {
+        if (this.isPointInsideAnyPreplaceButton(loc.x, loc.y)) {
             return;
         }
         this.tryCloseGmPopup(loc.x, loc.y);
+        if (event.getButton() === EventMouse.BUTTON_LEFT && this.preplacePhase === 'preplace2') {
+            const boardTransform = this.boardNode.getComponent(UITransform)!;
+            this.onBoardPointerDown(boardTransform, loc.x, loc.y);
+        }
         if (this.preplacePhase === 'idle') {
             return;
         }
@@ -1158,6 +1165,15 @@ export class GameView {
         const local = transform.convertToNodeSpaceAR(new Vec3(uiX, uiY, 0));
         const size = transform.contentSize;
         return Math.abs(local.x) <= size.width / 2 && Math.abs(local.y) <= size.height / 2;
+    }
+
+    private isPointInsideAnyPreplaceButton(uiX: number, uiY: number): boolean {
+        for (const button of this.preplaceButtons) {
+            if (this.isPointInsideNode(button.node, uiX, uiY)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private isPointerNearLockedPreview(boardTransform: UITransform, uiX: number, uiY: number): boolean {
@@ -1410,17 +1426,21 @@ export class GameView {
     private refreshArcOnly(): void {
         if (!this.dragArrow || this.preplacePhase === 'idle') {
             if (this.dragArrow) {
+                this.dragArrow.node.active = false;
                 this.dragArrow.clear();
             }
             return;
         }
         if (!this.lastRenderState?.preview) {
+            this.dragArrow.node.active = false;
             this.dragArrow.clear();
             return;
         }
+        this.dragArrow.node.active = true;
 
         if (this.preplacePhase === 'preplace2') {
             if (!this.preplaceBar) {
+                this.dragArrow.node.active = false;
                 this.dragArrow.clear();
                 return;
             }
@@ -1433,6 +1453,7 @@ export class GameView {
             return;
         }
         if (this.preplaceHandIndex === null) {
+            this.dragArrow.node.active = false;
             this.dragArrow.clear();
             return;
         }
@@ -2155,7 +2176,7 @@ export class GameView {
                 view.node.active = true;
                 view.node.setPosition(centerX, centerY, 0);
                 view.node.getComponent(UITransform)?.setContentSize(cellSize, cellSize);
-                view.sprite.color = makeColor(255, 255, 255, 255);
+                view.sprite.color = makeColor(255, 255, 255, 128);
                 // Parcel art is width-constrained first and aligned near the tile bottom edge.
                 this.setPlantSpriteFit(view.sprite, cellSize * 1.08, cellSize * 1.1, -cellSize * 0.58);
                 this.loadSpriteFrameByPath(cell.parcelSpritePath, view.sprite);
