@@ -12,42 +12,21 @@
       "time": 1774253654465.5298
     },
     "E:\\cocos\\cardDemo\\assets\\src": {
-      "time": 1775638809988.836,
+      "time": 1775814637222.538,
       "uuid": "10ab8b7b-6222-463d-8394-98e7725e6b0d"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts.meta": {
       "time": 1774253664643.247
     },
     "E:\\cocos\\cardDemo\\assets\\src\\MainGame.ts": {
-      "time": 1775698218606.475,
+      "time": 1775812241197.4983,
       "uuid": "1d5ed717-ed4a-4227-884b-cbaa5eb61ae6"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts": {
-      "time": 1775698218528.684,
-      "uuid": "18e9391b-4df5-4c51-9c93-7d6cb3c07974"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts": {
-      "time": 1775698218606.475,
-      "uuid": "d80801e6-f16f-4311-8fd2-c040802cc2b1"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts": {
-      "time": 1775716277562.8403,
-      "uuid": "dffb95e3-e9f7-403b-a759-f4828cd608a9"
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts.meta": {
-      "time": 1774258533135.778
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts.meta": {
-      "time": 1774258533136.775
-    },
-    "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts.meta": {
-      "time": 1774258533137.7717
     },
     "E:\\cocos\\cardDemo\\assets\\src\\README.md.meta": {
       "time": 1774333167613.843
     },
     "E:\\cocos\\cardDemo\\assets\\src\\README.md": {
-      "time": 1774322690885.615,
+      "time": 1775806101432.7456,
       "uuid": "e5d71cbf-3290-4150-a387-41d26bcbf1b1"
     },
     "E:\\cocos\\cardDemo\\assets\\resources.meta": {
@@ -371,6 +350,650 @@
     "E:\\cocos\\cardDemo\\assets\\resources\\icon\\parcelbag\\parcel_2.png": {
       "time": 1775638854621.8643,
       "uuid": "041021b1-a291-4ba3-ba79-e1db2b287747"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card.meta": {
+      "time": 1775734240581.9688
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core.meta": {
+      "time": 1775734240582.966
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel.meta": {
+      "time": 1775734240582.966
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardEnum.ts.meta": {
+      "time": 1775734240588.951
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardManager.ts.meta": {
+      "time": 1775734240594.934
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\model.meta": {
+      "time": 1775734240584.962
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\utils.meta": {
+      "time": 1775734240586.956
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view.meta": {
+      "time": 1775734240589.9485
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\event.meta": {
+      "time": 1775734240591.9434
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\model.meta": {
+      "time": 1775734240592.9397
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\ui.meta": {
+      "time": 1775734240593.937
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model.meta": {
+      "time": 1775734240595.9326
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\ParcelEnum.ts.meta": {
+      "time": 1775734240604.4019
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\ParcelManager.ts.meta": {
+      "time": 1775734240607.3958
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\tmp.meta": {
+      "time": 1775734240598.5327
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\utils.meta": {
+      "time": 1775734240599.5225
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view.meta": {
+      "time": 1775734240601.4126
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\model\\CardModelBase.ts.meta": {
+      "time": 1775734240610.393
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\model\\CardModelBuilder.ts.meta": {
+      "time": 1775734240611.393
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\utils\\CardUtils.ts.meta": {
+      "time": 1775734240612.388
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\item.meta": {
+      "time": 1775734240606.398
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\panel.meta": {
+      "time": 1775734240608.4062
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\ui.meta": {
+      "time": 1775734240609.3955
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\event\\EventEnum.ts.meta": {
+      "time": 1775734240617.3748
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\event\\EventManager.ts.meta": {
+      "time": 1775734240618.3833
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\model\\ModelManager.ts.meta": {
+      "time": 1775734240619.374
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\ui\\UIManager.ts.meta": {
+      "time": 1775734240620.0596
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model\\ParcelModelBase.ts.meta": {
+      "time": 1775734240621.0452
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model\\ParcelModelBuilder.ts.meta": {
+      "time": 1775734240630.026
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\utils\\ParcelUtils.ts.meta": {
+      "time": 1775734240632.021
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\item.meta": {
+      "time": 1775734240623.0405
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\panel.meta": {
+      "time": 1775734240624.0374
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\ui.meta": {
+      "time": 1775734240625.035
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\item\\CardItemBase.ts.meta": {
+      "time": 1775734240634.0144
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\panel\\CardPanelBase.ts.meta": {
+      "time": 1775734240634.0144
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\ui\\CardMainUI.ts.meta": {
+      "time": 1775734240635.0117
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\item\\ParcelItemBase.ts.meta": {
+      "time": 1775734240637.0063
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\panel\\ParcelPanelBase.ts.meta": {
+      "time": 1775734240638.006
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\ui\\ParcelMainUI.ts.meta": {
+      "time": 1775734240639.9988
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card": {
+      "time": 1775814637348.2356,
+      "uuid": "54b3b87b-6d74-44f1-a2d1-02d0fabbea06"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core": {
+      "time": 1775814637228.5266,
+      "uuid": "48560521-2807-4feb-8e14-6f285fa4e486"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel": {
+      "time": 1775814637349.2322,
+      "uuid": "fa09f7fe-0d9d-455c-a22c-c49c7407a735"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\model": {
+      "time": 1775734240561.0254,
+      "uuid": "0b6a9506-bd50-4d42-b030-a373caf0b31a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\utils": {
+      "time": 1775734240562.0232,
+      "uuid": "b6601854-b57d-47c5-84ab-e559fdf1305f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardEnum.ts": {
+      "time": 1775733301128.7793,
+      "uuid": "d6f3c06f-5d0f-45cb-b8b7-14b4f1655160"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view": {
+      "time": 1775734240564.0178,
+      "uuid": "6b37f7c8-2a17-4993-9ff0-3e540dd0a4fd"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\event": {
+      "time": 1775734240566.0122,
+      "uuid": "ad617e74-a8d1-444f-9b7c-0877b15b968b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\model": {
+      "time": 1775734240567.0093,
+      "uuid": "1511c7eb-c77a-4eee-8474-802089ae4eb2"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\ui": {
+      "time": 1775734240567.0093,
+      "uuid": "14fe75a4-4a64-485a-9b26-088d7a231401"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardManager.ts": {
+      "time": 1775733336383.8057,
+      "uuid": "053887c5-095f-47b3-af70-da768737c7c0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model": {
+      "time": 1775814637242.496,
+      "uuid": "fb06ce0e-a1b3-47d9-b130-f19fb6f4fa6f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\tmp": {
+      "time": 1775733477326.5906,
+      "uuid": "6a1a800e-22ff-4dce-b826-735be1e3d275"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\utils": {
+      "time": 1775734240570.0012,
+      "uuid": "953f04d4-bd96-420a-9544-be25d9c142d6"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view": {
+      "time": 1775734240572.993,
+      "uuid": "a065f241-9ebb-46e7-8429-2db2c2a8fe37"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\ParcelEnum.ts": {
+      "time": 1775813723641.8882,
+      "uuid": "65325ded-272e-4bce-aff6-05bafc6262d9"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\item": {
+      "time": 1775734240572.993,
+      "uuid": "3f0e8fd4-44d3-42ef-8736-0aa396e3d3c7"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\ParcelManager.ts": {
+      "time": 1775787645835.8296,
+      "uuid": "d7b8c8f8-c7ed-479f-bc46-a9430c0b199a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\panel": {
+      "time": 1775734240573.9905,
+      "uuid": "4d92e3d4-b593-40cb-a8af-d5bdc560904c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\ui": {
+      "time": 1775734240574.9885,
+      "uuid": "2267a4cb-1d8b-4b11-8d1f-ab149740e7aa"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\model\\CardModelBase.ts": {
+      "time": 1775733311254.8809,
+      "uuid": "e912a9a1-db53-46a7-8901-fd6bb4f99844"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\model\\CardModelBuilder.ts": {
+      "time": 1775733324858.2815,
+      "uuid": "ae8bd9d0-2c41-43cd-9c48-f323c1d3ae9b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\utils\\CardUtils.ts": {
+      "time": 1775733364853.489,
+      "uuid": "8eac5f0a-1b27-46ac-978b-364761593e71"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\event\\EventEnum.ts": {
+      "time": 1775733258299.3286,
+      "uuid": "337731bb-ed24-4299-a923-c1c6f2368ee0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\event\\EventManager.ts": {
+      "time": 1775733279417.149,
+      "uuid": "7c19b507-59f6-44f0-9295-91e808003fdc"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\model\\ModelManager.ts": {
+      "time": 1775733291656.5918,
+      "uuid": "c06e4d2f-e407-48f1-a831-25dc8f005199"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\ui\\UIManager.ts": {
+      "time": 1775733247669.7761,
+      "uuid": "f5f71f61-19c6-4ea0-9b40-6a5417bd6091"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model\\ParcelModelBase.ts": {
+      "time": 1775733383891.04,
+      "uuid": "2b49d356-cc71-4932-8d86-fb1955f4f188"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\item": {
+      "time": 1775734240575.9849,
+      "uuid": "853ff268-0a0d-4193-b110-1fd646854443"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\panel": {
+      "time": 1775734240575.9849,
+      "uuid": "9ba99ffe-e13a-4ca0-887e-90dda283360b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\ui": {
+      "time": 1775734240576.9822,
+      "uuid": "49b56fa6-47ae-4f2d-81f8-0493762070ea"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model\\ParcelModelBuilder.ts": {
+      "time": 1775790280030.297,
+      "uuid": "9a1f713c-e45e-4549-8ec4-97c6dc9afa50"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\utils\\ParcelUtils.ts": {
+      "time": 1775733430059.8125,
+      "uuid": "00a6ebbb-d74f-455d-91e2-75bcf1e46f2f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\item\\CardItemBase.ts": {
+      "time": 1775733350145.0408,
+      "uuid": "9f642a4f-2aa5-46c3-8aaf-b4281211493f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\panel\\CardPanelBase.ts": {
+      "time": 1775733357056.8816,
+      "uuid": "e31b905d-309f-442e-bcf9-e46e04141b2c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\view\\ui\\CardMainUI.ts": {
+      "time": 1775733342772.6138,
+      "uuid": "c542aa7f-47a1-4a61-a048-2573628fbb81"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\item\\ParcelItemBase.ts": {
+      "time": 1775733417648.993,
+      "uuid": "6b1e1f5d-cc65-4108-b1ff-dfae41f349c8"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\panel\\ParcelPanelBase.ts": {
+      "time": 1775733424253.4666,
+      "uuid": "16aa1008-005d-4e2f-bb95-1c6e48860eef"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\view\\ui\\ParcelMainUI.ts": {
+      "time": 1775733409489.624,
+      "uuid": "21e09e36-727c-4104-831d-521d8ce8581a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game.meta": {
+      "time": 1775735129591.614
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\view.meta": {
+      "time": 1775735129591.614
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel.meta": {
+      "time": 1775735129592.6108
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game": {
+      "time": 1775805064483.6423,
+      "uuid": "acf3d60c-fd1c-41f3-a20d-b5e2b2728aef"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\view": {
+      "time": 1775735129587.6233,
+      "uuid": "a37a8a4d-4ab3-4473-bd44-d1c0c57e75c0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel": {
+      "time": 1775805064426.499,
+      "uuid": "61e90465-9e4f-42e2-a914-a03fa293204c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameModelImpl.ts.meta": {
+      "time": 1775736859637.213
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameViewImpl.ts.meta": {
+      "time": 1775736859637.213
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameModelImpl.ts": {
+      "time": 1775805839686.3108,
+      "uuid": "f5bc2971-e865-48bf-9246-6ea02bfe1665"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GameViewImpl.ts": {
+      "time": 1775812171442.775,
+      "uuid": "4aa89b5e-1484-44a5-acc3-2e2b6192dff4"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\controller.meta": {
+      "time": 1775738843043.5286
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\model.meta": {
+      "time": 1775738843044.5266
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\controller": {
+      "time": 1775812248068.107,
+      "uuid": "4fb09534-e31c-4822-96e3-f05f425baa70"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\model": {
+      "time": 1775803679397.331,
+      "uuid": "bdbcfada-f721-4807-9585-8d643a647316"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\controller\\MainGamePlacementController.ts.meta": {
+      "time": 1775789603382.2002
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\game\\controller\\MainGamePlacementController.ts": {
+      "time": 1775812318317.6128,
+      "uuid": "c6b7a68e-2e2f-4a67-9a66-df40f63706fe"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\board.meta": {
+      "time": 1775814637280.388
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow.meta": {
+      "time": 1775814637281.3853
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GlobalConst.ts.meta": {
+      "time": 1775814637298.368
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\plant.meta": {
+      "time": 1775814637284.3774
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\view.meta": {
+      "time": 1775814637285.375
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\board\\BoardTypes.ts.meta": {
+      "time": 1775814637300.3628
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\board\\BoardUtils.ts.meta": {
+      "time": 1775814637300.3628
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardGeometry.ts.meta": {
+      "time": 1775814637301.36
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardRuleUtils.ts.meta": {
+      "time": 1775814637302.3586
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardTypes.ts.meta": {
+      "time": 1775814637311.3335
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\types.meta": {
+      "time": 1775814637303.355
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\adaptive.meta": {
+      "time": 1775814637304.3518
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\types.meta": {
+      "time": 1775814637306.347
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\controller.meta": {
+      "time": 1775814637307.344
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\GameConst.ts.meta": {
+      "time": 1775814637314.3254
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model.meta": {
+      "time": 1775814637308.344
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view.meta": {
+      "time": 1775814637309.339
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\plant\\model.meta": {
+      "time": 1775814637310.337
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\view\\ViewStateTypes.ts.meta": {
+      "time": 1775814637316.3203
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\types\\CardCellTypes.ts.meta": {
+      "time": 1775814637317.318
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\adaptive\\AdaptiveLayout.ts.meta": {
+      "time": 1775814637318.3147
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\types\\BaseGameTypes.ts.meta": {
+      "time": 1775814637319.3125
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\controller\\MainGameGmService.ts.meta": {
+      "time": 1775814637321.3066
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\controller\\MainGameRotationService.ts.meta": {
+      "time": 1775814637322.304
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelFactory.ts.meta": {
+      "time": 1775814637324.2988
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelFlowService.ts.meta": {
+      "time": 1775814637325.296
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelPlacementService.ts.meta": {
+      "time": 1775814637326.2935
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelStatusService.ts.meta": {
+      "time": 1775814637330.2834
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel.meta": {
+      "time": 1775814637324.2988
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model\\ParcelGameplayService.ts.meta": {
+      "time": 1775814637332.2812
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\plant\\model\\PlantGameplayService.ts.meta": {
+      "time": 1775814637333.2747
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\BoardPanel.ts.meta": {
+      "time": 1775814637333.2747
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewBaseService.ts.meta": {
+      "time": 1775814637334.2722
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewInteractionController.ts.meta": {
+      "time": 1775814637336.2666
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewSceneAssembler.ts.meta": {
+      "time": 1775814637338.2615
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewUiBuilder.ts.meta": {
+      "time": 1775814637339.2583
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\HandPanel.ts.meta": {
+      "time": 1775814637339.2583
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\HandRefillAnimator.ts.meta": {
+      "time": 1775814637340.2556
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\HandRenderController.ts.meta": {
+      "time": 1775814637342.2515
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\MessagePanel.ts.meta": {
+      "time": 1775814637344.2456
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\PreplacePanel.ts.meta": {
+      "time": 1775814637345.243
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\PreviewGeometry.ts.meta": {
+      "time": 1775814637346.24
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\TopInfoPanel.ts.meta": {
+      "time": 1775814637347.2373
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\board": {
+      "time": 1775814637224.5352,
+      "uuid": "3423537f-21fc-401e-a2ee-0b7fb551d3a1"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow": {
+      "time": 1775814637232.5156,
+      "uuid": "0ebe803f-36db-4b2f-95ad-dddafeeea86e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\plant": {
+      "time": 1775814637232.5156,
+      "uuid": "41569ee5-cc99-4f77-893c-906211a6501d"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\view": {
+      "time": 1775814637233.513,
+      "uuid": "2e6e0652-c2dd-48f6-9cfa-b95d66d750ca"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\GlobalConst.ts": {
+      "time": 1775805324234.8135,
+      "uuid": "b2a08e3f-1ed6-4d35-8bb2-11bc0a266ac4"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\board\\BoardTypes.ts": {
+      "time": 1775805285998.5554,
+      "uuid": "8b1b49fc-4acd-4f02-853a-5526132099a0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\board\\BoardUtils.ts": {
+      "time": 1775805295764.0908,
+      "uuid": "9703e0df-7d17-4ca2-b1e0-b2fdaf730697"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardGeometry.ts": {
+      "time": 1775805265150.5325,
+      "uuid": "d103cef6-dc84-4e85-98b1-89a7f9096d42"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardRuleUtils.ts": {
+      "time": 1775806290551.7388,
+      "uuid": "e3474e15-f90a-49d3-87ba-1b9c3f122e94"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\types": {
+      "time": 1775814637233.513,
+      "uuid": "9e7688cb-23dd-46bd-8816-864d9433780a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\adaptive": {
+      "time": 1775814637234.5103,
+      "uuid": "c2d92ff5-59a6-4631-a9a3-cdb9a7b950f0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\types": {
+      "time": 1775814637235.5078,
+      "uuid": "c6d8b381-4cc3-4754-aeca-74b34d004c86"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\controller": {
+      "time": 1775814637236.5056,
+      "uuid": "33bd6e39-8bf3-4f6b-8c25-deb1a9153fc0"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model": {
+      "time": 1775814637240.4944,
+      "uuid": "2dfe0c9f-33ac-4618-9bd8-c328e26661ae"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view": {
+      "time": 1775814637240.4944,
+      "uuid": "fd6cc596-e32f-4182-b1cb-5af046cb4d56"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\plant\\model": {
+      "time": 1775814637242.496,
+      "uuid": "4d110d11-82a0-4bd8-b728-7353e83d91be"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\CardTypes.ts": {
+      "time": 1775806276204.2527,
+      "uuid": "483ef527-df5f-426f-bdc1-6fb957fbcc14"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\GameConst.ts": {
+      "time": 1775806341156.3438,
+      "uuid": "4b8d25d9-f6b0-4eed-881c-45c562d724fa"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\view\\ViewStateTypes.ts": {
+      "time": 1775805311203.4915,
+      "uuid": "60e55aed-f992-4b48-98c6-c219fa874f4c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\types\\CardCellTypes.ts": {
+      "time": 1775805237273.2212,
+      "uuid": "e7c1ff4d-cc39-4a07-8669-dac4790eac6a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\adaptive\\AdaptiveLayout.ts": {
+      "time": 1775805522578.264,
+      "uuid": "727b788d-ef74-4f3e-8015-57202f41eab3"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\core\\types\\BaseGameTypes.ts": {
+      "time": 1775805194908.7522,
+      "uuid": "141aab2b-0607-4842-b935-d801b34f784b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\controller\\MainGameGmService.ts": {
+      "time": 1775812347381.0042,
+      "uuid": "a24ebf2d-7228-40b4-9c33-b777e8d2986f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\controller\\MainGameRotationService.ts": {
+      "time": 1775805947408.7383,
+      "uuid": "f6db335a-a7b7-4611-9861-5e0a73084f9b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel": {
+      "time": 1775814637252.4624,
+      "uuid": "286fb64f-0ad7-4894-bae0-cceb8895c597"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelFactory.ts": {
+      "time": 1775805904170.3438,
+      "uuid": "950874f3-d3c9-43bb-820d-74cc04fa037e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelFlowService.ts": {
+      "time": 1775805916405.5752,
+      "uuid": "afc87fbf-a385-47dd-bf70-0ca88088d14f"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelPlacementService.ts": {
+      "time": 1775806327937.7466,
+      "uuid": "582c027b-5a73-4328-abb8-06eb82e9bd2c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\model\\GameModelStatusService.ts": {
+      "time": 1775805882218.623,
+      "uuid": "44bd4242-df3f-4205-b0f2-1c7d1a9231f3"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\model\\ParcelGameplayService.ts": {
+      "time": 1775805937418.4697,
+      "uuid": "b65f07f3-4538-404f-951a-6c890a20da9b"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\plant\\model\\PlantGameplayService.ts": {
+      "time": 1775805928509.9465,
+      "uuid": "fbffd4ca-de8a-4b01-8e14-a3ab6dfbc4f7"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\BoardPanel.ts": {
+      "time": 1775805985525.2173,
+      "uuid": "b15dd189-e1c5-4603-afb5-9fc3078d3e9e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewBaseService.ts": {
+      "time": 1775805566655.955,
+      "uuid": "3097333a-28e9-4811-bfce-7402b73e97ec"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewInteractionController.ts": {
+      "time": 1775806317498.2446,
+      "uuid": "345e4363-ba87-4d2b-8715-48b842075319"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewSceneAssembler.ts": {
+      "time": 1775806037477.8562,
+      "uuid": "01ec0e99-2375-4660-a170-92178ecfe00a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewUiBuilder.ts": {
+      "time": 1775806018837.8608,
+      "uuid": "e5e5a790-65e6-4b45-b8cd-f0aa6d64548c"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\HandPanel.ts": {
+      "time": 1775804042146.3618,
+      "uuid": "4757a4dc-912c-4ac9-964d-5532dee9f5c2"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\HandRefillAnimator.ts": {
+      "time": 1775788633079.9956,
+      "uuid": "051dd312-5ad8-4d61-88bc-846de77831e7"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\HandRenderController.ts": {
+      "time": 1775806308541.105,
+      "uuid": "4dc39baf-8b86-48aa-8015-a8ac9ecbf363"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\MessagePanel.ts": {
+      "time": 1775804058163.634,
+      "uuid": "cb964a6b-e299-4cad-9c58-32c289640e27"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\PreplacePanel.ts": {
+      "time": 1775806001484.719,
+      "uuid": "054c3ce9-6ce1-44d9-96e0-9a3be92c66fb"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\PreviewGeometry.ts": {
+      "time": 1775804071736.4204,
+      "uuid": "97b9ef91-f707-46a0-a200-2c01b6bf8b2e"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\TopInfoPanel.ts": {
+      "time": 1775805992123.9353,
+      "uuid": "74227e4e-b724-4bc2-adc5-46987ef51b4a"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\README.md.meta": {
+      "time": 1775814637373.3394
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\README.md.meta": {
+      "time": 1775814637372.1707
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\parcel\\README.md": {
+      "time": 1775812427319.403,
+      "uuid": "43057593-8376-4675-a0ad-e7215b656886"
+    },
+    "E:\\cocos\\cardDemo\\assets\\src\\card\\README.md": {
+      "time": 1775812415903.2197,
+      "uuid": "7cc0ce1a-f867-4b88-9e94-242f0e3cb962"
     }
   },
   "missing": {
@@ -593,6 +1216,141 @@
       "path": "E:\\cocos\\cardDemo\\assets\\src\\card",
       "time": 1775555306813.305,
       "removeTime": 1775638963745
+    },
+    "18e9391b-4df5-4c51-9c93-7d6cb3c07974": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\GameModel.ts",
+      "time": 1775736758826.752,
+      "removeTime": 1775737616606
+    },
+    "dffb95e3-e9f7-403b-a759-f4828cd608a9": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\GameView.ts",
+      "time": 1775736758828.746,
+      "removeTime": 1775737616606
+    },
+    "1e6f6ebe-756c-4f6f-a4dc-c7357b6e46bf": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\MainGameImpl.ts",
+      "time": 1775736693511.3645,
+      "removeTime": 1775737616606
+    },
+    "fb296367-a839-4cbb-afbc-2344cfb56c77": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\card\\tmp",
+      "time": 1775733471687.812,
+      "removeTime": 1775789824726
+    },
+    "d80801e6-f16f-4311-8fd2-c040802cc2b1": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\GameTypes.ts",
+      "time": 1775698218606.475,
+      "removeTime": 1775814637200
+    },
+    "b829ed51-b76c-4f93-af77-980d45034a01": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\TopInfoPanel.ts",
+      "time": 1775735364388.089,
+      "removeTime": 1775814637202
+    },
+    "56ba9923-9407-4889-8615-dbce75de01af": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\MessagePanel.ts",
+      "time": 1775735587186.741,
+      "removeTime": 1775814637202
+    },
+    "9bf6d2bc-aaf6-4975-94d5-2328dc5ca4be": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\HandPanel.ts",
+      "time": 1775736004667.437,
+      "removeTime": 1775814637202
+    },
+    "53f95af0-dda8-4ca5-b1d6-429bda8082e7": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\controller\\MainGameUiRootBuilder.ts",
+      "time": 1775738480919.2134,
+      "removeTime": 1775814637202
+    },
+    "750e8925-145d-4dd5-850c-531599be1f68": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\model\\GameModelFactory.ts",
+      "time": 1775738335225.0498,
+      "removeTime": 1775814637202
+    },
+    "8df00e5f-87f4-463d-8250-7e40f54219e2": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\BoardPanel.ts",
+      "time": 1775738115746.761,
+      "removeTime": 1775814637202
+    },
+    "e2456623-06bc-4d56-bfc8-0471d70a3a87": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\controller\\MainGameRotationUtils.ts",
+      "time": 1775790214636.499,
+      "removeTime": 1775814637202
+    },
+    "bd827f3b-6111-49f7-995b-1842cf136508": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\controller\\MainGameViewStateBuilder.ts",
+      "time": 1775739296706.7673,
+      "removeTime": 1775814637203
+    },
+    "8c255091-181c-4ce3-93b8-4c0153dc4604": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\model\\GameModelParcelService.ts",
+      "time": 1775739403768.0652,
+      "removeTime": 1775814637203
+    },
+    "73c34b5b-fe0d-4e70-af6a-4ee75f57e402": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\model\\GameModelPlacementService.ts",
+      "time": 1775739450294.6833,
+      "removeTime": 1775814637203
+    },
+    "62b968d1-2677-481c-ae89-368004673118": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\model\\GameModelPlantService.ts",
+      "time": 1775740010967.8608,
+      "removeTime": 1775814637203
+    },
+    "5638bde0-722d-410b-a96b-83709518412b": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\PreplacePanel.ts",
+      "time": 1775739801299.2522,
+      "removeTime": 1775814637203
+    },
+    "7df4910d-5ccf-4a33-9c39-244c30a22168": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\controller\\MainGameGmController.ts",
+      "time": 1775739888120.342,
+      "removeTime": 1775814637203
+    },
+    "cbcb960d-1120-44de-8592-9039cb52d7f9": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\model\\GameModelStatusService.ts",
+      "time": 1775739915407.2405,
+      "removeTime": 1775814637203
+    },
+    "7703781b-fd74-41f5-b736-0bcd5afef025": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\HandRefillAnimator.ts",
+      "time": 1775788633079.9956,
+      "removeTime": 1775814637203
+    },
+    "7ec8e8e9-67e6-4d5b-8fba-83dc0ced1bff": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\GameViewBaseService.ts",
+      "time": 1775782461495.1292,
+      "removeTime": 1775814637203
+    },
+    "c8f58ba9-ef61-4c1a-8574-cbca01447f41": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\GameViewInteractionController.ts",
+      "time": 1775788532809.3118,
+      "removeTime": 1775814637203
+    },
+    "d2ce79cd-f9a4-488a-9d75-73546f4f03dd": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\GameViewSceneAssembler.ts",
+      "time": 1775788451509.5774,
+      "removeTime": 1775814637203
+    },
+    "35c628a3-b092-4600-b46a-1691c7dd5b12": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\GameViewUiBuilder.ts",
+      "time": 1775788468802.017,
+      "removeTime": 1775814637203
+    },
+    "bbaffbff-04d6-4086-b8df-83e4e6d900ca": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\HandRenderController.ts",
+      "time": 1775788625874.6091,
+      "removeTime": 1775814637203
+    },
+    "ae21892a-ee65-4c42-9fe5-e3e904ee1aee": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\view\\panel\\PreviewGeometry.ts",
+      "time": 1775782112350.3555,
+      "removeTime": 1775814637204
+    },
+    "19edc321-f9f1-405c-960a-aee8219a0df7": {
+      "path": "E:\\cocos\\cardDemo\\assets\\src\\game\\GameConst.ts",
+      "time": 1775785417537.9294,
+      "removeTime": 1775814637204
     }
   }
 }

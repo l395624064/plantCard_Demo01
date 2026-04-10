@@ -1540,5 +1540,589 @@
       ]
     },
     "versionCode": 1
+  },
+  "d6f3c06f-5d0f-45cb-b8b7-14b4f1655160": {
+    "url": "db://assets/src/card/CardEnum.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "053887c5-095f-47b3-af70-da768737c7c0": {
+    "url": "db://assets/src/card/CardManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "54b3b87b-6d74-44f1-a2d1-02d0fabbea06": {
+    "url": "db://assets/src/card",
+    "value": {},
+    "versionCode": 1
+  },
+  "48560521-2807-4feb-8e14-6f285fa4e486": {
+    "url": "db://assets/src/core",
+    "value": {},
+    "versionCode": 1
+  },
+  "fa09f7fe-0d9d-455c-a22c-c49c7407a735": {
+    "url": "db://assets/src/parcel",
+    "value": {},
+    "versionCode": 1
+  },
+  "0b6a9506-bd50-4d42-b030-a373caf0b31a": {
+    "url": "db://assets/src/card/model",
+    "value": {},
+    "versionCode": 1
+  },
+  "fb296367-a839-4cbb-afbc-2344cfb56c77": {
+    "url": "db://assets/src/card/tmp",
+    "value": {},
+    "versionCode": 1
+  },
+  "b6601854-b57d-47c5-84ab-e559fdf1305f": {
+    "url": "db://assets/src/card/utils",
+    "value": {},
+    "versionCode": 1
+  },
+  "6b37f7c8-2a17-4993-9ff0-3e540dd0a4fd": {
+    "url": "db://assets/src/card/view",
+    "value": {},
+    "versionCode": 1
+  },
+  "ad617e74-a8d1-444f-9b7c-0877b15b968b": {
+    "url": "db://assets/src/core/event",
+    "value": {},
+    "versionCode": 1
+  },
+  "1511c7eb-c77a-4eee-8474-802089ae4eb2": {
+    "url": "db://assets/src/core/model",
+    "value": {},
+    "versionCode": 1
+  },
+  "14fe75a4-4a64-485a-9b26-088d7a231401": {
+    "url": "db://assets/src/core/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "fb06ce0e-a1b3-47d9-b130-f19fb6f4fa6f": {
+    "url": "db://assets/src/parcel/model",
+    "value": {},
+    "versionCode": 1
+  },
+  "65325ded-272e-4bce-aff6-05bafc6262d9": {
+    "url": "db://assets/src/parcel/ParcelEnum.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d7b8c8f8-c7ed-479f-bc46-a9430c0b199a": {
+    "url": "db://assets/src/parcel/ParcelManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "6a1a800e-22ff-4dce-b826-735be1e3d275": {
+    "url": "db://assets/src/parcel/tmp",
+    "value": {},
+    "versionCode": 1
+  },
+  "953f04d4-bd96-420a-9544-be25d9c142d6": {
+    "url": "db://assets/src/parcel/utils",
+    "value": {},
+    "versionCode": 1
+  },
+  "a065f241-9ebb-46e7-8429-2db2c2a8fe37": {
+    "url": "db://assets/src/parcel/view",
+    "value": {},
+    "versionCode": 1
+  },
+  "e912a9a1-db53-46a7-8901-fd6bb4f99844": {
+    "url": "db://assets/src/card/model/CardModelBase.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "ae8bd9d0-2c41-43cd-9c48-f323c1d3ae9b": {
+    "url": "db://assets/src/card/model/CardModelBuilder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8eac5f0a-1b27-46ac-978b-364761593e71": {
+    "url": "db://assets/src/card/utils/CardUtils.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "3f0e8fd4-44d3-42ef-8736-0aa396e3d3c7": {
+    "url": "db://assets/src/card/view/item",
+    "value": {},
+    "versionCode": 1
+  },
+  "4d92e3d4-b593-40cb-a8af-d5bdc560904c": {
+    "url": "db://assets/src/card/view/panel",
+    "value": {},
+    "versionCode": 1
+  },
+  "2267a4cb-1d8b-4b11-8d1f-ab149740e7aa": {
+    "url": "db://assets/src/card/view/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "337731bb-ed24-4299-a923-c1c6f2368ee0": {
+    "url": "db://assets/src/core/event/EventEnum.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7c19b507-59f6-44f0-9295-91e808003fdc": {
+    "url": "db://assets/src/core/event/EventManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c06e4d2f-e407-48f1-a831-25dc8f005199": {
+    "url": "db://assets/src/core/model/ModelManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f5f71f61-19c6-4ea0-9b40-6a5417bd6091": {
+    "url": "db://assets/src/core/ui/UIManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "2b49d356-cc71-4932-8d86-fb1955f4f188": {
+    "url": "db://assets/src/parcel/model/ParcelModelBase.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9a1f713c-e45e-4549-8ec4-97c6dc9afa50": {
+    "url": "db://assets/src/parcel/model/ParcelModelBuilder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "00a6ebbb-d74f-455d-91e2-75bcf1e46f2f": {
+    "url": "db://assets/src/parcel/utils/ParcelUtils.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "853ff268-0a0d-4193-b110-1fd646854443": {
+    "url": "db://assets/src/parcel/view/item",
+    "value": {},
+    "versionCode": 1
+  },
+  "9ba99ffe-e13a-4ca0-887e-90dda283360b": {
+    "url": "db://assets/src/parcel/view/panel",
+    "value": {},
+    "versionCode": 1
+  },
+  "49b56fa6-47ae-4f2d-81f8-0493762070ea": {
+    "url": "db://assets/src/parcel/view/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "9f642a4f-2aa5-46c3-8aaf-b4281211493f": {
+    "url": "db://assets/src/card/view/item/CardItemBase.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e31b905d-309f-442e-bcf9-e46e04141b2c": {
+    "url": "db://assets/src/card/view/panel/CardPanelBase.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c542aa7f-47a1-4a61-a048-2573628fbb81": {
+    "url": "db://assets/src/card/view/ui/CardMainUI.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "6b1e1f5d-cc65-4108-b1ff-dfae41f349c8": {
+    "url": "db://assets/src/parcel/view/item/ParcelItemBase.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "16aa1008-005d-4e2f-bb95-1c6e48860eef": {
+    "url": "db://assets/src/parcel/view/panel/ParcelPanelBase.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "21e09e36-727c-4104-831d-521d8ce8581a": {
+    "url": "db://assets/src/parcel/view/ui/ParcelMainUI.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b829ed51-b76c-4f93-af77-980d45034a01": {
+    "url": "db://assets/src/game/view/panel/TopInfoPanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "acf3d60c-fd1c-41f3-a20d-b5e2b2728aef": {
+    "url": "db://assets/src/game",
+    "value": {},
+    "versionCode": 1
+  },
+  "a37a8a4d-4ab3-4473-bd44-d1c0c57e75c0": {
+    "url": "db://assets/src/game/view",
+    "value": {},
+    "versionCode": 1
+  },
+  "61e90465-9e4f-42e2-a914-a03fa293204c": {
+    "url": "db://assets/src/game/view/panel",
+    "value": {},
+    "versionCode": 1
+  },
+  "56ba9923-9407-4889-8615-dbce75de01af": {
+    "url": "db://assets/src/game/view/panel/MessagePanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9bf6d2bc-aaf6-4975-94d5-2328dc5ca4be": {
+    "url": "db://assets/src/game/view/panel/HandPanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f5bc2971-e865-48bf-9246-6ea02bfe1665": {
+    "url": "db://assets/src/GameModelImpl.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4aa89b5e-1484-44a5-acc3-2e2b6192dff4": {
+    "url": "db://assets/src/GameViewImpl.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "1e6f6ebe-756c-4f6f-a4dc-c7357b6e46bf": {
+    "url": "db://assets/src/MainGameImpl.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "53f95af0-dda8-4ca5-b1d6-429bda8082e7": {
+    "url": "db://assets/src/game/controller/MainGameUiRootBuilder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "750e8925-145d-4dd5-850c-531599be1f68": {
+    "url": "db://assets/src/game/model/GameModelFactory.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8df00e5f-87f4-463d-8250-7e40f54219e2": {
+    "url": "db://assets/src/game/view/panel/BoardPanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4fb09534-e31c-4822-96e3-f05f425baa70": {
+    "url": "db://assets/src/game/controller",
+    "value": {},
+    "versionCode": 1
+  },
+  "bdbcfada-f721-4807-9585-8d643a647316": {
+    "url": "db://assets/src/game/model",
+    "value": {},
+    "versionCode": 1
+  },
+  "e2456623-06bc-4d56-bfc8-0471d70a3a87": {
+    "url": "db://assets/src/game/controller/MainGameRotationUtils.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "bd827f3b-6111-49f7-995b-1842cf136508": {
+    "url": "db://assets/src/game/controller/MainGameViewStateBuilder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8c255091-181c-4ce3-93b8-4c0153dc4604": {
+    "url": "db://assets/src/game/model/GameModelParcelService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "73c34b5b-fe0d-4e70-af6a-4ee75f57e402": {
+    "url": "db://assets/src/game/model/GameModelPlacementService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "62b968d1-2677-481c-ae89-368004673118": {
+    "url": "db://assets/src/game/model/GameModelPlantService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5638bde0-722d-410b-a96b-83709518412b": {
+    "url": "db://assets/src/game/view/panel/PreplacePanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7df4910d-5ccf-4a33-9c39-244c30a22168": {
+    "url": "db://assets/src/game/controller/MainGameGmController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "cbcb960d-1120-44de-8592-9039cb52d7f9": {
+    "url": "db://assets/src/game/model/GameModelStatusService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7703781b-fd74-41f5-b736-0bcd5afef025": {
+    "url": "db://assets/src/game/view/panel/HandRefillAnimator.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7ec8e8e9-67e6-4d5b-8fba-83dc0ced1bff": {
+    "url": "db://assets/src/game/view/panel/GameViewBaseService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c8f58ba9-ef61-4c1a-8574-cbca01447f41": {
+    "url": "db://assets/src/game/view/panel/GameViewInteractionController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d2ce79cd-f9a4-488a-9d75-73546f4f03dd": {
+    "url": "db://assets/src/game/view/panel/GameViewSceneAssembler.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "35c628a3-b092-4600-b46a-1691c7dd5b12": {
+    "url": "db://assets/src/game/view/panel/GameViewUiBuilder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "bbaffbff-04d6-4086-b8df-83e4e6d900ca": {
+    "url": "db://assets/src/game/view/panel/HandRenderController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "ae21892a-ee65-4c42-9fe5-e3e904ee1aee": {
+    "url": "db://assets/src/game/view/panel/PreviewGeometry.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "19edc321-f9f1-405c-960a-aee8219a0df7": {
+    "url": "db://assets/src/game/GameConst.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c6b7a68e-2e2f-4a67-9a66-df40f63706fe": {
+    "url": "db://assets/src/game/controller/MainGamePlacementController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "3423537f-21fc-401e-a2ee-0b7fb551d3a1": {
+    "url": "db://assets/src/board",
+    "value": {},
+    "versionCode": 1
+  },
+  "0ebe803f-36db-4b2f-95ad-dddafeeea86e": {
+    "url": "db://assets/src/flow",
+    "value": {},
+    "versionCode": 1
+  },
+  "b2a08e3f-1ed6-4d35-8bb2-11bc0a266ac4": {
+    "url": "db://assets/src/GlobalConst.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "41569ee5-cc99-4f77-893c-906211a6501d": {
+    "url": "db://assets/src/plant",
+    "value": {},
+    "versionCode": 1
+  },
+  "2e6e0652-c2dd-48f6-9cfa-b95d66d750ca": {
+    "url": "db://assets/src/view",
+    "value": {},
+    "versionCode": 1
+  },
+  "8b1b49fc-4acd-4f02-853a-5526132099a0": {
+    "url": "db://assets/src/board/BoardTypes.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9703e0df-7d17-4ca2-b1e0-b2fdaf730697": {
+    "url": "db://assets/src/board/BoardUtils.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d103cef6-dc84-4e85-98b1-89a7f9096d42": {
+    "url": "db://assets/src/card/CardGeometry.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e3474e15-f90a-49d3-87ba-1b9c3f122e94": {
+    "url": "db://assets/src/card/CardRuleUtils.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "483ef527-df5f-426f-bdc1-6fb957fbcc14": {
+    "url": "db://assets/src/card/CardTypes.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9e7688cb-23dd-46bd-8816-864d9433780a": {
+    "url": "db://assets/src/card/types",
+    "value": {},
+    "versionCode": 1
+  },
+  "c2d92ff5-59a6-4631-a9a3-cdb9a7b950f0": {
+    "url": "db://assets/src/core/adaptive",
+    "value": {},
+    "versionCode": 1
+  },
+  "c6d8b381-4cc3-4754-aeca-74b34d004c86": {
+    "url": "db://assets/src/core/types",
+    "value": {},
+    "versionCode": 1
+  },
+  "33bd6e39-8bf3-4f6b-8c25-deb1a9153fc0": {
+    "url": "db://assets/src/flow/controller",
+    "value": {},
+    "versionCode": 1
+  },
+  "4b8d25d9-f6b0-4eed-881c-45c562d724fa": {
+    "url": "db://assets/src/flow/GameConst.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "2dfe0c9f-33ac-4618-9bd8-c328e26661ae": {
+    "url": "db://assets/src/flow/model",
+    "value": {},
+    "versionCode": 1
+  },
+  "fd6cc596-e32f-4182-b1cb-5af046cb4d56": {
+    "url": "db://assets/src/flow/view",
+    "value": {},
+    "versionCode": 1
+  },
+  "4d110d11-82a0-4bd8-b728-7353e83d91be": {
+    "url": "db://assets/src/plant/model",
+    "value": {},
+    "versionCode": 1
+  },
+  "60e55aed-f992-4b48-98c6-c219fa874f4c": {
+    "url": "db://assets/src/view/ViewStateTypes.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e7c1ff4d-cc39-4a07-8669-dac4790eac6a": {
+    "url": "db://assets/src/card/types/CardCellTypes.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "727b788d-ef74-4f3e-8015-57202f41eab3": {
+    "url": "db://assets/src/core/adaptive/AdaptiveLayout.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "141aab2b-0607-4842-b935-d801b34f784b": {
+    "url": "db://assets/src/core/types/BaseGameTypes.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a24ebf2d-7228-40b4-9c33-b777e8d2986f": {
+    "url": "db://assets/src/flow/controller/MainGameGmService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f6db335a-a7b7-4611-9861-5e0a73084f9b": {
+    "url": "db://assets/src/flow/controller/MainGameRotationService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "950874f3-d3c9-43bb-820d-74cc04fa037e": {
+    "url": "db://assets/src/flow/model/GameModelFactory.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "afc87fbf-a385-47dd-bf70-0ca88088d14f": {
+    "url": "db://assets/src/flow/model/GameModelFlowService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "582c027b-5a73-4328-abb8-06eb82e9bd2c": {
+    "url": "db://assets/src/flow/model/GameModelPlacementService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "44bd4242-df3f-4205-b0f2-1c7d1a9231f3": {
+    "url": "db://assets/src/flow/model/GameModelStatusService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "286fb64f-0ad7-4894-bae0-cceb8895c597": {
+    "url": "db://assets/src/flow/view/panel",
+    "value": {},
+    "versionCode": 1
+  },
+  "b65f07f3-4538-404f-951a-6c890a20da9b": {
+    "url": "db://assets/src/parcel/model/ParcelGameplayService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "fbffd4ca-de8a-4b01-8e14-a3ab6dfbc4f7": {
+    "url": "db://assets/src/plant/model/PlantGameplayService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b15dd189-e1c5-4603-afb5-9fc3078d3e9e": {
+    "url": "db://assets/src/flow/view/panel/BoardPanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "3097333a-28e9-4811-bfce-7402b73e97ec": {
+    "url": "db://assets/src/flow/view/panel/GameViewBaseService.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "345e4363-ba87-4d2b-8715-48b842075319": {
+    "url": "db://assets/src/flow/view/panel/GameViewInteractionController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "01ec0e99-2375-4660-a170-92178ecfe00a": {
+    "url": "db://assets/src/flow/view/panel/GameViewSceneAssembler.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e5e5a790-65e6-4b45-b8cd-f0aa6d64548c": {
+    "url": "db://assets/src/flow/view/panel/GameViewUiBuilder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4757a4dc-912c-4ac9-964d-5532dee9f5c2": {
+    "url": "db://assets/src/flow/view/panel/HandPanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "051dd312-5ad8-4d61-88bc-846de77831e7": {
+    "url": "db://assets/src/flow/view/panel/HandRefillAnimator.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4dc39baf-8b86-48aa-8015-a8ac9ecbf363": {
+    "url": "db://assets/src/flow/view/panel/HandRenderController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "cb964a6b-e299-4cad-9c58-32c289640e27": {
+    "url": "db://assets/src/flow/view/panel/MessagePanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "054c3ce9-6ce1-44d9-96e0-9a3be92c66fb": {
+    "url": "db://assets/src/flow/view/panel/PreplacePanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "97b9ef91-f707-46a0-a200-2c01b6bf8b2e": {
+    "url": "db://assets/src/flow/view/panel/PreviewGeometry.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "74227e4e-b724-4bc2-adc5-46987ef51b4a": {
+    "url": "db://assets/src/flow/view/panel/TopInfoPanel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7cc0ce1a-f867-4b88-9e94-242f0e3cb962": {
+    "url": "db://assets/src/card/README.md",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "43057593-8376-4675-a0ad-e7215b656886": {
+    "url": "db://assets/src/parcel/README.md",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
   }
 }
