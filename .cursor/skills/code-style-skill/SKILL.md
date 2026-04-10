@@ -140,6 +140,25 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Cross-domain shared types should be minimal and stable.
 - Transitional re-export files are allowed temporarily, but should be removed step-by-step.
 
+## Anti-Fragmentation Rule (Hard Rule)
+
+- Avoid over-splitting directly dependent code into many tiny files.
+- For direct-dependency code blocks, if implementation size is below about 60 lines, keep it in the current owner file by default.
+- The goal is to balance single-responsibility with human review readability.
+- Splitting is recommended when:
+  - code grows beyond about 60 lines and keeps expanding,
+  - responsibility boundary becomes mixed,
+  - stable cross-file reuse appears.
+- Suggested thresholds:
+  - below 60: default keep together,
+  - 60-100: evaluate by complexity and coupling,
+  - above 100: prefer split.
+- Exceptions (split early is allowed):
+  - security/critical lifecycle boundaries,
+  - clear shared reusable utility surface,
+  - testability/isolation needs,
+  - explicit user request.
+
 ## Utility Placement Rule
 
 - Frequently reused cross-module tools should be global utilities, for example:
@@ -212,6 +231,7 @@ After coding:
 2. Verify manager registration flow for models.
 3. Verify no oversized `view/*` file remains without split.
 4. Recheck git diff so only intended changes remain.
+5. Recheck that no unnecessary tiny split files were created for sub-60-line directly dependent code.
 
 ## Clarification Rule (must ask user)
 
