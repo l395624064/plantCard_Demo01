@@ -17,11 +17,35 @@ description: Enforces this project's highest-priority coding conventions: MVC-st
 
 ## Core Architecture Rule
 
-- Prefer MVC-style separation for feature modules.
-- For any complete module, include:
-  - one manager (global control),
-  - one model layer (data lifecycle),
-  - one view layer (ui/item/panel split).
+- Enforce single-responsibility module boundaries first.
+- Prefer MVC-style separation for feature modules, but do not force every module to have model/view.
+- Infrastructure modules (for example: `core/*`) may only contain necessary infrastructure code.
+- Avoid creating structural folders/classes without business value.
+
+## Game Flow Module Rule (Hard Rule)
+
+- Game rules, game progression, and win/lose resolution must be placed in an independent flow module.
+- Module naming may use equivalent naming styles (for example: `flow/*` or `gameFlow/*`), but one project must use one naming style consistently.
+- Do not scatter flow-core logic into entry files, view files, or temporary helper files.
+
+## Orchestration Scope Rule For `game/*` (Hard Rule)
+
+- `game/*` is orchestration-only.
+- `game/*` can coordinate cross-module actions, but must not hold long-term domain-core implementations.
+- Domain-core implementations (for example board/card/parcel/plant) must live in their own domain modules.
+
+## No Redundant State-Builder Layer (Hard Rule)
+
+- Do not create files that only assemble/forward state fields without independent business value.
+- This type of "state builder" layer should not exist by default.
+- Place this logic either:
+  - directly in the entry coordination layer, or
+  - inside a real flow/domain module when it belongs to that module's responsibility.
+
+## Adaptation Ownership Rule (Hard Rule)
+
+- Screen adaptation, canvas adaptation, safe-area and scale calculation logic must be placed in `core` adaptation module (for example: `core/adaptive/*`).
+- Do not place adaptation logic under business module folders.
 
 ## Baseline Managers (create only when missing)
 
@@ -62,7 +86,7 @@ description: Enforces this project's highest-priority coding conventions: MVC-st
 
 ## Module Directory Standard
 
-When creating a feature module (example: `card`), use:
+When creating a feature module (example: `card`), prefer this structure when needed:
 
 - `assets/src/card/CardManager.ts`
 - `assets/src/card/model/CardModelBase.ts`
@@ -75,6 +99,10 @@ When creating a feature module (example: `card`), use:
 
 For another module (example: `parcel`), keep the same structure with module name replacement.
 
+- Important:
+  - This is a recommended structure, not a mandatory requirement that every module must include all layers.
+  - Do not add empty model/view layers just to satisfy structure.
+
 ## Enum/Type/Interface Naming Rule
 
 Inside `<ModuleName>Enum.ts`, follow:
@@ -85,15 +113,32 @@ Inside `<ModuleName>Enum.ts`, follow:
 - `<module>` must be lowercase (for example: `card`, `parcel`, `audio`).
 - Use camelCase style for meaningful name segments.
 
+## Manager Debug Exposure Safety
+
+- If manager instance is attached to `window` for debugging, always guard runtime environment first:
+  - use `if (typeof window !== 'undefined') { ... }`
+  - then assign `window['<module>Manager'] = <module>Manager`
+
 ## View File Size Rule
 
 - Files under `view/*` should stay within about 300 lines.
 - This is a soft limit. Decide by readability and complexity, not by hard cutoff only.
 - If a view contains complex internal components, prefer splitting into `item` or `panel`.
 - Goal: lower reading and maintenance complexity.
+- View implementation files must remain clean:
+  - remove unused methods/fields/imports,
+  - keep only façade-level responsibilities in view entry classes,
+  - move interaction/render/math-heavy details into focused modules.
 - For `Manager` files, keep single-responsibility and uniqueness:
   - for example, `AudioManager` manages audio only,
   - do not mix unrelated module logic into one manager.
+
+## Type File Single-Responsibility Rule (Hard Rule)
+
+- Do not create "all-in-one" type files that mix multiple domain concerns.
+- Split types by domain responsibility.
+- Cross-domain shared types should be minimal and stable.
+- Transitional re-export files are allowed temporarily, but should be removed step-by-step.
 
 ## Utility Placement Rule
 
@@ -102,6 +147,14 @@ Inside `<ModuleName>Enum.ts`, follow:
   - `ArrayUtils.ts`,
   - `ColorUtils.ts`.
 - Module-specific helpers must stay in that module’s `utils/*`.
+
+## Constant Placement Rule
+
+- Global constants shared across modules should be placed in:
+  - `assets/src/GlobalConst.ts`
+- Module-scoped constants should be placed in that module folder using:
+  - `<ModuleName>Const.ts`
+  - for example: `assets/src/card/CardConst.ts`, `assets/src/parcel/ParcelConst.ts`
 
 ## Temporary Test Code Rule
 
@@ -178,3 +231,6 @@ If any of these are unclear, stop and ask user before proceeding:
   - `SKILL.md` (current English-oriented master)
   - `SKILL.zh-CN.md` (Chinese simplified version)
 - Any maintenance must update both files in the same change, and keep semantics consistent.
+- Rule writing format requirement:
+  - Keep rule body generic and stable (no heavy dependence on current concrete filenames).
+  - Put concrete project file references in examples/appendix only when needed.
