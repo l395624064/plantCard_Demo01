@@ -1,6 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
+version: 20260413-111350
 ---
 
 # 代码习惯skill（项目级）
@@ -271,6 +272,15 @@ If any of these are unclear, stop and ask user before proceeding:
 - whether 300-line view limit is strict or soft,
 - exceptions to naming prefixes in `<ModuleName>Enum.ts`,
 - whether any manager needs temporary cross-module orchestration.
+
+## Skill Versioning Rule (Mandatory)
+
+- This skill must always maintain an explicit version number.
+- Version format must use the current date-time timestamp:
+  - `yyyyMMdd-HHmmss`
+- Every skill update must bump the version to a new current timestamp.
+- If newly added rules include extra user-provided constraints or special instructions, classify the change as a major update.
+- Keep versioning semantics synchronized in both `SKILL.md` and `SKILL.zh-CN.md`.
 
 ## Skill Change Governance (Mandatory)
 
