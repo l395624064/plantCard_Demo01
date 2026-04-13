@@ -35,6 +35,7 @@ import {
     fn_game_preplace_refresh_arc_only,
     fn_game_preplace_state2_drag_move_for_view,
     fn_game_preplace_sync_bar,
+    fn_game_preplace_unbind_state2_drag_input_for_view,
 } from './flow/view/panel/PreplacePanel';
 import { fn_game_start_hand_refill_animation_for_view } from './flow/view/panel/HandRefillAnimator';
 import {
@@ -61,6 +62,7 @@ import {
     fn_game_view_enter_preplace2_for_view,
     fn_game_view_is_point_inside_any_preplace_button_for_view,
     fn_game_view_is_point_inside_node,
+    fn_game_view_is_pointer_near_locked_preview_for_view,
     fn_game_view_is_preplace_board_input_suppressed,
     fn_game_view_layout_preplace_buttons_for_view,
     fn_game_view_on_global_mouse_down_for_view,
@@ -205,6 +207,10 @@ export class GameView {
 
     public render(state: GameViewState): void {
         try {
+            // Placement confirmed by game flow: leave preplace state immediately.
+            if (this.preplacePhase === 'preplace2' && !state.preplaceLocked) {
+                fn_game_preplace_cancel_flow_for_view(this, false);
+            }
             if (this.pendingHandRefillAnim) {
                 const p = this.pendingHandRefillAnim;
                 this.pendingHandRefillAnim = null;
@@ -338,11 +344,7 @@ export class GameView {
     private endState2BoardDrag(): void {
         this.preplace2PointerDown = false;
         this.preplace2BoardDragging = false;
-        input.off(Input.EventType.TOUCH_MOVE, this.onState2BoardDragMoveTouch, this);
-        input.off(Input.EventType.TOUCH_END, this.onState2BoardDragEndTouch, this);
-        input.off(Input.EventType.TOUCH_CANCEL, this.onState2BoardDragEndTouch, this);
-        input.off(Input.EventType.MOUSE_MOVE, this.onState2BoardDragMoveMouse, this);
-        input.off(Input.EventType.MOUSE_UP, this.onState2BoardDragEndMouse, this);
+        fn_game_preplace_unbind_state2_drag_input_for_view(this);
     }
 
     private isPreplaceBoardInputSuppressed(): boolean {
@@ -359,6 +361,10 @@ export class GameView {
 
     private isPointInsideAnyPreplaceButton(uiX: number, uiY: number): boolean {
         return fn_game_view_is_point_inside_any_preplace_button_for_view(this, uiX, uiY);
+    }
+
+    private isPointerNearLockedPreview(boardTransform: UITransform, uiX: number, uiY: number): boolean {
+        return fn_game_view_is_pointer_near_locked_preview_for_view(this, boardTransform, uiX, uiY);
     }
 
     private onRootTouchMove(event: EventTouch): void {

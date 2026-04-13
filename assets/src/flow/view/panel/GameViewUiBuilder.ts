@@ -1,7 +1,5 @@
 import {
     Color,
-    EventMouse,
-    EventTouch,
     Graphics,
     HorizontalTextAlignment,
     Layers,
@@ -24,10 +22,7 @@ import {
     fn_game_view_layout_preplace_buttons_for_view,
     fn_game_view_set_preplace_button_base_pos,
 } from './GameViewInteractionController';
-import {
-    fn_game_preplace_cancel_flow_for_view,
-    fn_game_preplace_on_board_pointer_down_for_view,
-} from './PreplacePanel';
+import { fn_game_preplace_cancel_flow_for_view } from './PreplacePanel';
 
 function clamp(value: number, min: number, max: number): number {
     return Math.max(min, Math.min(max, value));
@@ -74,17 +69,6 @@ function fn_game_view_create_board_plant_cell_view(parent: Node, name: string, c
 export function fn_game_view_create_board_for_view(view: any): Node {
     const board = fn_game_view_make_panel('Board', view.boardSize, view.boardSize, 0, view.boardCenterY, makeColor(248, 243, 224, 255));
     view.root.addChild(board);
-
-    const boardTransform = board.getComponent(UITransform)!;
-    board.on(Node.EventType.TOUCH_START, (event: EventTouch) => {
-        fn_game_preplace_on_board_pointer_down_for_view(view, boardTransform, event.getUILocation().x, event.getUILocation().y);
-    });
-    board.on(Node.EventType.MOUSE_DOWN, (event: EventMouse) => {
-        if (event.getButton() !== EventMouse.BUTTON_LEFT) {
-            return;
-        }
-        fn_game_preplace_on_board_pointer_down_for_view(view, boardTransform, event.getUILocation().x, event.getUILocation().y);
-    });
 
     const cellSize = view.boardSize / BOARD_COLS;
     const parcelLayer = fn_game_view_make_node('BoardParcelLayer', view.boardSize, view.boardSize, 0, 0);

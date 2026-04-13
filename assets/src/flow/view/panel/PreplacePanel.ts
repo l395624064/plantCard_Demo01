@@ -38,7 +38,9 @@ export function fn_game_preplace_sync_bar(
     if (!preplaceBar) {
         return;
     }
-    preplaceBar.active = state.preplaceLocked;
+    // State2 dragging should focus on moving preview only:
+    // hide action buttons while dragging, restore after drag end.
+    preplaceBar.active = state.preplaceLocked && !preplace2BoardDragging;
     let opacity = preplaceBar.getComponent(UIOpacity);
     if (!opacity) {
         opacity = preplaceBar.addComponent(UIOpacity);
@@ -136,10 +138,9 @@ export function fn_game_preplace_refresh_arc_and_bar_position(
 }
 
 interface interface_game_preplace_board_pointer_context {
-    canStartBoardPointer: () => boolean;
+    canStartBoardPointer: (uiX: number, uiY: number) => boolean;
     isPointInsideAnyPreplaceButton: (uiX: number, uiY: number) => boolean;
-    resolveAnchor: (uiX: number, uiY: number) => GridPos | null;
-    onBeginBoardPointer: (anchor: GridPos, uiX: number, uiY: number) => void;
+    onBeginBoardPointer: (uiX: number, uiY: number) => void;
 }
 
 export function fn_game_preplace_on_board_pointer_down(
@@ -147,17 +148,13 @@ export function fn_game_preplace_on_board_pointer_down(
     uiX: number,
     uiY: number,
 ): void {
-    if (!context.canStartBoardPointer()) {
+    if (!context.canStartBoardPointer(uiX, uiY)) {
         return;
     }
     if (context.isPointInsideAnyPreplaceButton(uiX, uiY)) {
         return;
     }
-    const anchor = context.resolveAnchor(uiX, uiY);
-    if (!anchor) {
-        return;
-    }
-    context.onBeginBoardPointer(anchor, uiX, uiY);
+    context.onBeginBoardPointer(uiX, uiY);
 }
 
 interface interface_game_preplace_state2_drag_context {
@@ -250,6 +247,22 @@ export function fn_game_preplace_cancel_flow(
     }
 }
 
+export function fn_game_preplace_bind_state2_drag_input_for_view(view: any): void {
+    input.on(Input.EventType.TOUCH_MOVE, view.onState2BoardDragMoveTouch, view);
+    input.on(Input.EventType.TOUCH_END, view.onState2BoardDragEndTouch, view);
+    input.on(Input.EventType.TOUCH_CANCEL, view.onState2BoardDragEndTouch, view);
+    input.on(Input.EventType.MOUSE_MOVE, view.onState2BoardDragMoveMouse, view);
+    input.on(Input.EventType.MOUSE_UP, view.onState2BoardDragEndMouse, view);
+}
+
+export function fn_game_preplace_unbind_state2_drag_input_for_view(view: any): void {
+    input.off(Input.EventType.TOUCH_MOVE, view.onState2BoardDragMoveTouch, view);
+    input.off(Input.EventType.TOUCH_END, view.onState2BoardDragEndTouch, view);
+    input.off(Input.EventType.TOUCH_CANCEL, view.onState2BoardDragEndTouch, view);
+    input.off(Input.EventType.MOUSE_MOVE, view.onState2BoardDragMoveMouse, view);
+    input.off(Input.EventType.MOUSE_UP, view.onState2BoardDragEndMouse, view);
+}
+
 // Lean wrappers for GameViewImpl to keep main file shorter.
 export function fn_game_preplace_on_board_pointer_down_for_view(
     view: any,
@@ -257,22 +270,23 @@ export function fn_game_preplace_on_board_pointer_down_for_view(
     uiX: number,
     uiY: number,
 ): void {
+    if (view.preplace2PointerDown) {
+        view.preplace2PointerDown = false;
+        view.preplace2BoardDragging = false;
+        fn_game_preplace_unbind_state2_drag_input_for_view(view);
+    }
     fn_game_preplace_on_board_pointer_down({
-        canStartBoardPointer: () => view.preplacePhase === 'preplace2'
-            && !view.preplace2PointerDown
-            && !view.isPreplaceBoardInputSuppressed(),
+        // State2 drag should start by grabbing the locked preview itself,
+        // not by clicking any board cell to snap immediately.
+        canStartBoardPointer: (x, y) => view.preplacePhase === 'preplace2'
+            && !view.isPreplaceBoardInputSuppressed()
+            && view.isPointerNearLockedPreview(boardTransform, x, y),
         isPointInsideAnyPreplaceButton: (x, y) => view.isPointInsideAnyPreplaceButton(x, y),
-        resolveAnchor: (x, y) => view.resolveAnchor(boardTransform, x, y),
-        onBeginBoardPointer: (anchor, x, y) => {
+        onBeginBoardPointer: (x, y) => {
             view.preplace2PointerDown = true;
             view.preplace2PointerStartX = x;
             view.preplace2PointerStartY = y;
-            view.callbacks.onLockedPreplaceAnchorUpdate(anchor);
-            input.on(Input.EventType.TOUCH_MOVE, view.onState2BoardDragMoveTouch, view);
-            input.on(Input.EventType.TOUCH_END, view.onState2BoardDragEndTouch, view);
-            input.on(Input.EventType.TOUCH_CANCEL, view.onState2BoardDragEndTouch, view);
-            input.on(Input.EventType.MOUSE_MOVE, view.onState2BoardDragMoveMouse, view);
-            input.on(Input.EventType.MOUSE_UP, view.onState2BoardDragEndMouse, view);
+            fn_game_preplace_bind_state2_drag_input_for_view(view);
         },
     }, uiX, uiY);
 }
@@ -305,8 +319,11 @@ export function fn_game_preplace_update_tracking_for_view(view: any, uiX: number
             view.root.off(Node.EventType.TOUCH_MOVE, view.onRootTouchMove, view);
             view.root.off(Node.EventType.TOUCH_END, view.onRootTouchEnd, view);
             view.root.off(Node.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
+            input.off(Input.EventType.TOUCH_END, view.onRootTouchEnd, view);
+            input.off(Input.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
             view.root.off(Node.EventType.MOUSE_MOVE, view.onRootMouseMove, view);
             view.root.off(Node.EventType.MOUSE_UP, view.onRootMouseUp, view);
+            input.off(Input.EventType.MOUSE_UP, view.onRootMouseUp, view);
         },
         cancelFlow: () => view.cancelPreplaceFlow(),
         enterState2: (anchor) => view.enterPreplace2(anchor),
@@ -324,8 +341,11 @@ export function fn_game_preplace_finish_track_for_view(view: any, uiX: number, u
             view.root.off(Node.EventType.TOUCH_MOVE, view.onRootTouchMove, view);
             view.root.off(Node.EventType.TOUCH_END, view.onRootTouchEnd, view);
             view.root.off(Node.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
+            input.off(Input.EventType.TOUCH_END, view.onRootTouchEnd, view);
+            input.off(Input.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
             view.root.off(Node.EventType.MOUSE_MOVE, view.onRootMouseMove, view);
             view.root.off(Node.EventType.MOUSE_UP, view.onRootMouseUp, view);
+            input.off(Input.EventType.MOUSE_UP, view.onRootMouseUp, view);
         },
         cancelFlow: () => view.cancelPreplaceFlow(),
         enterState2: (anchor) => view.enterPreplace2(anchor),

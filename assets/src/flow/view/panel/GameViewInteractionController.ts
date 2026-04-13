@@ -82,6 +82,8 @@ export function fn_game_view_on_global_touch_start_for_view(view: any, event: Ev
     }
     fn_game_view_try_close_gm_popup_for_view(view, loc.x, loc.y);
     if (view.preplacePhase === 'preplace2') {
+        // Unified state2 drag start entry:
+        // all pointer-down checks route through this global handler.
         const boardTransform = view.boardNode.getComponent(UITransform)!;
         fn_game_preplace_on_board_pointer_down_for_view(view, boardTransform, loc.x, loc.y);
     }
@@ -145,22 +147,21 @@ export function fn_game_view_is_pointer_near_locked_preview_for_view(
     uiX: number,
     uiY: number,
 ): boolean {
-    const anchor = view.lastRenderState?.preview?.anchor ?? null;
-    const bounds = fn_game_view_get_active_placement_bounds_for_view(view);
-    if (!anchor || bounds.width <= 0 || bounds.height <= 0) {
+    const preview = view.lastRenderState?.preview;
+    if (!preview) {
         return false;
     }
     const cellSize = view.boardSize / BOARD_COLS;
-    const left = -view.boardSize / 2 + anchor.x * cellSize;
-    const top = view.boardSize / 2 - anchor.y * cellSize;
-    const width = bounds.width * cellSize;
-    const height = bounds.height * cellSize;
-    const pad = cellSize * 0.38;
+    const half = view.boardSize / 2;
     const local = boardTransform.convertToNodeSpaceAR(new Vec3(uiX, uiY, 0));
-    return local.x >= left - pad
-        && local.x <= left + width + pad
-        && local.y <= top + pad
-        && local.y >= top - height - pad;
+    if (local.x < -half || local.x >= half || local.y <= -half || local.y > half) {
+        return false;
+    }
+    const pointerCellX = Math.floor((local.x + half) / cellSize);
+    const pointerCellY = Math.floor((half - local.y) / cellSize);
+    return preview.cells.some((cell: any) => !cell.blocked
+        && cell.x === pointerCellX
+        && cell.y === pointerCellY);
 }
 
 export function fn_game_view_get_active_placement_bounds_for_view(view: any): { width: number; height: number } {
@@ -221,8 +222,11 @@ export function fn_game_view_try_begin_preplace_for_view(view: any, index: numbe
     view.root.on(Node.EventType.TOUCH_MOVE, view.onRootTouchMove, view);
     view.root.on(Node.EventType.TOUCH_END, view.onRootTouchEnd, view);
     view.root.on(Node.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
+    input.on(Input.EventType.TOUCH_END, view.onRootTouchEnd, view);
+    input.on(Input.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
     view.root.on(Node.EventType.MOUSE_MOVE, view.onRootMouseMove, view);
     view.root.on(Node.EventType.MOUSE_UP, view.onRootMouseUp, view);
+    input.on(Input.EventType.MOUSE_UP, view.onRootMouseUp, view);
 }
 
 export function fn_game_view_on_root_touch_move_for_view(view: any, event: EventTouch): void {
@@ -271,8 +275,11 @@ export function fn_game_view_teardown_tracking_listeners_for_view(view: any): vo
     view.root.off(Node.EventType.TOUCH_MOVE, view.onRootTouchMove, view);
     view.root.off(Node.EventType.TOUCH_END, view.onRootTouchEnd, view);
     view.root.off(Node.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
+    input.off(Input.EventType.TOUCH_END, view.onRootTouchEnd, view);
+    input.off(Input.EventType.TOUCH_CANCEL, view.onRootTouchEnd, view);
     view.root.off(Node.EventType.MOUSE_MOVE, view.onRootMouseMove, view);
     view.root.off(Node.EventType.MOUSE_UP, view.onRootMouseUp, view);
+    input.off(Input.EventType.MOUSE_UP, view.onRootMouseUp, view);
 }
 
 export function fn_game_view_draw_drag_arrow_for_view(view: any, fromLocal: Vec3, toLocal: Vec3): void {
