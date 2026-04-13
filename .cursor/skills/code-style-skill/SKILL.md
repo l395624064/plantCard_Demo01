@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260413-195109
+version: 20260413-204342
 ---
 
 # 代码习惯skill（项目级）
@@ -228,6 +228,75 @@ Inside `<ModuleName>Enum.ts`, follow:
 
 - Disable feature flag, remove integration entry, delete `mvp_<feature>` directory.
 - Ensure main flow remains behaviorally unchanged after removal.
+
+## Contract Mode Rule (Hard Rule)
+
+- Contract mode is an optional development mode and is disabled by default.
+- Core goal:
+  - reduce "requirement semantics vs runtime behavior" risk,
+  - convert user intent into executable contracts before implementation.
+- Trigger:
+  - user explicitly requests contract mode, or
+  - assistant identifies high ambiguity and asks whether to enable contract mode first.
+- Exit:
+  - user can exit contract mode at any time and switch to default mode.
+  - before switching, assistant must summarize confirmed contract facts to avoid context loss.
+
+### Contract Mode Workflow
+
+1. Contract collection phase (no coding).
+2. Contract confirmation phase (user confirms contract items).
+3. Implementation phase (strictly follow confirmed contract).
+4. Regression phase (validate through executable regression items).
+
+- Assistant must not enter implementation before contract confirmation completes.
+
+### Contract Input Styles
+
+- Fill-in template mode (beginner-friendly):
+  - assistant provides a template,
+  - each field must include short example guidance,
+  - if user asks, assistant should provide a simple filled sample for reference.
+- Q&A tree mode (assistant-led):
+  - ask 1-3 core questions per round,
+  - each round must include estimated remaining rounds,
+  - if answer is ambiguous/incomplete for implementation needs, assistant must continue follow-up questions.
+
+### Contract Compliance Rule
+
+- If user responses do not satisfy contract format/quality:
+  - assistant must request normalized answer based on the mode format, or
+  - ask whether to exit contract mode.
+- Assistant must not guess and implement with insufficient contract facts under contract mode.
+
+### Executable Regression Item Rule
+
+- Contract mode outputs must include executable regression items.
+- Each regression item must include:
+  - explicit user operation step,
+  - explicit expected observable result.
+- Avoid abstract-only statements like "should be fine".
+- Recommend at least 3 items; interaction-heavy features should use 5+ items.
+
+### Mode Selection Communication Rule
+
+- When user requests new feature development without explicit mode choice, assistant must ask mode selection first.
+- Assistant should provide concise mode summary including:
+  - target user type,
+  - key benefit,
+  - required user input.
+- Current modes:
+  - default mode (speed-first),
+  - MVP mode (experiment-first),
+  - contract mode (semantic-stability-first).
+
+### Mode Metadata Rule
+
+- Any newly added development mode must include:
+  - target user type,
+  - applicable scenarios,
+  - required user inputs,
+  - cost/benefit tradeoff summary.
 
 ## Utility Placement Rule
 
