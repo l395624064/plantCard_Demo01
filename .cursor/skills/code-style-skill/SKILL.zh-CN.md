@@ -2,7 +2,7 @@
 
 > 本文件为 `SKILL.md` 的中文简版说明，语义必须与 `SKILL.md` 保持一致。
 
-> 当前版本号：`20260413-111350`
+> 当前版本号：`20260413-195109`
 
 ## 适用范围与优先级
 
@@ -106,6 +106,46 @@ Model 使用要求：
 - `<module>` 必须小写（如 `card`、`parcel`、`audio`）；
 - 有意义字段采用驼峰式命名。
 
+## 正式模式类型安全规则（硬规则）
+
+- 正式模式（非 MVP 模式）默认避免使用 `any`。
+- `any` 仅在 `mvp_*` 模块中可不受限制使用。
+- 正式模式下，跨文件调用应尽量避免传完整 `this`。
+- 跨文件调用优先使用最小能力接口（例如 `interface_xxx_port`）。
+
+## 对外暴露规则（硬规则）
+
+- 普通模块对外默认通过 `<ModuleName>Manager` 单例暴露能力。
+- 除全局/通用项外，尽量收敛导出面：
+  - enum/type/interface/const/utils/通用方法。
+- 禁止大量无业务价值的薄转发导出函数。
+
+## Manager 体量与子模块规则（硬规则）
+
+- MVP 模式下，manager 体量不做限制。
+- 正式模式下：
+  - 主 manager 代码量较小时可内聚完整业务（软阈值约 300 行），
+  - 代码量增大或职责混杂时，必须拆分子 manager。
+- 调用方式统一为：
+  - `mainManager.subManager.method()`
+- 主 manager 持有的子 manager 单例引用应为 `readonly`。
+
+## Controller 目录规则（硬规则）
+
+- 正式模式默认不创建/不使用 `controller` 目录。
+- 输入编排逻辑应放在 view 或 view 子模块中，便于查阅与定位。
+- 流程转发优先：
+  - 单向通知使用 `eventManager.emit(...)`，
+  - 需要返回值或同步决策时，直接调用 manager（或子 manager）。
+- 禁止新增仅做转发且无独立价值的 controller 文件。
+- MVP 模式可临时放宽，转正时必须回收并对齐正式规则。
+
+## Service 文件规则（硬规则）
+
+- 默认不允许创建独立 `*Service.ts` 文件或 `service/*` 目录。
+- 优先使用 manager 子模块化。
+- 允许 `serviceManager` 作为 manager 下的子域命名（例如 `xxxManager.serviceManager`）。
+
 ## Manager 调试挂载安全规则
 
 - 若需要把 manager 单例挂到 `window` 便于调试，必须先做运行环境判断：
@@ -181,6 +221,10 @@ Model 使用要求：
 
 - 高复用、跨模块工具放全局工具（如 `TweenUtils.ts`、`ArrayUtils.ts`、`ColorUtils.ts`）。
 - 仅模块内部使用的工具放 `<module>/utils/*`。
+- 模块内 utils 允许依赖同模块 manager/model，以减少无意义碎片化。
+- 对外尽量保持单入口调用：
+  - 外部只调用一个公开方法，
+  - 内部可拆分私有步骤，但不向外暴露实现细节。
 
 ## 常量放置规范
 
@@ -205,6 +249,7 @@ Model 使用要求：
 - 事件命名使用下划线风格：
   - 模块事件：`card_xxx`、`parcel_xxx`、`audio_xxx`
   - 公共事件：`app_xxx` 或 `global_xxx`
+- 例外：专门的全局事件定义文件（如 `EventEnum`）可使用较长、语义完整的事件命名。
 - `EventManager` 使用全局单例方式（不引入 Sender 包装层）。
 - Manager 生命周期事件处理约束：
   - 在 `addEvents()` 注册

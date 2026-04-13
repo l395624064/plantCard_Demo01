@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260413-111350
+version: 20260413-195109
 ---
 
 # 代码习惯skill（项目级）
@@ -114,6 +114,46 @@ Inside `<ModuleName>Enum.ts`, follow:
 - `<module>` must be lowercase (for example: `card`, `parcel`, `audio`).
 - Use camelCase style for meaningful name segments.
 
+## Formal Mode Type-Safety Rule (Hard Rule)
+
+- In formal (non-MVP) modules, avoid `any` by default.
+- `any` is allowed without restriction only in `mvp_*` modules.
+- In formal modules, avoid passing full `this` across files.
+- Prefer minimal capability interfaces (for example `interface_xxx_port`) for cross-file calls.
+
+## External Exposure Rule (Hard Rule)
+
+- For regular modules, external access should be exposed through `<ModuleName>Manager` singleton by default.
+- Keep export surface minimal except global/common items:
+  - enum/type/interface/const/utils/common helpers.
+- Avoid large sets of thin exported forwarding functions.
+
+## Manager Size And Sub-Manager Rule (Hard Rule)
+
+- In MVP mode, manager size is unrestricted.
+- In formal mode:
+  - a main manager may keep complete business logic when size is small (soft threshold about 300 lines),
+  - when size grows or responsibilities mix, split into sub-managers.
+- Call style should remain explicit:
+  - `mainManager.subManager.method()`
+- Main manager should hold sub-manager singleton references as `readonly`.
+
+## Controller Directory Rule (Hard Rule)
+
+- In formal mode, do not create/use `controller` directory by default.
+- Input orchestration should stay in view/view-submodules for easier reading.
+- Flow forwarding should prefer:
+  - `eventManager.emit(...)` for one-way notifications,
+  - direct manager (or sub-manager) calls when return values/synchronous decisions are required.
+- Do not add controller files that only forward calls without independent value.
+- MVP mode may relax this temporarily, but promotion must align to formal rules.
+
+## Service File Rule (Hard Rule)
+
+- Do not create standalone `*Service.ts` files or `service/*` directories by default.
+- Prefer manager sub-modules.
+- Naming like `serviceManager` is allowed only as a sub-domain under manager (for example `xxxManager.serviceManager`).
+
 ## Manager Debug Exposure Safety
 
 - If manager instance is attached to `window` for debugging, always guard runtime environment first:
@@ -196,6 +236,10 @@ Inside `<ModuleName>Enum.ts`, follow:
   - `ArrayUtils.ts`,
   - `ColorUtils.ts`.
 - Module-specific helpers must stay in that module’s `utils/*`.
+- Module-level utils are allowed to depend on same-module manager/model when this reduces unnecessary fragmentation.
+- Keep external API as single-entry where practical:
+  - callers should invoke one public method,
+  - internal helper chain stays encapsulated inside utils implementation.
 
 ## Constant Placement Rule
 
@@ -221,6 +265,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Event naming uses underscore style (snake-like segments):
   - module events: `card_xxx`, `parcel_xxx`, `audio_xxx`
   - common/app events: `app_xxx` or `global_xxx`
+- Exception: in dedicated global event definition modules (for example `EventEnum`), long descriptive event names are acceptable when readability is improved.
 - `EventManager` is a global singleton style service (no Sender wrapper layer).
 - Manager event lifecycle must follow:
   - register in `addEvents()`
