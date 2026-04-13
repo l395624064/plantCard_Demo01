@@ -159,6 +159,35 @@ Inside `<ModuleName>Enum.ts`, follow:
   - testability/isolation needs,
   - explicit user request.
 
+## MVP Mode Rule (Hard Rule)
+
+- When user explicitly asks:
+  - "`<feature>` module use MVP mode development"
+  - "`<feature>` module promote from MVP mode to formal code"
+  the agent must follow MVP lifecycle defaults below without requiring extra prompt templates.
+- Optional third command is supported:
+  - "`<feature>` MVP plan is discarded"
+
+### MVP Development Default Behavior
+
+- Create and implement under:
+  - `assets/src/mvp_<feature>/*`
+- Enforce three mandatory constraints:
+  1. single entry integration (`Mvp<Feature>Entry.ts` as the only integration entry),
+  2. explicit feature flag (can be disabled without changing main flow behavior),
+  3. no core contract pollution (do not modify shared contracts in `core/*` or `flow/*` during MVP stage unless user explicitly requests).
+
+### MVP Promotion Default Behavior
+
+- Move retained MVP logic into formal modules following this skill (flow/core/domain boundaries).
+- Remove MVP-only temporary coupling and align naming/path conventions.
+- Clean up `mvp_<feature>` directory and integration leftovers after promotion.
+
+### MVP Discard Default Behavior
+
+- Disable feature flag, remove integration entry, delete `mvp_<feature>` directory.
+- Ensure main flow remains behaviorally unchanged after removal.
+
 ## Utility Placement Rule
 
 - Frequently reused cross-module tools should be global utilities, for example:
