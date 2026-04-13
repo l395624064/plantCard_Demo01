@@ -17,7 +17,6 @@ import {
     tween,
 } from 'cc';
 import {
-    BOARD_COLS,
     HAND_SIZE,
 } from './GlobalConst';
 import { Rotation, GridPos } from './core/types/BaseGameTypes';
@@ -44,6 +43,7 @@ import {
     fn_game_view_create_preplace_bar_for_view,
 } from './flow/view/panel/GameViewUiBuilder';
 import {
+    fn_game_preview_cells_to_root_center,
     fn_game_sync_preview_rotate_tween_for_view,
 } from './flow/view/panel/PreviewGeometry';
 import {
@@ -65,10 +65,6 @@ import {
     fn_game_view_layout_preplace_buttons_for_view,
     fn_game_view_on_global_mouse_down_for_view,
     fn_game_view_on_global_touch_start_for_view,
-    fn_game_view_on_hand_card_mouse_down_for_view,
-    fn_game_view_on_hand_card_mouse_enter_for_view,
-    fn_game_view_on_hand_card_mouse_leave_for_view,
-    fn_game_view_on_hand_card_touch_start_for_view,
     fn_game_view_on_root_mouse_move_for_view,
     fn_game_view_on_root_mouse_up_for_view,
     fn_game_view_on_root_touch_end_for_view,
@@ -194,7 +190,7 @@ export class GameView {
         this.root = root;
         this.callbacks = callbacks;
         this.root.removeAllChildren();
-        this.measureLayout();
+        fn_game_view_measure_layout_for_view(this, HAND_SIZE);
 
         fn_game_view_create_background_for_view(this);
         this.topInfoView = fn_game_view_create_top_info_for_view(this);
@@ -313,22 +309,18 @@ export class GameView {
     }
 
     private onState2BoardDragMoveTouch(event: EventTouch): void {
-        this.state2BoardDragMove(event.getUILocation().x, event.getUILocation().y);
+        fn_game_preplace_state2_drag_move_for_view(this, event.getUILocation().x, event.getUILocation().y);
     }
 
     private onState2BoardDragMoveMouse(event: EventMouse): void {
-        this.state2BoardDragMove(event.getUILocation().x, event.getUILocation().y);
-    }
-
-    private state2BoardDragMove(uiX: number, uiY: number): void {
-        fn_game_preplace_state2_drag_move_for_view(this, uiX, uiY);
+        fn_game_preplace_state2_drag_move_for_view(this, event.getUILocation().x, event.getUILocation().y);
     }
 
     private onState2BoardDragEndTouch(): void {
         const hadDragged = this.preplace2BoardDragging;
         this.endState2BoardDrag();
         if (hadDragged) {
-            this.playPreviewDropPulse();
+            fn_game_view_play_preview_drop_pulse_for_view(this);
         }
     }
 
@@ -339,7 +331,7 @@ export class GameView {
         const hadDragged = this.preplace2BoardDragging;
         this.endState2BoardDrag();
         if (hadDragged) {
-            this.playPreviewDropPulse();
+            fn_game_view_play_preview_drop_pulse_for_view(this);
         }
     }
 
@@ -357,10 +349,6 @@ export class GameView {
         return fn_game_view_is_preplace_board_input_suppressed(this);
     }
 
-    private layoutPreplaceButtons(useTopStack: boolean): void {
-        fn_game_view_layout_preplace_buttons_for_view(this, useTopStack);
-    }
-
     private onGlobalTouchStart(event: EventTouch): void {
         fn_game_view_on_global_touch_start_for_view(this, event);
     }
@@ -371,26 +359,6 @@ export class GameView {
 
     private isPointInsideAnyPreplaceButton(uiX: number, uiY: number): boolean {
         return fn_game_view_is_point_inside_any_preplace_button_for_view(this, uiX, uiY);
-    }
-
-    private onHandCardTouchStart(index: number, event: EventTouch): void {
-        fn_game_view_on_hand_card_touch_start_for_view(this, index, event);
-    }
-
-    private onHandCardMouseDown(index: number, event: EventMouse): void {
-        fn_game_view_on_hand_card_mouse_down_for_view(this, index, event);
-    }
-
-    private onHandCardMouseEnter(index: number): void {
-        fn_game_view_on_hand_card_mouse_enter_for_view(this, index);
-    }
-
-    private onHandCardMouseLeave(index: number): void {
-        fn_game_view_on_hand_card_mouse_leave_for_view(this, index);
-    }
-
-    private tryBeginPreplace(index: number, pointerYUi?: number): void {
-        fn_game_view_try_begin_preplace_for_view(this, index, pointerYUi);
     }
 
     private onRootTouchMove(event: EventTouch): void {
@@ -429,9 +397,9 @@ export class GameView {
             rootWidth: this.rootWidth,
             rootHeight: this.rootHeight,
             boardSize: this.boardSize,
-            layoutPreplaceButtons: (useTopStack) => this.layoutPreplaceButtons(useTopStack),
+            layoutPreplaceButtons: (useTopStack) => fn_game_view_layout_preplace_buttons_for_view(this, useTopStack),
             refreshArcOnly: () => this.refreshArcOnly(),
-            previewCellsToRootCenter: (cells) => this.previewCellsToRootCenter(cells),
+            previewCellsToRootCenter: (cells) => fn_game_preview_cells_to_root_center(this.root, this.boardNode, this.boardSize, cells),
         }, state);
     }
 
@@ -444,42 +412,10 @@ export class GameView {
             handViews: this.handViews,
             lastRenderState: this.lastRenderState,
             root: this.root,
-            previewCellsToRootCenter: (cells) => this.previewCellsToRootCenter(cells),
-            drawPreplaceGuideLine: (fromLocal, toLocal) => this.drawPreplaceGuideLine(fromLocal, toLocal),
-            drawDragArrow: (fromLocal, toLocal) => this.drawDragArrow(fromLocal, toLocal),
+            previewCellsToRootCenter: (cells) => fn_game_preview_cells_to_root_center(this.root, this.boardNode, this.boardSize, cells),
+            drawPreplaceGuideLine: (fromLocal, toLocal) => fn_game_view_draw_preplace_guide_line_for_view(this, fromLocal, toLocal),
+            drawDragArrow: (fromLocal, toLocal) => fn_game_view_draw_drag_arrow_for_view(this, fromLocal, toLocal),
         });
-    }
-
-    private previewCellsToRootCenter(cells: { x: number; y: number }[]): Vec3 {
-        const boardCenter = this.previewCellsToBoardCenter(cells);
-        const rootTransform = this.root.getComponent(UITransform)!;
-        const boardTransform = this.boardNode.getComponent(UITransform)!;
-        const world = boardTransform.convertToWorldSpaceAR(boardCenter);
-        return rootTransform.convertToNodeSpaceAR(world);
-    }
-
-    private previewCellsToBoardCenter(cells: { x: number; y: number }[]): Vec3 {
-        const minX = Math.min(...cells.map((cell) => cell.x));
-        const maxX = Math.max(...cells.map((cell) => cell.x));
-        const minY = Math.min(...cells.map((cell) => cell.y));
-        const maxY = Math.max(...cells.map((cell) => cell.y));
-        const cellSize = this.boardSize / BOARD_COLS;
-        const half = this.boardSize / 2;
-        const bx = -half + (minX + maxX + 1) * cellSize / 2;
-        const by = half - (minY + maxY + 1) * cellSize / 2;
-        return new Vec3(bx, by, 0);
-    }
-
-    private drawDragArrow(fromLocal: Vec3, toLocal: Vec3): void {
-        fn_game_view_draw_drag_arrow_for_view(this, fromLocal, toLocal);
-    }
-
-    private drawPreplaceGuideLine(fromLocal: Vec3, toLocal: Vec3): void {
-        fn_game_view_draw_preplace_guide_line_for_view(this, fromLocal, toLocal);
-    }
-
-    private playPreviewDropPulse(): void {
-        fn_game_view_play_preview_drop_pulse_for_view(this);
     }
 
     public resetTimeWheel(): void {
@@ -504,7 +440,4 @@ export class GameView {
         return fn_game_view_resolve_anchor_for_view(this, boardTransform, uiX, uiY);
     }
 
-    private measureLayout(): void {
-        fn_game_view_measure_layout_for_view(this, HAND_SIZE);
-    }
 }

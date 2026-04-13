@@ -656,7 +656,7 @@
       "uuid": "f5bc2971-e865-48bf-9246-6ea02bfe1665"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\GameViewImpl.ts": {
-      "time": 1775812171442.775,
+      "time": 1775873743641.1782,
       "uuid": "4aa89b5e-1484-44a5-acc3-2e2b6192dff4"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\game\\controller.meta": {
@@ -946,7 +946,7 @@
       "uuid": "345e4363-ba87-4d2b-8715-48b842075319"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewSceneAssembler.ts": {
-      "time": 1775806037477.8562,
+      "time": 1775873727427.4905,
       "uuid": "01ec0e99-2375-4660-a170-92178ecfe00a"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\GameViewUiBuilder.ts": {
@@ -974,7 +974,7 @@
       "uuid": "054c3ce9-6ce1-44d9-96e0-9a3be92c66fb"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\PreviewGeometry.ts": {
-      "time": 1775804071736.4204,
+      "time": 1775873615824.7666,
       "uuid": "97b9ef91-f707-46a0-a200-2c01b6bf8b2e"
     },
     "E:\\cocos\\cardDemo\\assets\\src\\flow\\view\\panel\\TopInfoPanel.ts": {

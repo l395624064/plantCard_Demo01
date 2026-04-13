@@ -22,6 +22,12 @@ import {
     fn_game_view_make_panel,
     fn_game_view_set_plant_sprite_fit,
 } from './GameViewBaseService';
+import {
+    fn_game_view_on_hand_card_mouse_down_for_view,
+    fn_game_view_on_hand_card_mouse_enter_for_view,
+    fn_game_view_on_hand_card_mouse_leave_for_view,
+    fn_game_view_on_hand_card_touch_start_for_view,
+} from './GameViewInteractionController';
 import { GAME_PLANT_SPRITE_PATHS } from '../../GameConst';
 
 function clamp(value: number, min: number, max: number): number {
@@ -131,10 +137,10 @@ export function fn_game_view_ensure_hand_view_count_for_view(view: any, count: n
             vAlignCenter: VerticalTextAlignment.CENTER,
             vAlignTop: VerticalTextAlignment.TOP,
         });
-        handCardView.node.on(Node.EventType.TOUCH_START, (event: EventTouch) => view.onHandCardTouchStart(i, event), view);
-        handCardView.node.on(Node.EventType.MOUSE_DOWN, (event: EventMouse) => view.onHandCardMouseDown(i, event), view);
-        handCardView.node.on(Node.EventType.MOUSE_ENTER, () => view.onHandCardMouseEnter(i), view);
-        handCardView.node.on(Node.EventType.MOUSE_LEAVE, () => view.onHandCardMouseLeave(i), view);
+        handCardView.node.on(Node.EventType.TOUCH_START, (event: EventTouch) => fn_game_view_on_hand_card_touch_start_for_view(view, i, event), view);
+        handCardView.node.on(Node.EventType.MOUSE_DOWN, (event: EventMouse) => fn_game_view_on_hand_card_mouse_down_for_view(view, i, event), view);
+        handCardView.node.on(Node.EventType.MOUSE_ENTER, () => fn_game_view_on_hand_card_mouse_enter_for_view(view, i), view);
+        handCardView.node.on(Node.EventType.MOUSE_LEAVE, () => fn_game_view_on_hand_card_mouse_leave_for_view(view, i), view);
         view.handPanel.addChild(handCardView.node);
         view.handViews.push(handCardView);
     }

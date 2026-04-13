@@ -1,4 +1,5 @@
-import { Graphics, Tween, tween } from 'cc';
+import { Graphics, Node, Tween, UITransform, Vec3, tween } from 'cc';
+import { BOARD_COLS } from '../../../GlobalConst';
 
 export function fn_game_rotate_point_around_pivot(
     x: number,
@@ -47,6 +48,34 @@ export function fn_game_trace_preview_rect(
     graphics.lineTo(corners[0].x, corners[0].y);
 }
 
+export function fn_game_preview_cells_to_board_center(
+    boardSize: number,
+    cells: { x: number; y: number }[],
+): Vec3 {
+    const minX = Math.min(...cells.map((cell) => cell.x));
+    const maxX = Math.max(...cells.map((cell) => cell.x));
+    const minY = Math.min(...cells.map((cell) => cell.y));
+    const maxY = Math.max(...cells.map((cell) => cell.y));
+    const cellSize = boardSize / BOARD_COLS;
+    const half = boardSize / 2;
+    const bx = -half + (minX + maxX + 1) * cellSize / 2;
+    const by = half - (minY + maxY + 1) * cellSize / 2;
+    return new Vec3(bx, by, 0);
+}
+
+export function fn_game_preview_cells_to_root_center(
+    root: Node,
+    boardNode: Node,
+    boardSize: number,
+    cells: { x: number; y: number }[],
+): Vec3 {
+    const boardCenter = fn_game_preview_cells_to_board_center(boardSize, cells);
+    const rootTransform = root.getComponent(UITransform)!;
+    const boardTransform = boardNode.getComponent(UITransform)!;
+    const world = boardTransform.convertToWorldSpaceAR(boardCenter);
+    return rootTransform.convertToNodeSpaceAR(world);
+}
+
 export function fn_game_sync_preview_rotate_tween_for_view(view: any, state: any): void {
     const preview = state.preview;
     if (!preview) {
@@ -90,8 +119,8 @@ export function fn_game_sync_preview_rotate_tween_for_view(view: any, state: any
                 ? -90
                 : 0;
         if (prevPreview) {
-            const prevCenter = view.previewCellsToBoardCenter(prevPreview.cells);
-            const nextCenter = view.previewCellsToBoardCenter(preview.cells);
+            const prevCenter = fn_game_preview_cells_to_board_center(view.boardSize, prevPreview.cells);
+            const nextCenter = fn_game_preview_cells_to_board_center(view.boardSize, preview.cells);
             view.previewRotateTweenState.offsetX = prevCenter.x - nextCenter.x;
             view.previewRotateTweenState.offsetY = prevCenter.y - nextCenter.y;
         } else {
