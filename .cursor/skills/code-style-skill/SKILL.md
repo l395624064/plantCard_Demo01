@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260414-105122
+version: 20260414-111021
 ---
 
 # 代码习惯skill（项目级）
@@ -14,7 +14,37 @@ version: 20260414-105122
 ## Scope
 
 - This is a **project skill** and only applies to this project.
-- Module root path in this repository is unified as `assets/src/<module>/*`.
+- This skill uses a two-layer model:
+  - **Core Rules**: reusable across most AI-assisted small/medium projects.
+  - **Project Profile**: project-specific paths/module aliases plugged into placeholders.
+- Before applying this skill to another project, update profile placeholders first.
+
+## Project Profile Layer (Mandatory For Portability)
+
+- Define project profile placeholders and keep them synchronized:
+  - `{{module_root}}`
+  - `{{orchestration_module}}`
+  - `{{flow_module_alias}}`
+  - `{{adaptive_module_root}}`
+  - `{{ui_manager_path}}`
+  - `{{event_manager_path}}`
+  - `{{model_manager_path}}`
+  - `{{event_definition_file}}`
+  - `{{global_const_file}}`
+  - `{{mvp_root}}`
+  - `{{module_tmp_rule}}`
+- [PROJECT EXAMPLE - NON-NORMATIVE] Current project profile example:
+  - `{{module_root}} = assets/src`
+  - `{{orchestration_module}} = game`
+  - `{{flow_module_alias}} = flow`
+  - `{{adaptive_module_root}} = core/adaptive`
+  - `{{ui_manager_path}} = assets/src/core/ui/UIManager.ts`
+  - `{{event_manager_path}} = assets/src/core/event/EventManager.ts`
+  - `{{model_manager_path}} = assets/src/core/model/ModelManager.ts`
+  - `{{event_definition_file}} = assets/src/core/event/EventEnum.ts`
+  - `{{global_const_file}} = assets/src/GlobalConst.ts`
+  - `{{mvp_root}} = assets/src/mvp_<feature>`
+  - `{{module_tmp_rule}} = assets/src/<module>/tmp/*`
 
 ## Core Architecture Rule
 
@@ -29,10 +59,10 @@ version: 20260414-105122
 - Module naming may use equivalent naming styles (for example: `flow/*` or `gameFlow/*`), but one project must use one naming style consistently.
 - Do not scatter flow-core logic into entry files, view files, or temporary helper files.
 
-## Orchestration Scope Rule For `game/*` (Hard Rule)
+## Orchestration Scope Rule (Hard Rule)
 
-- `game/*` is orchestration-only.
-- `game/*` can coordinate cross-module actions, but must not hold long-term domain-core implementations.
+- `{{orchestration_module}}/*` is orchestration-only.
+- `{{orchestration_module}}/*` can coordinate cross-module actions, but must not hold long-term domain-core implementations.
 - Domain-core implementations (for example board/card/parcel/plant) must live in their own domain modules.
 
 ## No Redundant State-Builder Layer (Hard Rule)
@@ -45,15 +75,15 @@ version: 20260414-105122
 
 ## Adaptation Ownership Rule (Hard Rule)
 
-- Screen adaptation, canvas adaptation, safe-area and scale calculation logic must be placed in `core` adaptation module (for example: `core/adaptive/*`).
+- Screen adaptation, canvas adaptation, safe-area and scale calculation logic must be placed in dedicated adaptation module (for example: `{{adaptive_module_root}}/*`).
 - Do not place adaptation logic under business module folders.
 
 ## Baseline Managers (create only when missing)
 
-- Global manager location is unified as:
-  - `assets/src/core/ui/UIManager.ts`
-  - `assets/src/core/event/EventManager.ts`
-  - `assets/src/core/model/ModelManager.ts`
+- Global manager location is defined by project profile:
+  - `{{ui_manager_path}}`
+  - `{{event_manager_path}}`
+  - `{{model_manager_path}}`
 
 - **UI manager**
   - If no global UI manager and no reusable UI base component exist, create a minimal `UIManager.ts`.
@@ -87,18 +117,18 @@ version: 20260414-105122
 
 ## Module Directory Standard
 
-When creating a feature module (example: `card`), prefer this structure when needed:
+When creating a feature module (example: `feature`), prefer this structure when needed:
 
-- `assets/src/card/CardManager.ts`
-- `assets/src/card/model/CardModelBase.ts`
-- `assets/src/card/model/CardModelBuilder.ts`
-- `assets/src/card/view/ui/*`
-- `assets/src/card/view/item/*`
-- `assets/src/card/view/panel/*`
-- `assets/src/card/utils/*`
-- `assets/src/card/CardEnum.ts`
+- `{{module_root}}/feature/FeatureManager.ts`
+- `{{module_root}}/feature/model/FeatureModelBase.ts`
+- `{{module_root}}/feature/model/FeatureModelBuilder.ts`
+- `{{module_root}}/feature/view/ui/*`
+- `{{module_root}}/feature/view/item/*`
+- `{{module_root}}/feature/view/panel/*`
+- `{{module_root}}/feature/utils/*`
+- `{{module_root}}/feature/FeatureEnum.ts`
 
-For another module (example: `parcel`), keep the same structure with module name replacement.
+For another module, keep the same structure with module name replacement.
 
 - Important:
   - This is a recommended structure, not a mandatory requirement that every module must include all layers.
@@ -212,7 +242,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 ### MVP Development Default Behavior
 
 - Create and implement under:
-  - `assets/src/mvp_<feature>/*`
+  - `{{mvp_root}}/*`
 - Enforce three mandatory constraints:
   1. single entry integration (`Mvp<Feature>Entry.ts` as the only integration entry),
   2. explicit feature flag (can be disabled without changing main flow behavior),
@@ -223,10 +253,11 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Move retained MVP logic into formal modules following this skill (flow/core/domain boundaries).
 - Remove MVP-only temporary coupling and align naming/path conventions.
 - Clean up `mvp_<feature>` directory and integration leftovers after promotion.
+- Clean up `{{mvp_root}}` directory and integration leftovers after promotion.
 
 ### MVP Discard Default Behavior
 
-- Disable feature flag, remove integration entry, delete `mvp_<feature>` directory.
+- Disable feature flag, remove integration entry, delete `{{mvp_root}}`.
 - Ensure main flow remains behaviorally unchanged after removal.
 
 ## Contract Mode Rule (Hard Rule)
@@ -359,15 +390,15 @@ Inside `<ModuleName>Enum.ts`, follow:
 ## Constant Placement Rule
 
 - Global constants shared across modules should be placed in:
-  - `assets/src/GlobalConst.ts`
+  - `{{global_const_file}}`
 - Module-scoped constants should be placed in that module folder using:
   - `<ModuleName>Const.ts`
-  - for example: `assets/src/card/CardConst.ts`, `assets/src/parcel/ParcelConst.ts`
+  - for example: `{{module_root}}/card/CardConst.ts`
 
 ## Temporary Test Code Rule
 
 - Temporary or experimental code for a module must be placed under:
-  - `assets/src/<module>/tmp/*`
+  - `{{module_tmp_rule}}`
 - Code inside `<module>/tmp/*` is considered disposable test scaffolding.
 - It may be deleted at any time and must not become a dependency of stable module runtime.
 - Do not let core module logic rely on files from `<module>/tmp/*`.
@@ -376,7 +407,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 
 - Event definition remains in a single centralized file, do not split by module.
 - Unified event definition path for this project:
-  - `assets/src/core/event/EventEnum.ts`
+  - `{{event_definition_file}}`
 - Event naming uses underscore style (snake-like segments):
   - module events: `card_xxx`, `parcel_xxx`, `audio_xxx`
   - common/app events: `app_xxx` or `global_xxx`
@@ -468,3 +499,14 @@ If any of these are unclear, stop and ask user before proceeding:
   - similar intent.
 - If overlap exists, assistant must explicitly state overlap relation before writing the new rule.
 - Pending items can be promoted to formal rules only after user confirmation.
+
+## Example Semantics Marking Rule (Mandatory)
+
+- To avoid ambiguity for both AI models and human readers, all example content must be explicitly marked.
+- Use these fixed labels:
+  - `[RULE - NORMATIVE]` for enforceable rule statements,
+  - `[EXAMPLE - NON-NORMATIVE]` for generic examples,
+  - `[PROJECT EXAMPLE - NON-NORMATIVE]` for project-specific examples.
+- Any project-specific path, module name, or filename used as an example must carry the project example label.
+- If any example conflicts with a normative rule, the normative rule always wins.
+- Do not rely on color/highlight style to convey semantics; rely on explicit text labels and section titles only.

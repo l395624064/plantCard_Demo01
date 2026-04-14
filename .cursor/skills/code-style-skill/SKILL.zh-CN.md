@@ -2,13 +2,43 @@
 
 > 本文件为 `SKILL.md` 的中文简版说明，语义必须与 `SKILL.md` 保持一致。
 
-> 当前版本号：`20260414-105122`
+> 当前版本号：`20260414-111021`
 
 ## 适用范围与优先级
 
 - 仅当前项目生效（project skill）。
 - 本规则在项目内为最高优先级。
-- 模块根目录统一：`assets/src/<module>/*`。
+- 本 skill 采用双层结构：
+  - **通用规则层**：适用于大多数 AI 协作中小型项目；
+  - **项目配置层**：通过占位符注入当前项目路径与模块别名。
+- 迁移到其他项目时，先更新项目配置层，再应用规则。
+
+## 项目配置层（可移植性强制项）
+
+- 需维护以下占位符配置，并在中英文文档保持一致：
+  - `{{module_root}}`
+  - `{{orchestration_module}}`
+  - `{{flow_module_alias}}`
+  - `{{adaptive_module_root}}`
+  - `{{ui_manager_path}}`
+  - `{{event_manager_path}}`
+  - `{{model_manager_path}}`
+  - `{{event_definition_file}}`
+  - `{{global_const_file}}`
+  - `{{mvp_root}}`
+  - `{{module_tmp_rule}}`
+- `[项目示例 - 非强制]` 当前项目示例：
+  - `{{module_root}} = assets/src`
+  - `{{orchestration_module}} = game`
+  - `{{flow_module_alias}} = flow`
+  - `{{adaptive_module_root}} = core/adaptive`
+  - `{{ui_manager_path}} = assets/src/core/ui/UIManager.ts`
+  - `{{event_manager_path}} = assets/src/core/event/EventManager.ts`
+  - `{{model_manager_path}} = assets/src/core/model/ModelManager.ts`
+  - `{{event_definition_file}} = assets/src/core/event/EventEnum.ts`
+  - `{{global_const_file}} = assets/src/GlobalConst.ts`
+  - `{{mvp_root}} = assets/src/mvp_<feature>`
+  - `{{module_tmp_rule}} = assets/src/<module>/tmp/*`
 
 ## 架构总原则
 
@@ -23,10 +53,10 @@
 - 模块命名允许同义（例如 `flow/*`、`gameFlow/*`），但同一项目内必须统一一种命名风格。
 - 禁止将流程核心逻辑散落在入口文件、视图文件或临时工具文件中。
 
-## `game/*` 目录职责规则（硬规则）
+## 编排目录职责规则（硬规则）
 
-- `game/*` 仅允许承载跨模块编排/协调逻辑。
-- `game/*` 可做跨模块调用编排，但不得长期承载具体领域核心实现。
+- `{{orchestration_module}}/*` 仅允许承载跨模块编排/协调逻辑。
+- `{{orchestration_module}}/*` 可做跨模块调用编排，但不得长期承载具体领域核心实现。
 - 领域核心实现（例如棋盘/卡牌/地块/植物）必须归属各自独立模块。
 
 ## 禁止冗余状态构建层（硬规则）
@@ -39,16 +69,16 @@
 
 ## 适配归属规则（硬规则）
 
-- 屏幕适配、Canvas 适配、安全区与缩放计算逻辑，统一放在 `core` 适配模块（例如 `core/adaptive/*`）。
+- 屏幕适配、Canvas 适配、安全区与缩放计算逻辑，统一放在适配模块（例如 `{{adaptive_module_root}}/*`）。
 - 禁止将适配逻辑放在业务模块目录中。
 
 ## 全局管理器（缺失时才创建）
 
-全局路径统一：
+全局路径由项目配置层定义：
 
-- `assets/src/core/ui/UIManager.ts`
-- `assets/src/core/event/EventManager.ts`
-- `assets/src/core/model/ModelManager.ts`
+- `{{ui_manager_path}}`
+- `{{event_manager_path}}`
+- `{{model_manager_path}}`
 
 最小接口要求：
 
@@ -76,18 +106,18 @@ Model 使用要求：
 
 ## 模块目录规范
 
-以 `card` 模块为例：
+以 `feature` 模块为例：
 
-- `assets/src/card/CardManager.ts`
-- `assets/src/card/model/CardModelBase.ts`
-- `assets/src/card/model/CardModelBuilder.ts`
-- `assets/src/card/view/ui/*`
-- `assets/src/card/view/item/*`
-- `assets/src/card/view/panel/*`
-- `assets/src/card/utils/*`
-- `assets/src/card/CardEnum.ts`
+- `{{module_root}}/feature/FeatureManager.ts`
+- `{{module_root}}/feature/model/FeatureModelBase.ts`
+- `{{module_root}}/feature/model/FeatureModelBuilder.ts`
+- `{{module_root}}/feature/view/ui/*`
+- `{{module_root}}/feature/view/item/*`
+- `{{module_root}}/feature/view/panel/*`
+- `{{module_root}}/feature/utils/*`
+- `{{module_root}}/feature/FeatureEnum.ts`
 
-其他模块（如 `parcel`）按模块名等价替换。
+其他模块按模块名等价替换。
 
 - 说明：
   - 以上是“按需推荐结构”，不是要求每个模块都必须包含全部层级。
@@ -200,7 +230,7 @@ Model 使用要求：
 ### MVP 开发默认行为
 
 - 功能代码放在：
-  - `assets/src/mvp_<feature>/*`
+  - `{{mvp_root}}/*`
 - 必须满足三条约束：
   1. 单入口接入（`Mvp<Feature>Entry.ts` 作为唯一接入入口）；
   2. 明确开关控制（关闭后主链路行为不变）；
@@ -210,11 +240,11 @@ Model 使用要求：
 
 - 将确认保留的 MVP 逻辑迁移到正式模块，并遵循当前 code-style-skill 的边界与命名规则。
 - 清理 MVP 阶段临时耦合代码。
-- 转正后删除 `mvp_<feature>` 目录与残留接入点。
+- 转正后删除 `{{mvp_root}}` 目录与残留接入点。
 
 ### MVP 废弃默认行为
 
-- 关闭开关、移除接入入口、删除 `mvp_<feature>` 目录。
+- 关闭开关、移除接入入口、删除 `{{mvp_root}}`。
 - 确保删除后主链路行为不受影响。
 
 ## 契约模式规则（硬规则）
@@ -344,15 +374,15 @@ Model 使用要求：
 ## 常量放置规范
 
 - 全局共享常量统一放在：
-  - `assets/src/GlobalConst.ts`
+  - `{{global_const_file}}`
 - 模块内常量放在模块目录下，命名为：
   - `<ModuleName>Const.ts`
-  - 例如：`assets/src/card/CardConst.ts`、`assets/src/parcel/ParcelConst.ts`
+  - 例如：`{{module_root}}/card/CardConst.ts`
 
 ## 模块临时代码规则
 
 - 某个模块的测试性/实验性代码，统一放在：
-  - `assets/src/<module>/tmp/*`
+  - `{{module_tmp_rule}}`
 - `<module>/tmp/*` 下代码视为可抛弃代码，可随时删除。
 - 临时代码不允许成为稳定功能模块的运行时依赖。
 - 核心模块逻辑不得依赖 `<module>/tmp/*` 中的文件。
@@ -360,7 +390,7 @@ Model 使用要求：
 ## 事件系统规范
 
 - 事件定义保持单文件集中管理，不按模块拆分事件定义文件。
-- 事件定义路径统一：`assets/src/core/event/EventEnum.ts`。
+- 事件定义路径统一：`{{event_definition_file}}`。
 - 事件命名使用下划线风格：
   - 模块事件：`card_xxx`、`parcel_xxx`、`audio_xxx`
   - 公共事件：`app_xxx` 或 `global_xxx`
@@ -447,3 +477,14 @@ Model 使用要求：
   - 目标意图相似。
 - 若存在重合，助手必须先说明重合关系，再推进新规则落地。
 - 待定计划项仅在用户确认后，才能转正为正式规则。
+
+## 示例语义标记规则（强制）
+
+- 为避免 AI 模型与人工查阅产生歧义，所有示例内容必须显式标记语义类型。
+- 统一使用以下标签：
+  - `[规则 - 强制]`：可执行规则正文；
+  - `[示例 - 非强制]`：通用示例；
+  - `[项目示例 - 非强制]`：当前项目特定示例。
+- 任何包含项目路径、模块名、文件名的示例，都必须使用“项目示例”标签。
+- 当示例与规则正文出现冲突时，以规则正文为准。
+- 禁止依赖颜色或视觉样式表达语义差异，必须依赖明确文本标签与章节标题。
