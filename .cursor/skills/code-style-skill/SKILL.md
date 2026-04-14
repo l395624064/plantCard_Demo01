@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260414-111021
+version: 20260414-140000
 ---
 
 # 代码习惯skill（项目级）
@@ -292,6 +292,19 @@ Inside `<ModuleName>Enum.ts`, follow:
   - ask 1-3 core questions per round,
   - each round must include estimated remaining rounds,
   - if answer is ambiguous/incomplete for implementation needs, assistant must continue follow-up questions.
+
+### Contract Sub-Mode User Brief (Mandatory)
+
+- When contract mode starts, assistant should provide a concise two-mode brief to users before collecting contracts:
+  - **Template mode**
+    - positioning/owner: user-led structured filling,
+    - interaction rhythm: fewer rounds, larger information per round,
+    - suitable users/scenes: clearer requirements, users preferring direct structured input.
+  - **Q&A mode**
+    - positioning/owner: assistant-led question tree,
+    - interaction rhythm: 1-3 questions per round with remaining-round estimate,
+    - suitable users/scenes: beginners, ambiguous/complex interaction features.
+- Keep this brief concise; avoid excessive mode details in first prompt.
 
 ### Contract Compliance Rule
 
