@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260413-204342
+version: 20260414-105122
 ---
 
 # 代码习惯skill（项目级）
@@ -298,6 +298,52 @@ Inside `<ModuleName>Enum.ts`, follow:
   - required user inputs,
   - cost/benefit tradeoff summary.
 
+## Guided Assist Rule (Hard Rule)
+
+- Add a guided assist feature group, enabled by default, and user can explicitly disable it.
+- Guided assist currently includes:
+  - task startup card,
+  - mode switch guard,
+  - delivery impact card.
+
+### Task Startup Card
+
+- Trigger when:
+  - assistant receives a new feature/task request,
+  - requirement scope changes significantly in current thread,
+  - development mode switches.
+- Assistant must align requirements before coding, and explicitly report missing items.
+- Startup card and pre-implementation completion checks are unified as one step.
+
+### Mode Switch Guard
+
+- If user requests new feature without explicit mode, assistant must ask mode selection first.
+- Assistant should provide concise summary:
+  - mode purpose,
+  - user effort,
+  - key benefit.
+
+### Delivery Impact Card
+
+- After implementation, assistant should provide:
+  - changed modules/files scope,
+  - key behavioral risks,
+  - recommended regression checks,
+  - lightweight quality score.
+- Contract mode may skip score details because contract checks are already strict.
+
+## Migration Mode Rule (Hard Rule)
+
+- Add migration mode for old-code alignment to this skill.
+- User input should be minimal:
+  - a target file path or directory path.
+- Assistant should autonomously perform migration according to current code-style rules.
+- Default migration strategy is conservative:
+  - do not change runtime behavior intentionally,
+  - prioritize structure/readability alignment first,
+  - split migration in safe steps when needed.
+- If assistant detects high runtime risk during migration, assistant must pause and ask for confirmation before applying risky changes.
+
 ## Utility Placement Rule
 
 - Frequently reused cross-module tools should be global utilities, for example:
@@ -396,6 +442,11 @@ If any of these are unclear, stop and ask user before proceeding:
 - If newly added rules include extra user-provided constraints or special instructions, classify the change as a major update.
 - Keep versioning semantics synchronized in both `SKILL.md` and `SKILL.zh-CN.md`.
 
+## Pending Plan Items (Not Added Yet)
+
+- Regression checklist template library (discussion pending).
+- Rule conflict priority matrix (discussion pending).
+
 ## Skill Change Governance (Mandatory)
 
 - Any future modification to this `code-style-skill` must be discussed with the user first.
@@ -407,3 +458,13 @@ If any of these are unclear, stop and ask user before proceeding:
 - Rule writing format requirement:
   - Keep rule body generic and stable (no heavy dependence on current concrete filenames).
   - Put concrete project file references in examples/appendix only when needed.
+
+## Pending Plan Items Governance (Mandatory)
+
+- Maintain a "pending plan items (not yet added)" list inside this skill.
+- When proposing a new rule, assistant must check overlap against pending items:
+  - same problem,
+  - close problem,
+  - similar intent.
+- If overlap exists, assistant must explicitly state overlap relation before writing the new rule.
+- Pending items can be promoted to formal rules only after user confirmation.
