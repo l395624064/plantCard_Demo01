@@ -7,7 +7,8 @@ import {
 import { CardData } from '../../card/CardTypes';
 import { normalizeCardCells } from '../../card/CardGeometry';
 import { BoardCell } from '../../board/BoardTypes';
-import { FruitColor, ParcelType } from '../../core/types/BaseGameTypes';
+import { FruitColor } from '../../core/types/BaseGameTypes';
+import { ParcelType } from '../../parcel/ParcelEnum';
 
 export const GAME_MODEL_PARCEL_SPRITE_PATHS: Record<ParcelType, string[]> = {
     Crackedland: ['icon/parcel/Crackedland_1/spriteFrame'],

@@ -10,16 +10,8 @@ import {
     fn_game_main_configure_canvas_adaptation,
     fn_game_main_ensure_ui_root,
 } from './core/adaptive/AdaptiveLayout';
-import { fn_game_main_run_gm_action } from './flow/controller/MainGameGmService';
-import { fn_game_main_get_rotated_anchor_with_kick } from './flow/controller/MainGameRotationService';
-import {
-    fn_game_main_begin_placement_drag,
-    fn_game_main_cancel_preplace,
-    fn_game_main_commit_preplace_state2,
-    fn_game_main_confirm_preplace_place,
-    fn_game_main_set_preplace_hover,
-    fn_game_main_update_locked_preplace_anchor,
-} from './game/controller/MainGamePlacementController';
+import { flowManager } from './flow/FlowManager';
+import { gameMainManager } from './game/GameMainManager';
 import {
     GridPos,
     Rotation,
@@ -147,28 +139,28 @@ export class MainGame extends Component {
     }
 
     private beginPlacementDrag(index: number): void {
-        fn_game_main_begin_placement_drag(this, index);
+        gameMainManager.placementManager.beginPlacementDrag(this as unknown, index);
     }
 
     private setPreplaceHover(anchor: GridPos | null): void {
-        fn_game_main_set_preplace_hover(this, anchor);
+        gameMainManager.placementManager.setPreplaceHover(this as unknown, anchor);
     }
 
     /** 预放置状态2：在棋盘上拖拽更换锚点 */
     private updateLockedPreplaceAnchor(anchor: GridPos): void {
-        fn_game_main_update_locked_preplace_anchor(this, anchor);
+        gameMainManager.placementManager.updateLockedPreplaceAnchor(this as unknown, anchor);
     }
 
     private commitPreplaceState2(anchor: GridPos): void {
-        fn_game_main_commit_preplace_state2(this, anchor);
+        gameMainManager.placementManager.commitPreplaceState2(this as unknown, anchor);
     }
 
     private cancelPreplace(): void {
-        fn_game_main_cancel_preplace(this);
+        gameMainManager.placementManager.cancelPreplace(this as unknown);
     }
 
     private confirmPreplacePlace(): void {
-        fn_game_main_confirm_preplace_place(this);
+        gameMainManager.placementManager.confirmPreplacePlace(this as unknown);
     }
 
     private rotate(direction: number): void {
@@ -180,7 +172,7 @@ export class MainGame extends Component {
         const currentAnchor = this.lockedPreplaceAnchor ?? this.hoverAnchor;
         const nextRotation = (this.currentRotation + direction + 4) % 4;
         if (currentAnchor) {
-            const adjustedAnchor = fn_game_main_get_rotated_anchor_with_kick(
+            const adjustedAnchor = flowManager.rotationManager.getRotatedAnchorWithKick(
                 card.cells,
                 currentAnchor,
                 this.currentRotation,
@@ -199,19 +191,19 @@ export class MainGame extends Component {
     }
 
     private gmDrawCard(): void {
-        fn_game_main_run_gm_action(this, 'draw');
+        flowManager.gmManager.runAction(this as unknown, 'draw');
     }
 
     private gmAddScore(): void {
-        fn_game_main_run_gm_action(this, 'score');
+        flowManager.gmManager.runAction(this as unknown, 'score');
     }
 
     private gmAddRottenCharge(): void {
-        fn_game_main_run_gm_action(this, 'rotten');
+        flowManager.gmManager.runAction(this as unknown, 'rotten');
     }
 
     private gmRestart(): void {
-        fn_game_main_run_gm_action(this, 'restart');
+        flowManager.gmManager.runAction(this as unknown, 'restart');
     }
 
     private normalizeSelection(): void {

@@ -1,5 +1,7 @@
 import {
     Color,
+    EventMouse,
+    EventTouch,
     Graphics,
     HorizontalTextAlignment,
     Layers,

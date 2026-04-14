@@ -1,8 +1,10 @@
 import { ParcelModelBuilder } from './model/ParcelModelBuilder';
 import { ParcelModelBase } from './model/ParcelModelBase';
+import { ParcelUtils } from './utils/ParcelUtils';
 
 export class ParcelManager {
     private readonly modelBuilder = new ParcelModelBuilder();
+    public readonly utils = new ParcelUtils();
     private model: ParcelModelBase | null = null;
     private inited = false;
 

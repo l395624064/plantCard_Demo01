@@ -7,7 +7,9 @@ import {
 } from './GlobalConst';
 import { CardData } from './card/CardTypes';
 import { BoardCell, PlacementPreview } from './board/BoardTypes';
-import { GameStatus, GridPos, ParcelType, Rotation } from './core/types/BaseGameTypes';
+import { GameStatus, GridPos, Rotation } from './core/types/BaseGameTypes';
+import { ParcelType } from './parcel/ParcelEnum';
+import { parcelManager } from './parcel/ParcelManager';
 import {
     fn_game_model_create_card,
     fn_game_model_create_empty_board,
@@ -20,17 +22,7 @@ import {
     fn_game_model_assign_plant_variants,
     fn_game_model_place_initial_card,
 } from './plant/model/PlantGameplayService';
-import {
-    fn_game_model_assign_parcel_at,
-    fn_game_model_fill_board_parcels,
-    fn_game_model_reroll_board_parcels,
-} from './parcel/model/ParcelGameplayService';
-import {
-    fn_game_model_can_card_be_placed,
-    fn_game_model_evaluate_placement,
-} from './flow/model/GameModelPlacementService';
-import { fn_game_model_place_from_hand } from './flow/model/GameModelFlowService';
-import { fn_game_model_resolve_status } from './flow/model/GameModelStatusService';
+import { flowModelManager } from './flow/model/FlowModelManager';
 
 export class GameModel {
     public board: BoardCell[][] = [];
@@ -58,7 +50,7 @@ export class GameModel {
 
     public startNewGame(): void {
         this.board = fn_game_model_create_empty_board();
-        fn_game_model_fill_board_parcels(
+        parcelManager.utils.fillBoardParcels(
             this.board,
             'grassland',
             this.parcelTypeWeights,
@@ -88,7 +80,7 @@ export class GameModel {
             ...weights,
         };
         if (reroll) {
-            fn_game_model_reroll_board_parcels(
+            parcelManager.utils.rerollBoardParcels(
                 this.board,
                 this.parcelTypeWeights,
                 GAME_MODEL_PARCEL_SPRITE_PATHS,
@@ -100,7 +92,7 @@ export class GameModel {
         if (x < 0 || y < 0 || x >= BOARD_COLS || y >= BOARD_ROWS) {
             return;
         }
-        fn_game_model_assign_parcel_at(
+        parcelManager.utils.assignParcelAt(
             this.board,
             x,
             y,
@@ -115,7 +107,7 @@ export class GameModel {
     }
 
     public canCardBePlaced(card: CardData): boolean {
-        return fn_game_model_can_card_be_placed(
+        return flowModelManager.utils.canCardBePlaced(
             this.board,
             card,
             this.remainingRotten,
@@ -123,7 +115,7 @@ export class GameModel {
     }
 
     public evaluatePlacement(card: CardData, anchor: GridPos, rotation: Rotation): PlacementPreview {
-        return fn_game_model_evaluate_placement(
+        return flowModelManager.utils.evaluatePlacement(
             this.board,
             card,
             anchor,
@@ -133,7 +125,7 @@ export class GameModel {
     }
 
     public placeFromHand(handIndex: number, anchor: GridPos, rotation: Rotation): PlacementPreview {
-        const result = fn_game_model_place_from_hand({
+        const result = flowModelManager.utils.placeFromHand({
             status: this.status,
             hand: this.hand,
             handIndex,
@@ -231,7 +223,7 @@ export class GameModel {
     }
 
     private updateStatus(): void {
-        const result = fn_game_model_resolve_status(
+        const result = flowModelManager.utils.resolveStatus(
             this.score,
             this.targetScore,
             this.hand,

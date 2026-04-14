@@ -2,6 +2,6 @@
 
 This module contains parcel domain logic and expandable scaffolding.
 
-- Runtime core used by main flow: `model/ParcelGameplayService.ts`.
+- Runtime parcel operations are exposed by `ParcelManager` and implemented in `utils/ParcelUtils.ts`.
 - `model/ParcelModelBase.ts`, `model/ParcelModelBuilder.ts`, and files under `view/*` are scaffold-oriented.
 - Keep temporary experiments under `tmp/*` only.

@@ -1,4 +1,5 @@
-import { FruitColor, GridPos, ParcelStructureType, ParcelType, Rotation } from '../core/types/BaseGameTypes';
+import { FruitColor, GridPos, Rotation } from '../core/types/BaseGameTypes';
+import { ParcelStructureType, ParcelType } from '../parcel/ParcelEnum';
 
 export interface BoardCell {
     baseColor: FruitColor | null;

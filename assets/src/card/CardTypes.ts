@@ -1,4 +1,4 @@
-import { ParcelModifierType, ParcelStructureType } from '../core/types/BaseGameTypes';
+import { ParcelModifierType, ParcelStructureType } from '../parcel/ParcelEnum';
 import { CardCell } from './types/CardCellTypes';
 
 export type CardMainType = 'plant' | 'vegetation' | 'technology' | 'farming';

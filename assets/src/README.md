@@ -16,7 +16,8 @@ assets/src
 │  └─ ui/UIManager.ts
 ├─ flow
 │  ├─ GameConst.ts
-│  └─ model/*                   # 流程/规则相关模型服务
+│  ├─ FlowManager.ts            # flow 门面管理器（gm/rotation）
+│  └─ model/*                   # 流程模型（FlowModelManager + FlowModelUtils）
 ├─ card
 │  ├─ CardTypes.ts
 │  ├─ CardGeometry.ts
@@ -27,10 +28,10 @@ assets/src
 └─ view
    └─ ViewStateTypes.ts
 ├─ game
-│  ├─ controller/*              # 仅保留编排控制器
+│  ├─ GameMainManager.ts        # game 编排门面管理器（placement）
 │  └─ (no domain implementation)
 ├─ card/*                       # 卡牌模块骨架
-└─ parcel/*                     # 地块模块骨架
+└─ parcel/*                     # 地块模块（ParcelManager + ParcelUtils）
 ```
 
 ## 当前约束（与 code-style-skill 对齐）
@@ -40,8 +41,9 @@ assets/src
 3. 适配相关逻辑统一放在 `core/adaptive/*`。
 4. 禁止“仅做拼装/转发”的冗余状态构建层。
 5. 视图实现保持门面化并清理未使用代码。
+6. 正式模式下默认不使用 `controller/*` 与独立 `*Service.ts` 文件。
 
 ## 说明
 
-- 已完成：`MainGameViewStateBuilder` 删除并内联，`MainGameUiRootBuilder` 迁移到 `core/adaptive`，`game/model/*` 迁移到 `flow/model/*`，并完成 `GameTypes` 领域拆分。
+- 已完成：`MainGameViewStateBuilder` 删除并内联，`MainGameUiRootBuilder` 迁移到 `core/adaptive`，`game/model/*` 迁移到 `flow/model/*`，`ParcelGameplayService`/`flow/model/*Service` 下沉为 manager+utils，并完成 `GameTypes` 领域拆分。
 - 后续重点：继续收敛 `GameViewImpl.ts` 体量并降低 `any` 使用。
