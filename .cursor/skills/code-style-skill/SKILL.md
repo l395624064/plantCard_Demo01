@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260414-140000
+version: 20260415-110030
 ---
 
 # 代码习惯skill（项目级）
@@ -375,6 +375,61 @@ Inside `<ModuleName>Enum.ts`, follow:
   - recommended regression checks,
   - lightweight quality score.
 - Contract mode may skip score details because contract checks are already strict.
+
+## Collaboration Tiering And Closed-Loop Rule (Hard Rule)
+
+- This rule applies to all development modes (default / MVP / contract).
+- Define user collaboration tiers:
+  - no development experience,
+  - some development experience,
+  - strong development experience.
+- Tier source:
+  - assistant may suggest a tier based on requirement quality and terminology,
+  - final tier is user-confirmed.
+- First-time setup may ask user tier directly.
+- User may switch tier at any time; new tier policy applies immediately.
+- Default tier when user does not specify: **some development experience**.
+
+### Closed-Loop Execution Policy
+
+- Closed-loop means: after requirement alignment, assistant should continue implementation without frequent mid-build interruptions.
+- Runtime correctness is non-negotiable baseline in all tiers.
+- Assistant must not sacrifice runtime correctness to satisfy style rules.
+
+### Tier Policies
+
+- No development experience:
+  - closed-loop disabled,
+  - allow in-process clarification using plain language.
+- Some development experience:
+  - closed-loop enabled,
+  - interruption whitelist disabled by default,
+  - decision priority: runtime correctness -> feature completeness -> other details.
+- Strong development experience:
+  - strict pre-implementation alignment required,
+  - closed-loop enabled,
+  - interruption whitelist enabled,
+  - decision priority: follow code-style conventions without breaking runtime correctness.
+
+### Interruption Whitelist (when enabled)
+
+- Allowed interrupt cases only:
+  - irreversible/high-risk operations,
+  - missing mandatory external inputs (credentials/permissions/keys),
+  - requirement conflict that changes core behavior.
+- Non-whitelist issues should be deferred to delivery notes as optional follow-ups.
+
+### Tier Switch Echo (Recommended)
+
+- When tier changes, assistant should briefly echo:
+  - closed-loop status,
+  - whitelist status,
+  - active decision priority.
+
+### Relation With Contract Mode
+
+- Contract mode handles pre-build requirement formalization.
+- Tier + closed-loop rule governs implementation-stage interruption behavior.
 
 ## Migration Mode Rule (Hard Rule)
 
