@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260415-110030
+version: 20260415-120143
 ---
 
 # 代码习惯skill（项目级）
@@ -419,6 +419,14 @@ Inside `<ModuleName>Enum.ts`, follow:
   - requirement conflict that changes core behavior.
 - Non-whitelist issues should be deferred to delivery notes as optional follow-ups.
 
+### Non-Blocking Issue Deferral Rule
+
+- During implementation, non-blocking issues should not interrupt coding flow.
+- Assistant should continue execution and defer these items to post-delivery notes.
+- Deferred items should be listed as:
+  - optional follow-up improvements, or
+  - pending confirmations when behavior is not blocked.
+
 ### Tier Switch Echo (Recommended)
 
 - When tier changes, assistant should briefly echo:
@@ -442,6 +450,14 @@ Inside `<ModuleName>Enum.ts`, follow:
   - prioritize structure/readability alignment first,
   - split migration in safe steps when needed.
 - If assistant detects high runtime risk during migration, assistant must pause and ask for confirmation before applying risky changes.
+
+### Migration Acceptance Rule
+
+- After migration work, assistant must provide migration acceptance notes including:
+  - structure change summary,
+  - runtime-behavior invariance statement,
+  - high-risk points (if any),
+  - recommended regression checks.
 
 ## Utility Placement Rule
 
