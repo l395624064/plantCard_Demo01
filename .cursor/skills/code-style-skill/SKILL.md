@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260416-193200
+version: 20260416-194100
 ---
 
 # 代码习惯skill（项目级）
@@ -562,7 +562,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 ### Data Structure Rule (AI-readable)
 
 - The "AI-understanding-first" principle applies specifically to `<tmp trace>` data structures, prioritizing AI ability to reconstruct execution chains, locate root-cause paths, and align acceptance checklists.
-- Data structures may reference existing project tmpTrace semantics (for example `core/tmpTrace/TmpTraceEnum`) and can be extended equivalently when needed.
+- Data structures may reference existing project trace schema semantics (for example `{{trace_schema_ref}}`) and can be extended equivalently when needed.
 - Minimum acceptance checks for "AI-understanding-first":
   - execution chain can be reconstructed (step order and upstream/downstream relation),
   - expected vs observed can be compared,
@@ -677,7 +677,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Event naming uses underscore style (snake-like segments):
   - module events: `card_xxx`, `parcel_xxx`, `audio_xxx`
   - common/app events: `app_xxx` or `global_xxx`
-- Exception: in dedicated global event definition modules (for example `EventEnum`), long descriptive event names are acceptable when readability is improved.
+- Exception: in dedicated global event definition modules, long descriptive event names are acceptable when readability is improved (see project-profile examples).
 - `EventManager` is a global singleton style service (no Sender wrapper layer).
 - Manager event lifecycle must follow:
   - register in `addEvents()`
@@ -746,11 +746,11 @@ If any of these are unclear, stop and ask user before proceeding:
 - Interactive acceptance checklist board (spreadsheet-like, discussion pending):
   - each item includes both "user accepted" and "AI accepted" status columns,
   - AI can observe user check actions,
-  - AI can align checklist status via `browsermcp` (browser runtime) or `tmp/*` trace files (non-browser runtime).
+  - AI can align checklist status via `{{browser_mcp_server}}` (browser runtime) or `tmp/*` trace files (non-browser runtime).
 - Browser log persistence bridge (implementation pending):
-  - use a local bridge process to write browser trace streams into `tmpTrace/tmp/*.jsonl`.
+  - use a local bridge process to write browser trace streams into `{{trace_runtime_dir}}/*.jsonl`.
 - IDE terminal auto-polling log process (implementation pending):
-  - auto-poll and print logs after `browsermcp` connectivity is healthy, without occupying agent chat window.
+  - auto-poll and print logs after `{{browser_mcp_server}}` connectivity is healthy, without occupying agent chat window.
 
 ## Skill Change Governance (Mandatory)
 
