@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260416-191200
+version: 20260416-192300
 ---
 
 # 代码习惯skill（项目级）
@@ -606,6 +606,46 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Acceptance conclusion must be based on dual evidence:
   - checklist item status,
   - trace evidence for corresponding `unitId`.
+
+## Toolchain Priority Rule (Mandatory)
+
+- Toolchain selection and implementation order is fixed:
+  1. Prefer widely adopted/mature MCPs, skills, or tools on the web.
+  2. If step 1 is unavailable, search GitHub for high-star MCPs/skills/tools.
+  3. If step 1 and 2 are unavailable, reuse project-local tools.
+  4. After selecting a solution, assistant must auto-connect and complete baseline debugging validation.
+  5. If still missing, create new tooling implementation with language priority: `Node.js > Python`.
+
+### External Tool Admission Gate
+
+- An external option is considered usable only if it is:
+  - installable,
+  - runnable,
+  - license-compatible for current project,
+  - environment-compatible.
+- If an option fails admission, assistant must explain rejection reasons before moving to next priority level.
+
+### Auto-Execution And Fallback
+
+- Once a usable toolchain is identified, assistant should auto-execute integration and minimal debugging instead of primarily asking users to do manual setup.
+- In browser scenarios, after `browsermcp` connectivity is healthy, assistant should auto-complete linkage checks and log-chain initialization.
+- If auto-execution fails, assistant must automatically fallback to a backup chain and continue the task (for example fallback to local `tmp/*` trace chain).
+
+### Runtime And Token Cost Constraints
+
+- High-frequency logs must be sampled/throttled (for example `100ms`).
+- Consecutive repeated logs for the same `unitId` should be deduped or down-sampled.
+- Local collection/terminal printing alone should not be treated as model token consumption.
+- Token consumption occurs when AI reads/analyzes log content.
+
+### Delivery Closure And Receipt
+
+- Toolchain delivery must include:
+  - adopted solution and selected priority layer,
+  - rejected options and reasons,
+  - connectivity and baseline debugging results,
+  - fallback path (if triggered),
+  - reproducible start/stop instructions.
 
 ## Event System Rule
 
