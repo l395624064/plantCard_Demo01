@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260415-120143
+version: 20260416-190100
 ---
 
 # 代码习惯skill（项目级）
@@ -344,11 +344,12 @@ Inside `<ModuleName>Enum.ts`, follow:
 
 ## Guided Assist Rule (Hard Rule)
 
-- Add a guided assist feature group, enabled by default, and user can explicitly disable it.
+- Add a guided assist feature group, disabled by default, and user can explicitly enable it.
 - Guided assist currently includes:
   - task startup card,
   - mode switch guard,
-  - delivery impact card.
+  - delivery impact card,
+  - tmp trace guidance.
 
 ### Task Startup Card
 
@@ -375,6 +376,12 @@ Inside `<ModuleName>Enum.ts`, follow:
   - recommended regression checks,
   - lightweight quality score.
 - Contract mode may skip score details because contract checks are already strict.
+
+### Tmp Trace Guidance
+
+- `tmp` trace is disabled by default.
+- User can explicitly enable `tmp` trace.
+- When user enables guided assist, `tmp` trace must be enabled as well.
 
 ## Collaboration Tiering And Closed-Loop Rule (Hard Rule)
 
@@ -486,6 +493,119 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Code inside `<module>/tmp/*` is considered disposable test scaffolding.
 - It may be deleted at any time and must not become a dependency of stable module runtime.
 - Do not let core module logic rely on files from `<module>/tmp/*`.
+- If user explicitly requests deleting files/directories under `tmp/`, assistant may clean them immediately.
+- For assistant-initiated cleanup, `tmpTrace/tmp/*` does not follow the "delete anytime" rule and must follow Tmp Trace cleanup rules below.
+
+## Tmp Trace Rule (Hard Rule)
+
+- When tmp trace workflow is used, standard trace call files must be centralized under:
+  - `{{module_root}}/tmpTrace/tmp/*`
+- Assistant must provide two options:
+  - user specifies the `<tmp trace>` utility directory,
+  - create `<tmp trace>` utilities (user may specify directory; if omitted, assistant defaults to `{{module_root}}/tmpTrace/tmp/*`).
+- If user does not specify a directory and a usable tmpTrace implementation already exists in project, assistant must reuse existing directory/implementation first to avoid duplicate creation.
+- A "usable tmpTrace implementation" must satisfy at least:
+  - `TmpTraceEnum.<ext>` exists (or equivalent naming),
+  - `TmpTraceManager.<ext>` exists (or equivalent naming),
+  - manager exposes minimum interfaces: archive, update, delete.
+- If user-specified directory does not exist, assistant should create it automatically and echo final created path in delivery notes.
+- Runtime trace output files should be centralized under:
+  - `{{module_root}}/tmpTrace/tmp/*.jsonl`
+- Do not delete the trace file before user explicitly confirms feature acceptance.
+- Trace creation can be skipped only for:
+  - pure copy/text change,
+  - pure static asset replacement,
+  - no logic change.
+
+### Utility Minimum Structure Rule
+
+- tmp trace utilities must include at least these two core files (or equivalent naming files):
+  - `TmpTraceEnum.<ext>`: defines trace data structures, and its field model must follow the "AI-understanding-first" principle.
+  - `TmpTraceManager.<ext>`: defines trace interfaces (must cover at least archive, update, delete).
+- `<ext>` must follow the project's primary language/file conventions (for example `ts`, `js`, `cs`, `lua`).
+- Recommended trace call filename:
+  - `tmpTrace_<FlowName>__<EntryFile>.<ext>`
+- Recommended `unitId`:
+  - `<FlowName>_<EntryFile>_Uxx`
+- Recommended `stepId`:
+  - `<FlowName>_<EntryFile>_Uxx_<Step>`
+
+### Trace Call File Responsibility Rule
+
+- `tmpTrace_<...>.<ext>` should only:
+  - package trace payload,
+  - send payload via `TmpTraceManager`.
+- Do not place business decision logic in this file (state checks, dedupe checks, flow branching).
+
+### Runtime Write Rule
+
+- Once `TmpTraceManager` is called, default behavior must be:
+  - write trace records,
+  - output trace logs to console.
+- Write strategy:
+  - state-change driven first,
+  - high-frequency flows use `100ms` sampling fallback,
+  - do not write indiscriminately every frame.
+- Consecutive repeated logs for the same `unitId` should be deduped or throttled.
+- Single trace file size limit is `5MB`; use rolling split when exceeded.
+
+### Data Structure Rule (AI-readable)
+
+- The "AI-understanding-first" principle applies specifically to `<tmp trace>` data structures, prioritizing AI ability to reconstruct execution chains, locate root-cause paths, and align acceptance checklists.
+- Data structures may reference existing project tmpTrace semantics (for example `core/tmpTrace/TmpTraceEnum`) and can be extended equivalently when needed.
+- Minimum acceptance checks for "AI-understanding-first":
+  - execution chain can be reconstructed (step order and upstream/downstream relation),
+  - expected vs observed can be compared,
+  - root-cause path can be traced (key decisions and reasons).
+- Trace records must use structured fields with the minimum set:
+  - `sessionId`
+  - `feature`
+  - `unitId`
+  - `seq` (global increasing sequence)
+  - `phase` (`enter | state | exit | error`)
+  - `action`
+  - `effect`
+  - `status` (`ok | fail`)
+  - `ts`
+  - `payload` (optional, bounded length)
+- One log record must describe only one core event.
+
+### Minimal Unit Split Rule
+
+- Default trace unit split must align with completion checklist items (`unitId`).
+- Each `unitId` must include all three:
+  - explicit input action,
+  - explicit state change,
+  - explicit observable result.
+- If a unit fails or is ambiguous, add finer logs only inside that unit using binary split.
+- Do not increase log density globally without focus.
+
+### Cleanup Rule
+
+- Manual cleanup by user:
+  - if user explicitly specifies files/directories under `tmpTrace/tmp/*`, clean immediately.
+- Assistant-initiated cleanup is allowed only when all conditions are satisfied:
+  - user explicitly confirms feature acceptance,
+  - minimum regression set passes,
+  - delivery archive is completed (key nodes + checklist mapping),
+  - no blocker-level unresolved issue remains.
+- For assistant-initiated cleanup, use silent retention by default: keep for `1 iteration`, then clean.
+
+### Browser Runtime Guidance Rule
+
+- On first skill installation or first feature integration, assistant must identify whether the project runs in browser runtime.
+- If browser runtime is detected, assistant should directly perform `browsermcp` setup and first connectivity self-check without a second confirmation step.
+- If `browsermcp` setup or connectivity self-check fails, assistant must automatically fall back to `tmp/*` file trace workflow and continue the current task.
+- If non-browser runtime, default to `tmp/*` file trace workflow without blocking development.
+
+### Completion Checklist Mapping Rule
+
+- Every new feature must output a completion checklist.
+- Each checklist item must bind one unique `unitId`.
+- Trace records must cover all `unitId`s.
+- Acceptance conclusion must be based on dual evidence:
+  - checklist item status,
+  - trace evidence for corresponding `unitId`.
 
 ## Event System Rule
 
@@ -561,6 +681,14 @@ If any of these are unclear, stop and ask user before proceeding:
 
 - Regression checklist template library (discussion pending).
 - Rule conflict priority matrix (discussion pending).
+- Interactive acceptance checklist board (spreadsheet-like, discussion pending):
+  - each item includes both "user accepted" and "AI accepted" status columns,
+  - AI can observe user check actions,
+  - AI can align checklist status via `browsermcp` (browser runtime) or `tmp/*` trace files (non-browser runtime).
+- Browser log persistence bridge (implementation pending):
+  - use a local bridge process to write browser trace streams into `tmpTrace/tmp/*.jsonl`.
+- IDE terminal auto-polling log process (implementation pending):
+  - auto-poll and print logs after `browsermcp` connectivity is healthy, without occupying agent chat window.
 
 ## Skill Change Governance (Mandatory)
 
