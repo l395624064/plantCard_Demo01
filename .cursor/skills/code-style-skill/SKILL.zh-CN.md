@@ -2,7 +2,7 @@
 
 > 本文件为 `SKILL.md` 的中文简版说明，语义必须与 `SKILL.md` 保持一致。
 
-> 当前版本号：`20260416-192300`
+> 当前版本号：`20260416-193200`
 
 ## 适用范围与优先级
 
@@ -27,6 +27,11 @@
   - `{{global_const_file}}`
   - `{{mvp_root}}`
   - `{{module_tmp_rule}}`
+  - `{{browser_mcp_server}}`
+  - `{{trace_tool_root}}`
+  - `{{trace_runtime_dir}}`
+  - `{{trace_schema_ref}}`
+  - `{{log_polling_channel}}`
 - `[项目示例 - 非强制]` 当前项目示例：
   - `{{module_root}} = assets/src`
   - `{{orchestration_module}} = game`
@@ -39,6 +44,11 @@
   - `{{global_const_file}} = assets/src/GlobalConst.ts`
   - `{{mvp_root}} = assets/src/mvp_<feature>`
   - `{{module_tmp_rule}} = assets/src/<module>/tmp/*`
+  - `{{browser_mcp_server}} = browsermcp`
+  - `{{trace_tool_root}} = assets/src/core/tmpTrace`
+  - `{{trace_runtime_dir}} = assets/src/core/tmpTrace/tmp`
+  - `{{trace_schema_ref}} = assets/src/core/tmpTrace/TmpTraceEnum.ts`
+  - `{{log_polling_channel}} = IDE terminal output`
 
 ## 架构总原则
 
@@ -577,8 +587,8 @@ Model 使用要求：
 ### 浏览器联调引导规则
 
 - 首次安装 skill 或首次功能联调时，助手必须判断项目是否运行在浏览器环境。
-- 若为浏览器环境，助手应直接执行 `browsermcp` 接入流程并完成首次连通性自检，无需二次确认。
-- 若 `browsermcp` 接入或连通性自检失败，助手必须自动回退到 `tmp/*` 日志文件链路，并继续执行当前任务。
+- 若为浏览器环境，助手应直接执行 `{{browser_mcp_server}}` 接入流程并完成首次连通性自检，无需二次确认。
+- 若 `{{browser_mcp_server}}` 接入或连通性自检失败，助手必须自动回退到 `tmp/*` 日志文件链路，并继续执行当前任务。
 - 若非浏览器环境，默认使用 `tmp/*` 日志文件链路，不阻塞功能开发。
 
 ### 完成清单映射规则
@@ -611,7 +621,7 @@ Model 使用要求：
 ### 自动执行与回退
 
 - 命中可用工具链后，助手默认自动执行接通与最小调试，不以“建议用户手动处理”为主路径。
-- 浏览器场景下，`browsermcp` 连通后助手应自动完成链路检查与日志链路初始化。
+- 浏览器场景下，`{{browser_mcp_server}}` 连通后助手应自动完成链路检查与日志链路初始化。
 - 自动执行失败时，助手必须自动回退到备用链路并继续任务（例如回退到 `tmp/*` 本地 trace 链路）。
 
 ### 运行与成本约束
@@ -629,6 +639,18 @@ Model 使用要求：
   - 接通结果与基础调试结果，
   - 失败回退路径（如触发），
   - 启动/停用方式（可复现）。
+
+## 工具链通用化规则（强制）
+
+- `code-style-skill` 的工具链规则必须跨引擎通用，不绑定单一引擎、单一 MCP 名称或固定脚本实现。
+- 规则正文仅描述“执行链路与验收口径”，不写死项目实现细节。
+- 工具链执行必须遵循环境自适应流程：
+  1. 环境识别（运行态与技术栈），
+  2. 能力探测（MCP / skill / 项目内工具 / 日志出口），
+  3. 按优先级选型并自动接通验证，
+  4. 失败自动回退。
+- 正文禁止写死具体项目工具名或路径；具体值应通过占位符表达。
+- 具体项目路径、工具名、实现方式只能放在 `[项目示例 - 非强制]` 中。
 
 ## 事件系统规范
 

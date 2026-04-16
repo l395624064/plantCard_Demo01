@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260416-192300
+version: 20260416-193200
 ---
 
 # 代码习惯skill（项目级）
@@ -33,6 +33,11 @@ version: 20260416-192300
   - `{{global_const_file}}`
   - `{{mvp_root}}`
   - `{{module_tmp_rule}}`
+  - `{{browser_mcp_server}}`
+  - `{{trace_tool_root}}`
+  - `{{trace_runtime_dir}}`
+  - `{{trace_schema_ref}}`
+  - `{{log_polling_channel}}`
 - [PROJECT EXAMPLE - NON-NORMATIVE] Current project profile example:
   - `{{module_root}} = assets/src`
   - `{{orchestration_module}} = game`
@@ -45,6 +50,11 @@ version: 20260416-192300
   - `{{global_const_file}} = assets/src/GlobalConst.ts`
   - `{{mvp_root}} = assets/src/mvp_<feature>`
   - `{{module_tmp_rule}} = assets/src/<module>/tmp/*`
+  - `{{browser_mcp_server}} = browsermcp`
+  - `{{trace_tool_root}} = assets/src/core/tmpTrace`
+  - `{{trace_runtime_dir}} = assets/src/core/tmpTrace/tmp`
+  - `{{trace_schema_ref}} = assets/src/core/tmpTrace/TmpTraceEnum.ts`
+  - `{{log_polling_channel}} = IDE terminal output`
 
 ## Core Architecture Rule
 
@@ -594,8 +604,8 @@ Inside `<ModuleName>Enum.ts`, follow:
 ### Browser Runtime Guidance Rule
 
 - On first skill installation or first feature integration, assistant must identify whether the project runs in browser runtime.
-- If browser runtime is detected, assistant should directly perform `browsermcp` setup and first connectivity self-check without a second confirmation step.
-- If `browsermcp` setup or connectivity self-check fails, assistant must automatically fall back to `tmp/*` file trace workflow and continue the current task.
+- If browser runtime is detected, assistant should directly perform `{{browser_mcp_server}}` setup and first connectivity self-check without a second confirmation step.
+- If `{{browser_mcp_server}}` setup or connectivity self-check fails, assistant must automatically fall back to `tmp/*` file trace workflow and continue the current task.
 - If non-browser runtime, default to `tmp/*` file trace workflow without blocking development.
 
 ### Completion Checklist Mapping Rule
@@ -628,7 +638,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 ### Auto-Execution And Fallback
 
 - Once a usable toolchain is identified, assistant should auto-execute integration and minimal debugging instead of primarily asking users to do manual setup.
-- In browser scenarios, after `browsermcp` connectivity is healthy, assistant should auto-complete linkage checks and log-chain initialization.
+- In browser scenarios, after `{{browser_mcp_server}}` connectivity is healthy, assistant should auto-complete linkage checks and log-chain initialization.
 - If auto-execution fails, assistant must automatically fallback to a backup chain and continue the task (for example fallback to local `tmp/*` trace chain).
 
 ### Runtime And Token Cost Constraints
@@ -646,6 +656,18 @@ Inside `<ModuleName>Enum.ts`, follow:
   - connectivity and baseline debugging results,
   - fallback path (if triggered),
   - reproducible start/stop instructions.
+
+## Toolchain Generalization Rule (Mandatory)
+
+- Toolchain rules in this skill must be cross-engine compatible, and must not bind to a single engine, single MCP server name, or fixed script implementation.
+- Rule body should define execution chain and acceptance criteria only, not hardcoded project implementation details.
+- Toolchain execution must follow an environment-adaptive flow:
+  1. environment identification (runtime and stack),
+  2. capability probing (MCP/skill/project tools/log channels),
+  3. priority-based selection + automatic connection validation,
+  4. automatic fallback on failure.
+- Normative rule text must avoid hardcoded project tool names/paths; use placeholders instead.
+- Project-specific names/paths/implementations must be documented only under `[PROJECT EXAMPLE - NON-NORMATIVE]`.
 
 ## Event System Rule
 
