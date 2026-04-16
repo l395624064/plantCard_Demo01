@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260416-190100
+version: 20260416-191200
 ---
 
 # 代码习惯skill（项目级）
@@ -693,7 +693,7 @@ If any of these are unclear, stop and ask user before proceeding:
 ## Skill Change Governance (Mandatory)
 
 - Any future modification to this `code-style-skill` must be discussed with the user first.
-- Only after the user confirms the full change plan can the skill file be updated.
+- Only after user inputs "确认加入" can the skill file be updated.
 - This skill uses two synchronized documents:
   - `SKILL.md` (current English-oriented master)
   - `SKILL.zh-CN.md` (Chinese simplified version)
@@ -701,6 +701,31 @@ If any of these are unclear, stop and ask user before proceeding:
 - Rule writing format requirement:
   - Keep rule body generic and stable (no heavy dependence on current concrete filenames).
   - Put concrete project file references in examples/appendix only when needed.
+
+## Final Consolidation Governance Rule (Mandatory)
+
+- Before final-consolidation output, assistant must complete R3 scan:
+  - overlap scan,
+  - conflict scan,
+  - near-duplicate semantic merge suggestions.
+- Assistant must not output a final review draft before R3 results are reported.
+- Final consolidation can be triggered by either:
+  - user explicitly requests final consolidation, or
+  - assistant asks whether to enter final consolidation and user agrees.
+- After entering final consolidation stage, new items are frozen by default;
+  - only when user explicitly asks to continue changes, assistant may return to draft stage.
+- Final consolidation output must be two-step:
+  - change list (add/modify/delete),
+  - final review draft.
+- Assistant can write to skill only when user inputs "确认加入";
+  - other confirmations (for example "ok", "looks good", "approved") must not trigger write.
+- After write, assistant must provide a write receipt including:
+  - written items list,
+  - conflict resolution summary,
+  - version change,
+  - not-written items moved to pending plan.
+- Execution order is fixed:
+  - `R3 scan -> R1 final consolidation -> R2 keyword confirmation -> write -> receipt`.
 
 ## Pending Plan Items Governance (Mandatory)
 
