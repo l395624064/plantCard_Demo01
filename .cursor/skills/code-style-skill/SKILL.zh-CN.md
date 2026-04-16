@@ -2,7 +2,7 @@
 
 > 本文件为 `SKILL.md` 的中文简版说明，语义必须与 `SKILL.md` 保持一致。
 
-> 当前版本号：`20260416-194100`
+> 当前版本号：`20260416-202100`
 
 ## 适用范围与优先级
 
@@ -19,6 +19,7 @@
   - `{{module_root}}`
   - `{{orchestration_module}}`
   - `{{flow_module_alias}}`
+  - `{{infra_module_alias}}`
   - `{{adaptive_module_root}}`
   - `{{ui_manager_path}}`
   - `{{event_manager_path}}`
@@ -36,6 +37,7 @@
   - `{{module_root}} = assets/src`
   - `{{orchestration_module}} = game`
   - `{{flow_module_alias}} = flow`
+  - `{{infra_module_alias}} = core`
   - `{{adaptive_module_root}} = core/adaptive`
   - `{{ui_manager_path}} = assets/src/core/ui/UIManager.ts`
   - `{{event_manager_path}} = assets/src/core/event/EventManager.ts`
@@ -54,13 +56,13 @@
 
 - 先保证模块单一职责，再考虑分层形式。
 - 功能模块优先采用 MVC 思路，但不是所有模块都必须有 model/view。
-- 基础设施模块（例如 `core/*`）可以只保留必要的基础设施代码。
+- 基础设施模块（例如 `{{infra_module_alias}}/*`）可以只保留必要的基础设施代码。
 - 禁止为了“结构完整”而创建无业务价值的空层。
 
 ## 游戏流程独立模块规则（硬规则）
 
 - 游戏规则、流程推进、胜负判定必须放入独立流程模块。
-- 模块命名允许同义（例如 `flow/*`、`gameFlow/*`），但同一项目内必须统一一种命名风格。
+- 模块命名允许同义（例如 `{{flow_module_alias}}/*`、`gameFlow/*`），但同一项目内必须统一一种命名风格。
 - 禁止将流程核心逻辑散落在入口文件、视图文件或临时工具文件中。
 
 ## 编排目录职责规则（硬规则）
@@ -118,14 +120,14 @@ Model 使用要求：
 
 以 `feature` 模块为例：
 
-- `{{module_root}}/feature/FeatureManager.ts`
-- `{{module_root}}/feature/model/FeatureModelBase.ts`
-- `{{module_root}}/feature/model/FeatureModelBuilder.ts`
+- `{{module_root}}/feature/FeatureManager.<ext>`
+- `{{module_root}}/feature/model/FeatureModelBase.<ext>`
+- `{{module_root}}/feature/model/FeatureModelBuilder.<ext>`
 - `{{module_root}}/feature/view/ui/*`
 - `{{module_root}}/feature/view/item/*`
 - `{{module_root}}/feature/view/panel/*`
 - `{{module_root}}/feature/utils/*`
-- `{{module_root}}/feature/FeatureEnum.ts`
+- `{{module_root}}/feature/FeatureEnum.<ext>`
 
 其他模块按模块名等价替换。
 
@@ -135,7 +137,7 @@ Model 使用要求：
 
 ## 命名规范（Enum/Type/Interface）
 
-在 `<ModuleName>Enum.ts` 中：
+在 `<ModuleName>Enum.<ext>` 中：
 
 - `type_<module>_xxx`
 - `enum_<module>_xxx`
@@ -182,7 +184,7 @@ Model 使用要求：
 
 ## Service 文件规则（硬规则）
 
-- 默认不允许创建独立 `*Service.ts` 文件或 `service/*` 目录。
+- 默认不允许创建独立 `*Service.<ext>` 文件或 `service/*` 目录。
 - 优先使用 manager 子模块化。
 - 允许 `serviceManager` 作为 manager 下的子域命名（例如 `xxxManager.serviceManager`）。
 
@@ -242,9 +244,9 @@ Model 使用要求：
 - 功能代码放在：
   - `{{mvp_root}}/*`
 - 必须满足三条约束：
-  1. 单入口接入（`Mvp<Feature>Entry.ts` 作为唯一接入入口）；
+  1. 单入口接入（`Mvp<Feature>Entry.<ext>` 作为唯一接入入口）；
   2. 明确开关控制（关闭后主链路行为不变）；
-  3. 不污染核心契约（MVP 阶段默认不修改 `core/*`、`flow/*` 的共享契约，除非用户明确要求）。
+  3. 不污染核心契约（MVP 阶段默认不修改 `{{infra_module_alias}}/*`、`{{flow_module_alias}}/*` 的共享契约，除非用户明确要求）。
 
 ### MVP 转正默认行为
 
@@ -464,7 +466,7 @@ Model 使用要求：
 
 ## 工具函数放置规范
 
-- 高复用、跨模块工具放全局工具（如 `TweenUtils.ts`、`ArrayUtils.ts`、`ColorUtils.ts`）。
+- 高复用、跨模块工具放全局工具（如 `TweenUtils.<ext>`、`ArrayUtils.<ext>`、`ColorUtils.<ext>`）。
 - 仅模块内部使用的工具放 `<module>/utils/*`。
 - 模块内 utils 允许依赖同模块 manager/model，以减少无意义碎片化。
 - 对外尽量保持单入口调用：
@@ -476,8 +478,8 @@ Model 使用要求：
 - 全局共享常量统一放在：
   - `{{global_const_file}}`
 - 模块内常量放在模块目录下，命名为：
-  - `<ModuleName>Const.ts`
-  - 例如：`{{module_root}}/card/CardConst.ts`
+  - `<ModuleName>Const.<ext>`
+  - 例如：`{{module_root}}/card/CardConst.<ext>`
 
 ## 模块临时代码规则
 
@@ -487,15 +489,15 @@ Model 使用要求：
 - 临时代码不允许成为稳定功能模块的运行时依赖。
 - 核心模块逻辑不得依赖 `<module>/tmp/*` 中的文件。
 - 用户若明确指定删除 `tmp/` 目录下的文件或子目录，可立即执行清理。
-- 助手自动清理时，`tmpTrace/tmp/*` 不适用“可随时删除”，必须遵循下文 Tmp 流程日志清理规则。
+- 助手自动清理时，`{{trace_runtime_dir}}/*` 不适用“可随时删除”，必须遵循下文 Tmp 流程日志清理规则。
 
 ## Tmp 流程日志规则（硬规则）
 
 - 采用 tmp 流程日志方案时，标准 trace 调用文件统一放在：
-  - `{{module_root}}/tmpTrace/tmp/*`
+  - `{{trace_runtime_dir}}/*`
 - 助手必须给用户两个选项：
   - 用户指定 `<tmp 流程日志>` 工具类目录；
-  - 创建 `<tmp 流程日志>` 工具类（用户可指定目录；若未指定，则由助手默认创建在 `{{module_root}}/tmpTrace/tmp/*`）。
+  - 创建 `<tmp 流程日志>` 工具类（用户可指定目录；若未指定，则由助手默认创建在 `{{trace_runtime_dir}}/*`）。
 - 若用户未指定目录且项目中已存在可用 tmpTrace 实现，助手必须优先复用现有目录与实现，避免重复创建。
 - “可用 tmpTrace 实现”判定至少满足：
   - 存在 `TmpTraceEnum.<ext>`（或等价命名）；
@@ -503,7 +505,7 @@ Model 使用要求：
   - manager 具备最小接口能力：存档、更新、删除。
 - 若用户指定目录不存在，助手应自动创建目录，并在交付信息中回显最终创建路径。
 - 运行时 trace 输出文件默认归口在：
-  - `{{module_root}}/tmpTrace/tmp/*.jsonl`
+  - `{{trace_runtime_dir}}/*.jsonl`
 - 在用户明确验收通过前，不得删除该功能对应流程日志文件。
 - 仅以下场景可豁免创建：
   - 纯文案替换，
@@ -576,7 +578,7 @@ Model 使用要求：
 ### 清理规则
 
 - 用户手动清理：
-  - 用户明确指定 `tmpTrace/tmp/*` 下的文件或目录时，可立即执行清理。
+  - 用户明确指定 `{{trace_runtime_dir}}/*` 下的文件或目录时，可立即执行清理。
 - 助手自动清理仅在以下条件全部满足时允许执行：
   - 用户明确确认“功能验收通过”，
   - 对应最小回归集通过，
@@ -704,7 +706,7 @@ Model 使用要求：
 - 全局 manager 的确切路径或组织方式是否变更；
 - ui/event/model 需要超出最小接口时的签名；
 - view 300 行阈值在当前任务是否有例外；
-- `<ModuleName>Enum.ts` 命名前缀是否有模块级例外；
+- `<ModuleName>Enum.<ext>` 命名前缀是否有模块级例外；
 - 是否允许 manager 做临时跨模块编排。
 
 ## Skill 版本号规则（强制）
@@ -715,19 +717,6 @@ Model 使用要求：
 - 每次更新 skill 内容时，必须同步提升版本号为新的当前时间戳。
 - 若新增规则包含用户额外说明或特殊约束，应定性为“大更新”。
 - `SKILL.md` 与 `SKILL.zh-CN.md` 的版本语义必须同步。
-
-## 待定计划项（未加入）
-
-- 回归清单模板库（待讨论）。
-- 规则冲突优先级矩阵（待讨论）。
-- 交互式验收清单面板（类网页 Excel，待讨论）：
-  - 每个清单项包含“用户验收完成”与“AI验收完成”状态列；
-  - 用户勾选行为可被 AI 感知；
-  - AI 可通过 `{{browser_mcp_server}}`（浏览器环境）或 `tmp/*` 日志文件（非浏览器环境）自动对齐清单状态。
-- 浏览器日志落盘桥接（待实现）：
-  - 通过本地桥接进程将浏览器 trace 近实时写入 `{{trace_runtime_dir}}/*.jsonl`。
-- IDE 终端自动轮询日志进程（待实现）：
-  - 在 `{{browser_mcp_server}}` 连通后自动轮询并打印日志，不占用 agent 聊天窗口。
 
 ## Skill 维护治理（强制）
 
@@ -768,7 +757,8 @@ Model 使用要求：
 
 ## 待定计划治理规则（强制）
 
-- 本 skill 需要维护“待定计划项（未加入）”列表。
+- 待定计划项必须维护在独立文件中，不放在本技能正文内：
+  - `SKILL.pending.md`（与本文件同级）。
 - 每次新增规则提案时，助手必须先检查与待定计划项是否重合：
   - 解决同一问题，
   - 问题高度接近，

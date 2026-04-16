@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260416-194100
+version: 20260416-202100
 ---
 
 # 代码习惯skill（项目级）
@@ -60,13 +60,13 @@ version: 20260416-194100
 
 - Enforce single-responsibility module boundaries first.
 - Prefer MVC-style separation for feature modules, but do not force every module to have model/view.
-- Infrastructure modules (for example: `core/*`) may only contain necessary infrastructure code.
+- Infrastructure modules (for example: `{{infra_module_alias}}/*`) may only contain necessary infrastructure code.
 - Avoid creating structural folders/classes without business value.
 
 ## Game Flow Module Rule (Hard Rule)
 
 - Game rules, game progression, and win/lose resolution must be placed in an independent flow module.
-- Module naming may use equivalent naming styles (for example: `flow/*` or `gameFlow/*`), but one project must use one naming style consistently.
+- Module naming may use equivalent naming styles (for example: `{{flow_module_alias}}/*` or `gameFlow/*`), but one project must use one naming style consistently.
 - Do not scatter flow-core logic into entry files, view files, or temporary helper files.
 
 ## Orchestration Scope Rule (Hard Rule)
@@ -96,7 +96,7 @@ version: 20260416-194100
   - `{{model_manager_path}}`
 
 - **UI manager**
-  - If no global UI manager and no reusable UI base component exist, create a minimal `UIManager.ts`.
+  - If no global UI manager and no reusable UI base component exist, create a minimal `UIManager.<ext>`.
   - Minimum interfaces:
     - `open(uiKey, data?)`
     - `close(uiKey?)`
@@ -105,7 +105,7 @@ version: 20260416-194100
   - Additional methods are allowed later when UI flow becomes more complex.
 
 - **Event manager**
-  - If no global event manager exists, create a minimal `EventManager.ts`.
+  - If no global event manager exists, create a minimal `EventManager.<ext>`.
   - Minimum interfaces:
     - `on(event, handler, target?)`
     - `off(event, handler?, target?)`
@@ -114,7 +114,7 @@ version: 20260416-194100
   - Custom events must be registrable and usable across modules.
 
 - **Model manager**
-  - If no global model manager exists, create a minimal `ModelManager.ts`.
+  - If no global model manager exists, create a minimal `ModelManager.<ext>`.
   - Minimum interfaces:
     - `register(type, ctor)`
     - `enable(type)`
@@ -136,7 +136,7 @@ When creating a feature module (example: `feature`), prefer this structure when 
 - `{{module_root}}/feature/view/item/*`
 - `{{module_root}}/feature/view/panel/*`
 - `{{module_root}}/feature/utils/*`
-- `{{module_root}}/feature/FeatureEnum.ts`
+- `{{module_root}}/feature/FeatureEnum.<ext>`
 
 For another module, keep the same structure with module name replacement.
 
@@ -146,7 +146,7 @@ For another module, keep the same structure with module name replacement.
 
 ## Enum/Type/Interface Naming Rule
 
-Inside `<ModuleName>Enum.ts`, follow:
+Inside `<ModuleName>Enum.<ext>`, follow:
 
 - `type` naming: `type_<module>_xxx`
 - `enum` naming: `enum_<module>_xxx`
@@ -190,7 +190,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 
 ## Service File Rule (Hard Rule)
 
-- Do not create standalone `*Service.ts` files or `service/*` directories by default.
+- Do not create standalone `*Service.<ext>` files or `service/*` directories by default.
 - Prefer manager sub-modules.
 - Naming like `serviceManager` is allowed only as a sub-domain under manager (for example `xxxManager.serviceManager`).
 
@@ -254,9 +254,9 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Create and implement under:
   - `{{mvp_root}}/*`
 - Enforce three mandatory constraints:
-  1. single entry integration (`Mvp<Feature>Entry.ts` as the only integration entry),
+  1. single entry integration (`Mvp<Feature>Entry.<ext>` as the only integration entry),
   2. explicit feature flag (can be disabled without changing main flow behavior),
-  3. no core contract pollution (do not modify shared contracts in `core/*` or `flow/*` during MVP stage unless user explicitly requests).
+  3. no core contract pollution (do not modify shared contracts in `{{infra_module_alias}}/*` or `{{flow_module_alias}}/*` during MVP stage unless user explicitly requests).
 
 ### MVP Promotion Default Behavior
 
@@ -479,9 +479,9 @@ Inside `<ModuleName>Enum.ts`, follow:
 ## Utility Placement Rule
 
 - Frequently reused cross-module tools should be global utilities, for example:
-  - `TweenUtils.ts`,
-  - `ArrayUtils.ts`,
-  - `ColorUtils.ts`.
+  - `TweenUtils.<ext>`,
+  - `ArrayUtils.<ext>`,
+  - `ColorUtils.<ext>`.
 - Module-specific helpers must stay in that module’s `utils/*`.
 - Module-level utils are allowed to depend on same-module manager/model when this reduces unnecessary fragmentation.
 - Keep external API as single-entry where practical:
@@ -493,8 +493,8 @@ Inside `<ModuleName>Enum.ts`, follow:
 - Global constants shared across modules should be placed in:
   - `{{global_const_file}}`
 - Module-scoped constants should be placed in that module folder using:
-  - `<ModuleName>Const.ts`
-  - for example: `{{module_root}}/card/CardConst.ts`
+  - `<ModuleName>Const.<ext>`
+  - for example: `{{module_root}}/card/CardConst.<ext>`
 
 ## Temporary Test Code Rule
 
@@ -504,15 +504,15 @@ Inside `<ModuleName>Enum.ts`, follow:
 - It may be deleted at any time and must not become a dependency of stable module runtime.
 - Do not let core module logic rely on files from `<module>/tmp/*`.
 - If user explicitly requests deleting files/directories under `tmp/`, assistant may clean them immediately.
-- For assistant-initiated cleanup, `tmpTrace/tmp/*` does not follow the "delete anytime" rule and must follow Tmp Trace cleanup rules below.
+- For assistant-initiated cleanup, `{{trace_runtime_dir}}/*` does not follow the "delete anytime" rule and must follow Tmp Trace cleanup rules below.
 
 ## Tmp Trace Rule (Hard Rule)
 
 - When tmp trace workflow is used, standard trace call files must be centralized under:
-  - `{{module_root}}/tmpTrace/tmp/*`
+  - `{{trace_runtime_dir}}/*`
 - Assistant must provide two options:
   - user specifies the `<tmp trace>` utility directory,
-  - create `<tmp trace>` utilities (user may specify directory; if omitted, assistant defaults to `{{module_root}}/tmpTrace/tmp/*`).
+  - create `<tmp trace>` utilities (user may specify directory; if omitted, assistant defaults to `{{trace_runtime_dir}}/*`).
 - If user does not specify a directory and a usable tmpTrace implementation already exists in project, assistant must reuse existing directory/implementation first to avoid duplicate creation.
 - A "usable tmpTrace implementation" must satisfy at least:
   - `TmpTraceEnum.<ext>` exists (or equivalent naming),
@@ -520,7 +520,7 @@ Inside `<ModuleName>Enum.ts`, follow:
   - manager exposes minimum interfaces: archive, update, delete.
 - If user-specified directory does not exist, assistant should create it automatically and echo final created path in delivery notes.
 - Runtime trace output files should be centralized under:
-  - `{{module_root}}/tmpTrace/tmp/*.jsonl`
+  - `{{trace_runtime_dir}}/*.jsonl`
 - Do not delete the trace file before user explicitly confirms feature acceptance.
 - Trace creation can be skipped only for:
   - pure copy/text change,
@@ -593,7 +593,7 @@ Inside `<ModuleName>Enum.ts`, follow:
 ### Cleanup Rule
 
 - Manual cleanup by user:
-  - if user explicitly specifies files/directories under `tmpTrace/tmp/*`, clean immediately.
+  - if user explicitly specifies files/directories under `{{trace_runtime_dir}}/*`, clean immediately.
 - Assistant-initiated cleanup is allowed only when all conditions are satisfied:
   - user explicitly confirms feature acceptance,
   - minimum regression set passes,
@@ -727,7 +727,7 @@ If any of these are unclear, stop and ask user before proceeding:
 - exact location/path for global managers in the current project,
 - expected interface signatures beyond the minimum ui/event/model manager set,
 - whether 300-line view limit is strict or soft,
-- exceptions to naming prefixes in `<ModuleName>Enum.ts`,
+- exceptions to naming prefixes in `<ModuleName>Enum.<ext>`,
 - whether any manager needs temporary cross-module orchestration.
 
 ## Skill Versioning Rule (Mandatory)
@@ -738,19 +738,6 @@ If any of these are unclear, stop and ask user before proceeding:
 - Every skill update must bump the version to a new current timestamp.
 - If newly added rules include extra user-provided constraints or special instructions, classify the change as a major update.
 - Keep versioning semantics synchronized in both `SKILL.md` and `SKILL.zh-CN.md`.
-
-## Pending Plan Items (Not Added Yet)
-
-- Regression checklist template library (discussion pending).
-- Rule conflict priority matrix (discussion pending).
-- Interactive acceptance checklist board (spreadsheet-like, discussion pending):
-  - each item includes both "user accepted" and "AI accepted" status columns,
-  - AI can observe user check actions,
-  - AI can align checklist status via `{{browser_mcp_server}}` (browser runtime) or `tmp/*` trace files (non-browser runtime).
-- Browser log persistence bridge (implementation pending):
-  - use a local bridge process to write browser trace streams into `{{trace_runtime_dir}}/*.jsonl`.
-- IDE terminal auto-polling log process (implementation pending):
-  - auto-poll and print logs after `{{browser_mcp_server}}` connectivity is healthy, without occupying agent chat window.
 
 ## Skill Change Governance (Mandatory)
 
@@ -791,7 +778,8 @@ If any of these are unclear, stop and ask user before proceeding:
 
 ## Pending Plan Items Governance (Mandatory)
 
-- Maintain a "pending plan items (not yet added)" list inside this skill.
+- Maintain a dedicated pending-plan file instead of placing pending items inside this skill:
+  - `SKILL.pending.md` (same directory).
 - When proposing a new rule, assistant must check overlap against pending items:
   - same problem,
   - close problem,
