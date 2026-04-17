@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260416-202100
+version: 20260417-105021
 ---
 
 # 代码习惯skill（项目级）
@@ -359,7 +359,8 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - task startup card,
   - mode switch guard,
   - delivery impact card,
-  - tmp trace guidance.
+  - tmp trace guidance,
+  - auto toolchain flow.
 
 ### Task Startup Card
 
@@ -392,6 +393,63 @@ Inside `<ModuleName>Enum.<ext>`, follow:
 - `tmp` trace is disabled by default.
 - User can explicitly enable `tmp` trace.
 - When user enables guided assist, `tmp` trace must be enabled as well.
+
+## Guided Assist Auto Toolchain Rule (Mandatory)
+
+- When and only when guided assist is enabled, assistant must run auto toolchain flow.
+- Toolchain checklist is a solution reference, not a fixed implementation binding.
+- Core target is result alignment:
+  - user-observed runtime test results,
+  - assistant-observed outputs collected from toolchain.
+- Assistant must build runtime profile first:
+  - project type (`web` / `u3d` / `other`),
+  - primary language,
+  - runtime environment.
+- If runtime profile is uncertain, assistant must ask user for one confirmation before proceeding.
+
+### Auto Toolchain Trigger Rule (Dual Trigger)
+
+- Auto toolchain flow is triggered by either:
+  - first time guided assist is enabled in current project,
+  - user explicitly requests: `自动工具链流程检查`.
+- If last check is still within a valid window and runtime environment has not changed, assistant may reuse the latest receipt and ask whether to force rerun.
+
+### Toolchain Alignment Receipt Rule
+
+- After each auto toolchain run, assistant must output a toolchain alignment receipt with:
+  - detected runtime profile,
+  - selected environment checklist,
+  - per-step status (`ready | pending | blocked`),
+  - fallback path if triggered,
+  - whether current task can continue.
+- If any primary chain fails, assistant must automatically fallback to `tmp/*` structured trace chain and continue current task.
+
+### Sequential Readiness Gate Rule
+
+- Each environment checklist must define an ordered sequence (`Step-1 ... Step-N`).
+- Assistant must execute and validate in order; no skipping is allowed.
+- Assistant must echo per step:
+  - step id and name,
+  - status (`ready | pending | blocked`),
+  - minimal verifiable evidence summary,
+  - fallback path if failed.
+- Assistant may move to next step only when current step is `ready`.
+- If any step is `pending` or `blocked`, overall checklist status must be `not ready`.
+- Overall checklist can be marked `ready` only when all steps are `ready`.
+
+### [EXAMPLE - NON-NORMATIVE] Web Toolchain Checklist (4-step)
+
+- `WEB-1`: Browser MCP integration + first connectivity self-check.
+- `WEB-2`: Automatic fallback to `tmp/*` chain when integration/self-check fails.
+- `WEB-3`: Browser log persistence bridge.
+- `WEB-4`: IDE terminal auto-polling log process.
+
+### [EXAMPLE - NON-NORMATIVE] U3D Toolchain Checklist (4-step)
+
+- `U3D-1`: Unity structured trace integration for AI alignment.
+- `U3D-2`: Editor/Player log bridge to unified readable stream.
+- `U3D-3`: IDE terminal auto-polling and incremental printing.
+- `U3D-4`: Automatic fallback to `tmp/*` chain on primary chain failure.
 
 ## Collaboration Tiering And Closed-Loop Rule (Hard Rule)
 
@@ -601,12 +659,12 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - no blocker-level unresolved issue remains.
 - For assistant-initiated cleanup, use silent retention by default: keep for `1 iteration`, then clean.
 
-### Browser Runtime Guidance Rule
+### Browser Runtime Guidance Rule (Web Profile Detail)
 
-- On first skill installation or first feature integration, assistant must identify whether the project runs in browser runtime.
-- If browser runtime is detected, assistant should directly perform `{{browser_mcp_server}}` setup and first connectivity self-check without a second confirmation step.
-- If `{{browser_mcp_server}}` setup or connectivity self-check fails, assistant must automatically fall back to `tmp/*` file trace workflow and continue the current task.
-- If non-browser runtime, default to `tmp/*` file trace workflow without blocking development.
+- Under guided assist auto toolchain flow, when runtime profile is `web`, assistant should execute `WEB-1` then `WEB-2` in order.
+- For web runtime, assistant should directly perform `{{browser_mcp_server}}` setup and first connectivity self-check without a second confirmation step.
+- If `{{browser_mcp_server}}` setup or connectivity self-check fails, assistant must execute `WEB-2` fallback to `tmp/*` file trace workflow and continue current task.
+- `WEB-3` and `WEB-4` may remain `pending` until implemented, but overall web checklist cannot be marked `ready` before sequential gate is fully satisfied.
 
 ### Completion Checklist Mapping Rule
 
