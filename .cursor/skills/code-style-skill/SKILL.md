@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260417-114458
+version: 20260417-144219
 ---
 
 # 代码习惯skill（项目级）
@@ -10,6 +10,7 @@ version: 20260417-114458
 
 - Treat this skill as highest priority for this repository.
 - Apply these conventions before adding new business logic.
+- After installing this skill, assistant must run a priority compliance self-check before normal execution.
 
 ## Scope
 
@@ -427,6 +428,8 @@ Inside `<ModuleName>Enum.<ext>`, follow:
 ### Auto Toolchain Delivery Responsibility Rule
 
 - Once auto toolchain trigger rule is activated, assistant must execute checklist steps around the "result alignment" target and must not default core toolchain problems to user-side manual handling.
+- During checklist check or checklist implementation, assistant must enforce a fixed loop:
+  - `check -> auto implement -> debug validate`.
 - For each checklist step, assistant must complete a closed loop:
   - environment check,
   - tool selection,
@@ -440,8 +443,10 @@ Inside `<ModuleName>Enum.<ext>`, follow:
 
 - If checklist delivery needs new scripts/code, assistant should place implementation under isolated tooling directories by default to avoid polluting business modules.
 - Recommended tooling directory:
-  - `code-style-skill/skillTools/*`
+  - `skillTools/*`
 - If project already has an equivalent tooling directory, assistant should reuse it first.
+- Each tool directory under `skillTools/*` must include a `.md` file with at least bilingual (English + Chinese) purpose description.
+- If a tool script is not directly executable by double click, assistant must provide an entry launcher (for example `.bat`) for local startup.
 
 ### Toolchain Delivery Disclosure Rule
 
@@ -925,6 +930,32 @@ If any of these are unclear, stop and ask user before proceeding:
 - If newly added rules include extra user-provided constraints or special instructions, classify the change as a major update.
 - Keep versioning semantics synchronized in both `SKILL.md` and `SKILL.zh-CN.md`.
 
+## Skill Change History File Rule (Mandatory)
+
+- Maintain dedicated bilingual history files in the same directory:
+  - `SKILL.history.md`
+  - `SKILL.history.zh-CN.md`
+- Every skill version update must append one concise history entry.
+- Each history entry must include at least:
+  - `version`,
+  - `time`,
+  - `type` (`add | update | delete | refactor`),
+  - `scope`,
+  - short `summary`.
+- History entries in both language files must be synchronized in the same change and keep semantic consistency.
+- Any skill change without history update is non-compliant delivery.
+
+## Skill Priority Compliance Self-Check Rule (Mandatory)
+
+- On skill installation, assistant must first run a priority compliance self-check.
+- Self-check target:
+  - assistant behavior must follow `code-style-skill` as the first project rule source during execution.
+- If assistant detects behavior conflict with this skill, assistant must:
+  - stop further execution,
+  - report conflict points and impact,
+  - request user confirmation before proceeding.
+- Platform/system/model internal priority settings may be non-editable; this rule requires compliance at assistant execution behavior level.
+
 ## Skill Change Governance (Mandatory)
 
 - Any future modification to this `code-style-skill` must be discussed with the user first.
@@ -964,8 +995,10 @@ If any of these are unclear, stop and ask user before proceeding:
 
 ## Pending Plan Items Governance (Mandatory)
 
-- Maintain a dedicated pending-plan file instead of placing pending items inside this skill:
-  - `SKILL.pending.md` (same directory).
+- Maintain dedicated bilingual pending-plan files instead of placing pending items inside this skill:
+  - `SKILL.pending.md` (same directory),
+  - `SKILL.pending.zh-CN.md` (same directory).
+- Any pending item update must synchronize both files in the same change with consistent semantics.
 - When proposing a new rule, assistant must check overlap against pending items:
   - same problem,
   - close problem,
