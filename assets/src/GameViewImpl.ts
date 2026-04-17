@@ -87,6 +87,12 @@ import {
     GAME_TIME_WHEEL_SEASONS,
     GAME_TIME_WHEEL_YEAR_LABELS,
 } from './flow/GameConst';
+import {
+    fn_tmp_trace_game_view_impl_emit_state1_drag,
+    fn_tmp_trace_game_view_impl_on_enter_preplace2,
+    fn_tmp_trace_game_view_impl_on_preplace2_exit,
+} from './core/tmpTrace/tmp/tmpTrace_GameViewImpl';
+import { tmpTraceManager } from './core/tmpTrace/TmpTraceManager';
 
 export interface GameViewCallbacks {
     onRotateLeft: () => void;
@@ -187,6 +193,8 @@ export class GameView {
     private gmPopupOpen = false;
     private timeWheelYearIndex = 0;
     private timeWheelSeasonIndex = 0;
+    private tmpTraceSessionEnsured = false;
+    private tmpTraceState1DragLogged = false;
 
     constructor(root: Node, callbacks: GameViewCallbacks) {
         this.root = root;
@@ -209,6 +217,9 @@ export class GameView {
         try {
             // Placement confirmed by game flow: leave preplace state immediately.
             if (this.preplacePhase === 'preplace2' && !state.preplaceLocked) {
+                this.ensureTmpTraceSession();
+                fn_tmp_trace_game_view_impl_on_preplace2_exit(state.message, this.preplacePhase, state.preplaceLocked);
+                this.tmpTraceState1DragLogged = false;
                 fn_game_preplace_cancel_flow_for_view(this, false);
             }
             if (this.pendingHandRefillAnim) {
@@ -369,6 +380,7 @@ export class GameView {
 
     private onRootTouchMove(event: EventTouch): void {
         fn_game_view_on_root_touch_move_for_view(this, event);
+        this.tryEmitTraceState1Drag('GameViewImpl.onRootTouchMove');
     }
 
     private onRootTouchEnd(event: EventTouch): void {
@@ -377,6 +389,7 @@ export class GameView {
 
     private onRootMouseMove(event: EventMouse): void {
         fn_game_view_on_root_mouse_move_for_view(this, event);
+        this.tryEmitTraceState1Drag('GameViewImpl.onRootMouseMove');
     }
 
     private onRootMouseUp(event: EventMouse): void {
@@ -384,10 +397,13 @@ export class GameView {
     }
 
     private enterPreplace2(anchor: GridPos): void {
+        this.ensureTmpTraceSession();
+        fn_tmp_trace_game_view_impl_on_enter_preplace2(anchor);
         fn_game_view_enter_preplace2_for_view(this, anchor);
     }
 
     private cancelPreplaceFlow(notify = true): void {
+        this.tmpTraceState1DragLogged = false;
         fn_game_preplace_cancel_flow_for_view(this, notify);
     }
 
@@ -444,6 +460,35 @@ export class GameView {
 
     private resolveAnchor(boardTransform: UITransform, uiX: number, uiY: number): GridPos | null {
         return fn_game_view_resolve_anchor_for_view(this, boardTransform, uiX, uiY);
+    }
+
+    private ensureTmpTraceSession(): void {
+        if (!tmpTraceManager.isEnabled()) {
+            this.tmpTraceSessionEnsured = false;
+            return;
+        }
+        if (this.tmpTraceSessionEnsured) {
+            return;
+        }
+        tmpTraceManager.startSession('GameViewImpl_preplace');
+        this.tmpTraceSessionEnsured = true;
+        this.tmpTraceState1DragLogged = false;
+    }
+
+    private tryEmitTraceState1Drag(source: string): void {
+        if (this.preplacePhase !== 'preplace1_track') {
+            return;
+        }
+        if (this.tmpTraceState1DragLogged) {
+            return;
+        }
+        this.ensureTmpTraceSession();
+        fn_tmp_trace_game_view_impl_emit_state1_drag(source, {
+            preplacePhase: this.preplacePhase,
+            preplaceHandIndex: this.preplaceHandIndex,
+            handDragLiftY: this.handDragLiftY,
+        });
+        this.tmpTraceState1DragLogged = true;
     }
 
 }
