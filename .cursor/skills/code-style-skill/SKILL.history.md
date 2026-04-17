@@ -38,3 +38,17 @@
 - summary:
   - Added mandatory bilingual files for history and pending (`*.md` + `*.zh-CN.md`).
   - Required synchronized same-change updates for both language versions.
+
+## 20260417-152706
+
+- version: `20260417-152706`
+- time: `2026-04-17`
+- type: `update`
+- scope:
+  - auto toolchain artifact isolation
+  - generated files receipt
+  - auto start after successful check
+- summary:
+  - Enforced that auto-toolchain generated files stay under `skillTools/*` by default.
+  - Added mandatory generated-files receipt with non-compliance auto-fix.
+  - Added auto-start rule after successful auto toolchain flow check.
