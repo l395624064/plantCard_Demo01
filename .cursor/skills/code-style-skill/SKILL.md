@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260417-105021
+version: 20260417-114458
 ---
 
 # 代码习惯skill（项目级）
@@ -424,6 +424,86 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - whether current task can continue.
 - If any primary chain fails, assistant must automatically fallback to `tmp/*` structured trace chain and continue current task.
 
+### Auto Toolchain Delivery Responsibility Rule
+
+- Once auto toolchain trigger rule is activated, assistant must execute checklist steps around the "result alignment" target and must not default core toolchain problems to user-side manual handling.
+- For each checklist step, assistant must complete a closed loop:
+  - environment check,
+  - tool selection,
+  - auto install/integration,
+  - required code implementation,
+  - minimal debugging validation,
+  - automatic fallback.
+- Assistant may request user intervention only when externally blocked (for example permissions, accounts, system policy), and must provide blocker reason, minimum user action, and the next automatic step after intervention.
+
+### Tool Implementation Isolation Directory Rule
+
+- If checklist delivery needs new scripts/code, assistant should place implementation under isolated tooling directories by default to avoid polluting business modules.
+- Recommended tooling directory:
+  - `code-style-skill/skillTools/*`
+- If project already has an equivalent tooling directory, assistant should reuse it first.
+
+### Toolchain Delivery Disclosure Rule
+
+- When checklist delivery introduces new tools or code, assistant must provide a delivery receipt including:
+  - added tools/scripts list,
+  - directory paths,
+  - minimal start method,
+  - minimal debug method,
+  - minimal stop method,
+  - mapping to checklist steps (for example `WEB-3`, `WEB-4`).
+- The receipt should remain concise, executable, and reproducible.
+
+### Toolchain Step Semantic Metadata Rule
+
+- Every step in any environment checklist (`web` / `u3d` / future) must include:
+  - `StepId`
+  - `Goal`
+  - `Intent`
+  - `RecommendedTools`
+  - `ExpectedOutput`
+  - `Acceptance`
+  - `Fallback`
+- If any field is missing, assistant must not mark that step as `ready`.
+- Checklist remains a solution reference (not fixed implementation), but semantic fields must stay complete, executable, and verifiable.
+
+### Template AI-Understanding-First Rule
+
+- Any newly created or maintained template in this skill must follow the "AI-understanding-first" principle by default.
+- Template scope includes but is not limited to:
+  - requirement templates,
+  - toolchain checklist templates,
+  - receipt templates,
+  - acceptance templates,
+  - regression templates,
+  - migration templates.
+- Template design must prioritize:
+  - explicit and machine-decidable fields,
+  - traceable steps and states,
+  - comparable expected vs observed,
+  - locatable failure cause and fallback path.
+- For dual-use templates (human reading + AI execution), prioritize AI parseability first, then optimize readability.
+- If key fields are ambiguous, missing, or non-decidable, assistant must clarify or complete them before marking done.
+
+### [EXAMPLE - NON-NORMATIVE] Unified Toolchain Step Template
+
+```md
+- StepId: <ENV-X>
+- Goal: <problem solved by this step>
+- Intent: <why this step exists / guiding idea>
+- RecommendedTools:
+  - <tool or capability A>
+  - <tool or capability B>
+- ExpectedOutput:
+  - <artifact/output 1>
+  - <artifact/output 2>
+- Acceptance:
+  - <minimum check 1>
+  - <minimum check 2>
+- Fallback:
+  - <fallback path when failed>
+```
+
 ### Sequential Readiness Gate Rule
 
 - Each environment checklist must define an ordered sequence (`Step-1 ... Step-N`).
@@ -439,17 +519,65 @@ Inside `<ModuleName>Enum.<ext>`, follow:
 
 ### [EXAMPLE - NON-NORMATIVE] Web Toolchain Checklist (4-step)
 
-- `WEB-1`: Browser MCP integration + first connectivity self-check.
-- `WEB-2`: Automatic fallback to `tmp/*` chain when integration/self-check fails.
-- `WEB-3`: Browser log persistence bridge.
-- `WEB-4`: IDE terminal auto-polling log process.
+- `StepId`: `WEB-1`
+  - `Goal`: establish a browser runtime observability entry point
+  - `Intent`: open AI-to-runtime data channel first
+  - `RecommendedTools`: `{{browser_mcp_server}}`, browser extension connection capability
+  - `ExpectedOutput`: page snapshot readable, console logs readable
+  - `Acceptance`: `browser_snapshot` succeeds, `browser_get_console_logs` succeeds
+  - `Fallback`: if connectivity fails, move to `WEB-2`
+- `StepId`: `WEB-2`
+  - `Goal`: keep tasks unblocked on primary chain failure
+  - `Intent`: use `tmp/*` as stable fallback evidence chain
+  - `RecommendedTools`: `TmpTraceManager.<ext>`, `TmpTraceEnum.<ext>`
+  - `ExpectedOutput`: structured `tmp/*` trace is writable, current task continues
+  - `Acceptance`: at least one structured trace record is written, fallback path shown in receipt
+  - `Fallback`: if write fails, report blocker and request minimum user intervention
+- `StepId`: `WEB-3`
+  - `Goal`: persist browser logs into project-local consumable data files
+  - `Intent`: unify user-observed and AI-observed evidence source
+  - `RecommendedTools`: browser log read capability, local bridge process (`Node.js` preferred)
+  - `ExpectedOutput`: continuous append writes into `{{trace_runtime_dir}}/*.jsonl`
+  - `Acceptance`: stable continuous writes, fields match trace schema, searchable by `sessionId/unitId`
+  - `Fallback`: keep `WEB-2` chain active and continue task
+- `StepId`: `WEB-4`
+  - `Goal`: auto-poll and incrementally print logs in IDE terminal
+  - `Intent`: maintain alignment without occupying agent chat window
+  - `RecommendedTools`: local poll script (`Node.js` preferred), IDE terminal background process
+  - `ExpectedOutput`: auto polling running, incremental log output, start/stop controllable
+  - `Acceptance`: polling process remains stable, printed output matches persisted logs, start/stop is reproducible
+  - `Fallback`: switch to manual polling while keeping `WEB-3/WEB-2` chain available
 
 ### [EXAMPLE - NON-NORMATIVE] U3D Toolchain Checklist (4-step)
 
-- `U3D-1`: Unity structured trace integration for AI alignment.
-- `U3D-2`: Editor/Player log bridge to unified readable stream.
-- `U3D-3`: IDE terminal auto-polling and incremental printing.
-- `U3D-4`: Automatic fallback to `tmp/*` chain on primary chain failure.
+- `StepId`: `U3D-1`
+  - `Goal`: establish Unity structured trace output
+  - `Intent`: avoid relying only on unstructured console text
+  - `RecommendedTools`: Unity trace manager, structured schema (AI-understanding-first)
+  - `ExpectedOutput`: structured trace records can be produced
+  - `Acceptance`: key flows produce `sessionId/unitId/stepId` records
+  - `Fallback`: fallback to minimal text logs + manual mapping
+- `StepId`: `U3D-2`
+  - `Goal`: unify Editor/Player logs into AI-readable stream
+  - `Intent`: normalize multi-source runtime logs to reduce diagnosis ambiguity
+  - `RecommendedTools`: local bridge process (`Node.js` preferred), Unity log sources
+  - `ExpectedOutput`: unified stream or unified persisted log file
+  - `Acceptance`: both log sources are collected and source-tagged
+  - `Fallback`: keep structured trace as primary chain
+- `StepId`: `U3D-3`
+  - `Goal`: IDE auto polling + incremental print
+  - `Intent`: near-real-time sync from user actions to AI-visible evidence
+  - `RecommendedTools`: local polling script, IDE terminal process
+  - `ExpectedOutput`: incremental output with controllable lifecycle
+  - `Acceptance`: stable polling, printed output consistent with source logs
+  - `Fallback`: switch to manual polling commands
+- `StepId`: `U3D-4`
+  - `Goal`: preserve continuity when primary chain fails
+  - `Intent`: maintain minimum usable alignment chain at all times
+  - `RecommendedTools`: `tmp/*` structured trace chain, fallback receipt mechanism
+  - `ExpectedOutput`: automatic fallback succeeds, current task continues
+  - `Acceptance`: minimum acceptance can still be completed after fallback
+  - `Fallback`: if fallback fails, report blocker and minimum user action
 
 ## Collaboration Tiering And Closed-Loop Rule (Hard Rule)
 
@@ -619,7 +747,7 @@ Inside `<ModuleName>Enum.<ext>`, follow:
 
 ### Data Structure Rule (AI-readable)
 
-- The "AI-understanding-first" principle applies specifically to `<tmp trace>` data structures, prioritizing AI ability to reconstruct execution chains, locate root-cause paths, and align acceptance checklists.
+- The "AI-understanding-first" principle is a baseline for all templates; in `<tmp trace>` data structures, it is a strengthened scenario prioritizing AI ability to reconstruct execution chains, locate root-cause paths, and align acceptance checklists.
 - Data structures may reference existing project trace schema semantics (for example `{{trace_schema_ref}}`) and can be extended equivalently when needed.
 - Minimum acceptance checks for "AI-understanding-first":
   - execution chain can be reconstructed (step order and upstream/downstream relation),

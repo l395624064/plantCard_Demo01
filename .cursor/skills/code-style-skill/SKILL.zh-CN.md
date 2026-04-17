@@ -2,7 +2,7 @@
 
 > 本文件为 `SKILL.md` 的中文简版说明，语义必须与 `SKILL.md` 保持一致。
 
-> 当前版本号：`20260417-105021`
+> 当前版本号：`20260417-114458`
 
 ## 适用范围与优先级
 
@@ -413,6 +413,80 @@ Model 使用要求：
   - 当前任务是否可继续。
 - 任一主链路失败时，助手必须自动回退到 `tmp/*` 结构化日志链路，并继续当前任务。
 
+### 自动工具链落地责任规则
+
+- 当“自动工具链触发规则”启动后，助手必须围绕“结果对齐”目标执行工具链清单，不得将核心工具问题默认转交用户自行解决。
+- 对每个清单步骤，助手必须完成闭环动作：
+  - 环境检查，
+  - 工具选型，
+  - 自动安装/接入，
+  - 必要代码实现，
+  - 最小调试验证，
+  - 失败自动回退。
+- 仅当存在外部硬阻塞（如权限、账号、系统策略）时，助手才可请求用户介入；并必须明确阻塞原因、最小用户操作与介入后下一步自动动作。
+
+### 工具实现隔离目录规则
+
+- 工具链清单在落地时，若需新增脚本或代码实现，默认应使用隔离目录，避免污染业务模块。
+- 推荐工具目录：
+  - `code-style-skill/skillTools/*`
+- 若项目中已有等价工具目录，助手应优先复用，避免重复创建。
+
+### 工具链交付告知规则
+
+- 工具链步骤完成后，若新增工具或代码实现，助手必须提供交付回执，至少包含：
+  - 新增工具/脚本列表，
+  - 对应目录路径，
+  - 最小启动方式，
+  - 最小调试方式，
+  - 最小停用方式，
+  - 与工具链步骤（如 `WEB-3`、`WEB-4`）的对应关系。
+- 回执应保持简洁、可执行、可复现。
+
+### 工具链步骤语义元数据规则
+
+- 任一环境工具链清单（`web` / `u3d` / future）中的每一步，必须包含以下字段：
+  - `StepId`
+  - `Goal`（要解决的问题）
+  - `Intent`（指导思想/执行意图）
+  - `RecommendedTools`（推荐工具或能力来源）
+  - `ExpectedOutput`（预期输出/产物）
+  - `Acceptance`（最小验收标准）
+  - `Fallback`（失败回退路径）
+- 若步骤缺少任一字段，助手不得将该步骤标记为 `ready`。
+- 工具链清单是解决方案参考，不绑定单一实现；但字段语义必须完整、可执行、可验证。
+
+### 模板 AI理解优先规则
+
+- 本 skill 内新增或维护的所有模板，默认必须遵循“AI理解优先原则”。
+- 模板范围包括但不限于：需求模板、工具链清单模板、回执模板、验收模板、回归模板、迁移模板。
+- 模板设计必须优先保证：
+  - 字段语义明确、可机器判定；
+  - 步骤与状态可追踪；
+  - 预期与观察可对比；
+  - 失败原因与回退路径可定位。
+- 若模板同时服务“人类阅读 + AI执行”，优先保证 AI 可解析性，再优化可读性表达。
+- 若模板存在关键字段歧义、缺失或不可判定，助手不得直接标记完成，必须先补齐或澄清。
+
+### [示例 - 非强制] 工具链步骤模板（统一）
+
+```md
+- StepId: <ENV-X>
+- Goal: <本步骤解决什么问题>
+- Intent: <为什么做这一步/指导思想>
+- RecommendedTools:
+  - <tool or capability A>
+  - <tool or capability B>
+- ExpectedOutput:
+  - <artifact/output 1>
+  - <artifact/output 2>
+- Acceptance:
+  - <minimum check 1>
+  - <minimum check 2>
+- Fallback:
+  - <fallback path when failed>
+```
+
 ### 工具链顺序打通判定规则
 
 - 每个环境清单必须定义有序步骤（`Step-1 ... Step-N`）。
@@ -428,17 +502,65 @@ Model 使用要求：
 
 ### [示例 - 非强制] web 工具链清单（4步）
 
-- `WEB-1`：Browser MCP 接入与首次连通性自检。
-- `WEB-2`：接入/自检失败时自动回退到 `tmp/*` 链路。
-- `WEB-3`：浏览器日志落盘桥接。
-- `WEB-4`：IDE 终端自动轮询日志进程。
+- `StepId`: `WEB-1`
+  - `Goal`: 建立浏览器运行时可观测入口
+  - `Intent`: 先打通 AI 与浏览器运行态的数据通道
+  - `RecommendedTools`: `{{browser_mcp_server}}`、浏览器扩展连接能力
+  - `ExpectedOutput`: 可读取页面快照、可读取控制台日志
+  - `Acceptance`: `browser_snapshot` 成功、`browser_get_console_logs` 成功
+  - `Fallback`: 若连通失败，进入 `WEB-2`
+- `StepId`: `WEB-2`
+  - `Goal`: 保证链路失败时任务不中断
+  - `Intent`: 以 `tmp/*` 作为稳定后备链路，保持结果对齐最小闭环
+  - `RecommendedTools`: `TmpTraceManager.<ext>`、`TmpTraceEnum.<ext>`
+  - `ExpectedOutput`: `tmp/*` 结构化日志可写入，当前任务继续执行
+  - `Acceptance`: 至少一条结构化 trace 成功写入，回退路径在回执中明确
+  - `Fallback`: 若写入失败，输出阻塞原因并请求最小用户介入
+- `StepId`: `WEB-3`
+  - `Goal`: 浏览器日志落盘到项目内可持续消费的数据文件
+  - `Intent`: 让用户观测和 AI 观测共享统一证据源
+  - `RecommendedTools`: 浏览器日志读取能力、本地桥接进程（`Node.js` 优先）
+  - `ExpectedOutput`: `{{trace_runtime_dir}}/*.jsonl` 持续增量写入
+  - `Acceptance`: 连续写入稳定、字段满足 trace schema、可按 `sessionId/unitId` 检索
+  - `Fallback`: 失败时保持 `WEB-2` 链路并继续任务
+- `StepId`: `WEB-4`
+  - `Goal`: 在 IDE 终端自动轮询并增量打印日志
+  - `Intent`: 不占用 Agent 聊天窗口也能持续对齐用户与 AI 的运行观测
+  - `RecommendedTools`: 本地轮询脚本（`Node.js` 优先）、IDE 终端后台进程
+  - `ExpectedOutput`: 自动轮询运行、增量日志打印、可停止/重启
+  - `Acceptance`: 轮询进程可持续运行、打印内容与落盘日志一致、启停命令可复现
+  - `Fallback`: 失败时切换手动轮询命令 + 保持 `WEB-3/WEB-2` 可用
 
 ### [示例 - 非强制] u3d 工具链清单（4步）
 
-- `U3D-1`：Unity 结构化 Trace 接入（用于 AI 对齐）。
-- `U3D-2`：Editor/Player 日志桥接到统一可读链路。
-- `U3D-3`：IDE 终端自动轮询与增量打印。
-- `U3D-4`：主链路失败时自动回退到 `tmp/*` 链路。
+- `StepId`: `U3D-1`
+  - `Goal`: 建立 Unity 结构化 trace 出口
+  - `Intent`: 避免仅靠零散 Console 文本，提升可对齐性
+  - `RecommendedTools`: Unity trace manager、结构化 schema（AI-understanding-first）
+  - `ExpectedOutput`: 结构化 trace 记录可产生
+  - `Acceptance`: 关键流程可生成 `sessionId/unitId/stepId` 记录
+  - `Fallback`: 失败时退回最小文本日志 + 手工映射
+- `StepId`: `U3D-2`
+  - `Goal`: 统一 Editor/Player 日志到 AI 可读流
+  - `Intent`: 把多来源运行日志归一，降低诊断歧义
+  - `RecommendedTools`: 本地桥接进程（`Node.js` 优先）、Unity 日志来源
+  - `ExpectedOutput`: 统一日志流或统一落盘文件
+  - `Acceptance`: 两类日志源均可被采集并标注来源
+  - `Fallback`: 仅保留结构化 trace 主链路
+- `StepId`: `U3D-3`
+  - `Goal`: IDE 自动轮询与增量打印
+  - `Intent`: 建立“用户操作 -> AI可见证据”的近实时同步
+  - `RecommendedTools`: 本地轮询脚本、IDE 终端进程
+  - `ExpectedOutput`: 增量日志输出、可控启停
+  - `Acceptance`: 轮询稳定、打印与源日志一致
+  - `Fallback`: 切换手动轮询命令
+- `StepId`: `U3D-4`
+  - `Goal`: 主链路失败时保障不中断
+  - `Intent`: 始终保持最小可用对齐链路
+  - `RecommendedTools`: `tmp/*` 结构化日志链路、回退状态回执机制
+  - `ExpectedOutput`: 自动回退成功、当前任务持续推进
+  - `Acceptance`: 回退后仍可完成最小验收
+  - `Fallback`: 若回退仍失败，输出阻塞点与最小用户操作
 
 ## 协作分层与闭环执行规则（硬规则）
 
@@ -604,7 +726,7 @@ Model 使用要求：
 
 ### 数据结构规则（AI 可理解）
 
-- “AI理解优先原则”仅用于 `<tmp 流程日志>` 数据结构定义，优先保证 AI 可还原执行链、定位异常因果、对齐验收清单。
+- “AI理解优先原则”是全模板基线规则；在 `<tmp 流程日志>` 数据结构中属于强化场景，优先保证 AI 可还原执行链、定位异常因果、对齐验收清单。
 - 数据结构可参考项目内现有 trace schema（如 `{{trace_schema_ref}}` 的语义），并允许按项目实际做等价扩展。
 - “AI理解优先原则”最小验收标准：
   - 能还原执行链（步骤顺序与上下游关系）；
