@@ -52,3 +52,15 @@
   - Enforced that auto-toolchain generated files stay under `skillTools/*` by default.
   - Added mandatory generated-files receipt with non-compliance auto-fix.
   - Added auto-start rule after successful auto toolchain flow check.
+
+## 20260417-172742
+
+- version: `20260417-172742`
+- time: `2026-04-17`
+- type: `update`
+- scope:
+  - web toolchain implementation notes
+  - non-normative stability guidance
+- summary:
+  - Added Web Toolchain Implementation Notes (Stability Guidance) under web checklist examples.
+  - Captured path, dedupe, startup, stop, verification, and receipt references for reuse.

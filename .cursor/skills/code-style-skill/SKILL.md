@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260417-152706
+version: 20260417-172742
 ---
 
 # 代码习惯skill（项目级）
@@ -575,6 +575,25 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - `ExpectedOutput`: auto polling running, incremental log output, start/stop controllable
   - `Acceptance`: polling process remains stable, printed output matches persisted logs, start/stop is reproducible
   - `Fallback`: switch to manual polling while keeping `WEB-3/WEB-2` chain available
+
+### [EXAMPLE - NON-NORMATIVE] Web Toolchain Implementation Notes (Stability Guidance)
+
+- Path guidance:
+  - `WEB-3` output is recommended under `skillTools/web/runtime/*.jsonl`.
+  - Avoid default writes into business directories (for example `src/*`).
+- Dedupe guidance:
+  - Recommend `dedupe=false` by default for visible append behavior on each run.
+  - Enable dedupe explicitly only when needed.
+- Startup guidance:
+  - `WEB-4` should be launched via `.bat` in a new terminal window for persistent polling.
+  - Avoid short-lived same-terminal runs that exit quickly.
+- Stop guidance:
+  - Provide a paired stop script (for example `stop_web4_poll.bat`) to clean polling processes.
+- Minimum verification guidance:
+  - After start: verify poller process exists.
+  - After stop: verify poller process returns to zero.
+- Receipt guidance:
+  - Output generated files and directories after each run, and confirm artifacts remain under `skillTools/*`.
 
 ### [EXAMPLE - NON-NORMATIVE] U3D Toolchain Checklist (4-step)
 
