@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260420-165407
+version: 20260420-180328
 ---
 
 # 代码习惯skill（项目级）
@@ -1123,6 +1123,25 @@ If any of these are unclear, stop and ask user before proceeding:
   - short `summary`.
 - History entries in both language files must be synchronized in the same change and keep semantic consistency.
 - Any skill change without history update is non-compliant delivery.
+
+## Skill Remote Update Source Rule (Mandatory)
+
+- `code-style-skill` must maintain a remote update source so assistant can reuse and update this skill in other projects.
+- Assistant should check the remote skill version before applying project-local updates in a new project context.
+- Minimum remote-check items:
+  - remote accessibility,
+  - required file completeness (`SKILL.md`, `SKILL.zh-CN.md`, `SKILL.history*`, `SKILL.pending*`),
+  - local vs remote version comparison.
+- If remote update is available, assistant must report:
+  - planned file update list,
+  - version change,
+  - local customization overwrite risk.
+- If remote source is unreachable or check fails, assistant must:
+  - report failure reason,
+  - continue with local version,
+  - avoid blocking current feature development task.
+- [PROJECT EXAMPLE - NON-NORMATIVE] Remote update source:
+  - `https://github.com/l395624064/plantCard_Demo01/tree/main/.cursor/skills/code-style-skill`
 
 ## Skill Priority Compliance Self-Check Rule (Mandatory)
 

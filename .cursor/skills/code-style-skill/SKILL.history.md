@@ -79,3 +79,16 @@
   - Added `WEB-5` to include acceptance board generation, runtime analysis, and writeback in the web toolchain.
   - Upgraded acceptance four-stage flow to highest-priority blocking gates; any stage failure must pause downstream workflow and report causes.
   - Defined path, required fields, mapping fields, and AI acceptance fields for `Game_acceptance_board.md`.
+
+## 20260420-180328
+
+- version: `20260420-180328`
+- time: `2026-04-20`
+- type: `update`
+- scope:
+  - skill remote update source
+  - cross-project skill sync precheck
+- summary:
+  - Added mandatory remote update source rule for `code-style-skill` reuse across projects.
+  - Defined minimum remote-check items, update receipt requirements, and failure fallback behavior.
+  - Added project example remote source URL for this skill.
