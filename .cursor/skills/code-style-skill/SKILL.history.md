@@ -64,3 +64,18 @@
 - summary:
   - Added Web Toolchain Implementation Notes (Stability Guidance) under web checklist examples.
   - Captured path, dedupe, startup, stop, verification, and receipt references for reuse.
+
+## 20260420-165407
+
+- version: `20260420-165407`
+- time: `2026-04-20`
+- type: `update`
+- scope:
+  - WEB-5 acceptance toolchain step
+  - acceptance four-stage blocking loop
+  - Game_acceptance_board generation rules
+  - acceptance tool responsibilities
+- summary:
+  - Added `WEB-5` to include acceptance board generation, runtime analysis, and writeback in the web toolchain.
+  - Upgraded acceptance four-stage flow to highest-priority blocking gates; any stage failure must pause downstream workflow and report causes.
+  - Defined path, required fields, mapping fields, and AI acceptance fields for `Game_acceptance_board.md`.

@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260417-172742
+version: 20260420-165407
 ---
 
 # 代码习惯skill（项目级）
@@ -545,7 +545,7 @@ Inside `<ModuleName>Enum.<ext>`, follow:
 - If any step is `pending` or `blocked`, overall checklist status must be `not ready`.
 - Overall checklist can be marked `ready` only when all steps are `ready`.
 
-### [EXAMPLE - NON-NORMATIVE] Web Toolchain Checklist (4-step)
+### [EXAMPLE - NON-NORMATIVE] Web Toolchain Checklist (5-step)
 
 - `StepId`: `WEB-1`
   - `Goal`: establish a browser runtime observability entry point
@@ -575,6 +575,13 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - `ExpectedOutput`: auto polling running, incremental log output, start/stop controllable
   - `Acceptance`: polling process remains stable, printed output matches persisted logs, start/stop is reproducible
   - `Fallback`: switch to manual polling while keeping `WEB-3/WEB-2` chain available
+- `StepId`: `WEB-5`
+  - `Goal`: convert runtime evidence into acceptance-board conclusions
+  - `Intent`: keep requirement checklist, tmpTrace mapping, and runtime evidence aligned in one place
+  - `RecommendedTools`: acceptance board generator/updater, runtime analyzer, trace mapping validator
+  - `ExpectedOutput`: `skillTools/web/acceptance_board/Game_acceptance_board.md` with AI acceptance writeback
+  - `Acceptance`: each requirement item has `aiState/evidenceRef/note` and can be located by `unitId/stepId/traceFile`
+  - `Fallback`: if analysis fails, use manual recovery input (trace mapping hints) and rerun analysis
 
 ### [EXAMPLE - NON-NORMATIVE] Web Toolchain Implementation Notes (Stability Guidance)
 
@@ -594,6 +601,136 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - After stop: verify poller process returns to zero.
 - Receipt guidance:
   - Output generated files and directories after each run, and confirm artifacts remain under `skillTools/*`.
+
+## [RULE - NORMATIVE] WEB-5: Acceptance Toolchain Step
+
+- `StepId`: `WEB-5`
+  - `Goal`: consolidate requirement checklist, tmpTrace mapping, and runtime evidence into one acceptance board with executable conclusions.
+  - `Intent`: enforce a closed loop of `requirement alignment -> development mapping -> acceptance writeback` and prevent workflow drift.
+  - `RecommendedTools`: acceptance board generator/updater, runtime analyzer, trace mapping validator.
+  - `ExpectedOutput`: `skillTools/web/acceptance_board/Game_acceptance_board.md` (primary board) with AI acceptance writeback.
+  - `Acceptance`: each requirement has unique `itemId + unitId`, mapping fields are complete (`unitId/stepId/traceFile`), and `aiState/evidenceRef/note` are writable.
+  - `Fallback`: if auto analysis fails, enter a manual recovery input path (user provides trace mapping hints) and retry automatically.
+
+## [RULE - NORMATIVE] Acceptance Four-Stage Closed-Loop (Highest Priority)
+
+- Acceptance is a prerequisite dependency for downstream workflow. If any stage is incomplete, all following stages must be blocked.
+- Fixed stage order:
+  1. Requirement stage
+  2. Development stage
+  3. Demo stage
+  4. Acceptance stage
+
+### Requirement stage (blocking gate)
+
+- At stage end, the following file must exist:
+  - `skillTools/web/acceptance_board/Game_acceptance_board.md`
+- If missing:
+  - immediately pause downstream workflow,
+  - report the failure reason,
+  - mark status as `blocked`,
+  - do not enter development/demo/acceptance stages until fixed.
+
+### Development stage (blocking gate)
+
+- At stage end, requirement items must be mapped to tmpTrace:
+  - `itemId -> unitId -> stepId -> traceFile`
+- If mapping is incomplete:
+  - immediately pause downstream workflow,
+  - report the failure reason,
+  - trigger recovery: ask user for `tmpTrace_trace_file` path/name,
+  - auto-complete mapping and run recheck after user input,
+  - do not enter demo/acceptance stages until recheck passes.
+
+### Demo stage (auto execution)
+
+- After feature development completes, assistant should auto-start the web toolchain; if user explicitly starts demo stage, assistant should start immediately as well.
+- All web runtime artifacts must be written under:
+  - `skillTools/web/runtime/*`
+- If any artifact is outside this directory:
+  - mark as non-compliant and fix path first,
+  - continue stage flow only after path correction.
+
+### Acceptance stage (user explicit trigger)
+
+- Assistant can start acceptance analysis only when user explicitly says "start acceptance stage".
+- Analysis must cover:
+  - all available data under `skillTools/web/runtime/*`,
+  - and write back results to `Game_acceptance_board.md`.
+- If analysis/writeback fails:
+  - report failure reason,
+  - support `reanalyze` and allow repeated retries until success or user stop.
+
+## [RULE - NORMATIVE] `Game_acceptance_board.md` Generation Rules
+
+- Primary board path:
+  - `skillTools/web/acceptance_board/Game_acceptance_board.md`
+- Do not derive requirements by reverse-scanning tmpTrace files; requirement source must be the requirement-stage confirmed checklist.
+- Required sections:
+  - `Meta`
+  - `Requirement List`
+  - `Trace Mapping`
+  - `User Acceptance`
+  - `AI Acceptance`
+  - `Summary`
+
+### Required `Meta` fields
+
+- `feature`
+- `generatedAt`
+- `requirementSource`
+- `runtimeDataRoot` (fixed to `skillTools/web/runtime/*`)
+- `Notes`
+
+### Minimum `Notes` content in `Meta`
+
+- board purpose and single source-of-truth note (requirement-stage checklist),
+- user check/view operation notes,
+- preview/edit shortcut hints (optional but recommended),
+- markdown plugin hint (optional but recommended).
+
+### Requirement and mapping field requirements
+
+- Each `Requirement List` item must include:
+  - `itemId`
+  - Chinese requirement text
+  - `unitId`
+- Each `Trace Mapping` item must include:
+  - `itemId`
+  - `unitId`
+  - `stepId`
+  - `traceFile`
+
+### AI acceptance field requirements
+
+- Each `AI Acceptance` item must include:
+  - `aiState` (`✅ | ❌ | ⏳`)
+  - `evidenceRef`
+  - `note` (failure reason or missing-evidence note)
+
+## [RULE - NORMATIVE] Acceptance Tool Responsibilities
+
+- Acceptance tooling responsibilities are fixed:
+  1. Requirement stage: generate and initialize `Game_acceptance_board.md`,
+  2. Development stage: maintain and validate requirement-to-tmpTrace mappings,
+  3. Acceptance stage: analyze `skillTools/web/runtime/*` and write back AI acceptance results.
+- Primary output carrier for acceptance conclusions:
+  - update `Game_acceptance_board.md` directly.
+- Additional detailed reports are allowed:
+  - place them under `skillTools/web/acceptance_board/*`,
+  - but they must not replace the primary board.
+
+## [RULE - NORMATIVE] WEB-5 Tool Delivery Description Requirements
+
+- When WEB-5 introduces or updates tools, tool documentation must include at least:
+  - purpose,
+  - input sources (which files/directories are read),
+  - output artifacts (which files/directories are written),
+  - startup method,
+  - minimum validation method,
+  - retry/rerun method,
+  - stop method (if persistent process exists).
+- WEB-5 documentation completeness must stay at the same level as WEB-1~WEB-4.
 
 ### [EXAMPLE - NON-NORMATIVE] U3D Toolchain Checklist (4-step)
 

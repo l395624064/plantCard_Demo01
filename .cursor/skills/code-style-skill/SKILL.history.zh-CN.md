@@ -64,3 +64,18 @@
 - summary:
   - 在 web 工具链示例下新增“实现参考（稳定性指导）”段落。
   - 补充路径、去重、启动、停止、最小自检与回执的参考要点。
+
+## 20260420-165407
+
+- version: `20260420-165407`
+- time: `2026-04-20`
+- type: `update`
+- scope:
+  - WEB-5 acceptance 工具链步骤
+  - acceptance 四阶段阻断闭环
+  - Game_acceptance_board 生成规则
+  - acceptance 工具职责定义
+- summary:
+  - 新增 `WEB-5`，将验收看板生成、runtime 分析与回写纳入 web 工具链步骤。
+  - 强化 acceptance 四阶段为最高优先级阻断门，任一阶段失败必须暂停后续工作流并回执原因。
+  - 明确 `Game_acceptance_board.md` 路径、必填字段、映射字段和 AI 验收字段要求。

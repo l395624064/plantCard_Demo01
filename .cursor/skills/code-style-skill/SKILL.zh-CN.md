@@ -2,7 +2,7 @@
 
 > 本文件为 `SKILL.md` 的中文简版说明，语义必须与 `SKILL.md` 保持一致。
 
-> 当前版本号：`20260417-172742`
+> 当前版本号：`20260420-165407`
 
 ## 适用范围与优先级
 
@@ -528,7 +528,7 @@ Model 使用要求：
 - 任一步为 `pending` 或 `blocked`，整体清单状态必须为“未打通”。
 - 仅当全部步骤为 `ready` 时，整体清单才可标记为“已打通”。
 
-### [示例 - 非强制] web 工具链清单（4步）
+### [示例 - 非强制] web 工具链清单（5步）
 
 - `StepId`: `WEB-1`
   - `Goal`: 建立浏览器运行时可观测入口
@@ -558,6 +558,13 @@ Model 使用要求：
   - `ExpectedOutput`: 自动轮询运行、增量日志打印、可停止/重启
   - `Acceptance`: 轮询进程可持续运行、打印内容与落盘日志一致、启停命令可复现
   - `Fallback`: 失败时切换手动轮询命令 + 保持 `WEB-3/WEB-2` 可用
+- `StepId`: `WEB-5`
+  - `Goal`: 将运行时证据转换为验收看板结论
+  - `Intent`: 在一个载体中统一需求清单、tmpTrace 映射与 runtime 证据
+  - `RecommendedTools`: 验收看板生成/更新工具、runtime 分析工具、trace 映射校验工具
+  - `ExpectedOutput`: 完成 AI 回写的 `skillTools/web/acceptance_board/Game_acceptance_board.md`
+  - `Acceptance`: 每个需求项都有 `aiState/evidenceRef/note`，并可按 `unitId/stepId/traceFile` 定位
+  - `Fallback`: 分析失败时走人工补救输入（trace 映射提示）后重新分析
 
 ### [示例 - 非强制] web 工具链实现参考（稳定性指导）
 
@@ -577,6 +584,136 @@ Model 使用要求：
   - 停止后检查轮询进程归零。
 - 回执参考：
   - 每次执行后输出新增文件与目录清单，确认产物全部位于 `skillTools/*`。
+
+## [规则 - 强制] WEB-5：Acceptance 工具链步骤
+
+- `StepId`: `WEB-5`
+  - `Goal`: 将需求清单、tmpTrace 映射、runtime 证据统一沉淀到验收看板，形成可执行验收结论。
+  - `Intent`: 建立“需求对齐 -> 开发映射 -> 验收回写”闭环，避免后续工作流漂移。
+  - `RecommendedTools`: 验收看板生成/更新工具、runtime 分析工具、trace 映射校验工具。
+  - `ExpectedOutput`: `skillTools/web/acceptance_board/Game_acceptance_board.md`（主看板）及其 AI 验收回写结果。
+  - `Acceptance`: 每个需求项具备唯一 `itemId + unitId`，映射项完整（`unitId/stepId/traceFile`），且可回写 `aiState/evidenceRef/note`。
+  - `Fallback`: 自动分析失败时进入人工补救输入路径（用户补充 trace 关联信息）并自动重试。
+
+## [规则 - 强制] Acceptance 四阶段闭环规则（最高优先级）
+
+- Acceptance 是后续工作流前置依赖，任一阶段未达标必须阻断后续阶段。
+- 固定阶段顺序：
+  1. 需求阶段
+  2. 开发阶段
+  3. 演示阶段
+  4. 验收阶段
+
+### 需求阶段（阻断门）
+
+- 阶段结束时必须生成：
+  - `skillTools/web/acceptance_board/Game_acceptance_board.md`
+- 若未生成：
+  - 立即暂停后续工作流；
+  - 回执失败原因；
+  - 标记当前状态为 `blocked`；
+  - 未解除前不得进入开发/演示/验收阶段。
+
+### 开发阶段（阻断门）
+
+- 阶段结束时必须完成需求项与 tmpTrace 映射：
+  - `itemId -> unitId -> stepId -> traceFile`
+- 若映射不完整：
+  - 立即暂停后续工作流；
+  - 回执失败原因；
+  - 启动补救措施：请求用户提供 `tmpTrace_埋点文件` 路径或文件名；
+  - 接收用户补充后自动补齐并复检；
+  - 复检通过前不得进入演示/验收阶段。
+
+### 演示阶段（自动执行）
+
+- 功能开发完成后，助手应自动启动 web 工具链；用户明确开启演示阶段时也应立即自动启动。
+- web 运行时工具链产物必须统一落在：
+  - `skillTools/web/runtime/*`
+- 若检测到产物落在该目录之外：
+  - 标记不合规并优先修正路径；
+  - 修正完成后再继续阶段流程。
+
+### 验收阶段（用户显式开启）
+
+- 仅当用户明确提出“开启验收阶段”后，助手才执行验收分析。
+- 验收分析必须覆盖：
+  - `skillTools/web/runtime/*` 下全部可用数据，
+  - 并回写到 `Game_acceptance_board.md`。
+- 若分析或回写失败：
+  - 必须回执失败原因；
+  - 必须支持“重新分析”，可重复执行直至成功或被用户中止。
+
+## [规则 - 强制] `Game_acceptance_board.md` 生成规则
+
+- 固定主看板路径：
+  - `skillTools/web/acceptance_board/Game_acceptance_board.md`
+- 禁止通过反向扫描 tmpTrace 推导需求；需求来源必须是需求阶段确认清单。
+- 主看板必须包含以下区块：
+  - `Meta`
+  - `Requirement List`
+  - `Trace Mapping`
+  - `User Acceptance`
+  - `AI Acceptance`
+  - `Summary`
+
+### Meta 必填字段
+
+- `feature`
+- `generatedAt`
+- `requirementSource`
+- `runtimeDataRoot`（固定 `skillTools/web/runtime/*`）
+- `说明`
+
+### Meta 中“说明”最小内容
+
+- 看板用途与单一事实来源说明（需求阶段清单）；
+- 用户勾选/查看方式说明；
+- 预览/编辑切换快捷键提示（非强制但建议）；
+- Markdown 插件提示（非强制但建议）。
+
+### 需求与映射字段要求
+
+- `Requirement List` 每项至少包含：
+  - `itemId`
+  - 中文需求
+  - `unitId`
+- `Trace Mapping` 每项至少包含：
+  - `itemId`
+  - `unitId`
+  - `stepId`
+  - `traceFile`
+
+### AI 验收字段要求
+
+- `AI Acceptance` 每项至少包含：
+  - `aiState`（`✅ | ❌ | ⏳`）
+  - `evidenceRef`
+  - `note`（失败原因或证据缺失说明）
+
+## [规则 - 强制] Acceptance 工具职责定义
+
+- Acceptance 工具职责固定为三项：
+  1. 需求阶段：生成并初始化 `Game_acceptance_board.md`；
+  2. 开发阶段：维护并校验需求项与 tmpTrace 映射；
+  3. 验收阶段：分析 `skillTools/web/runtime/*` 并回写 AI 验收结论。
+- 验收结论主载体优先：
+  - 直接更新 `Game_acceptance_board.md`。
+- 如需补充详细报告：
+  - 可在 `skillTools/web/acceptance_board/*` 新增附加报告文件；
+  - 但不得替代主看板。
+
+## [规则 - 强制] WEB-5 工具交付描述要求
+
+- 当 `WEB-5` 新增或更新工具实现时，工具说明文档至少包含：
+  - 工具用途；
+  - 输入来源（读取哪些文件/目录）；
+  - 输出产物（写入哪些文件/目录）；
+  - 启动方式；
+  - 最小验证方式；
+  - 重试/重跑方式；
+  - 停用方式（若有常驻进程）。
+- `WEB-5` 的工具描述完整度必须与 `WEB-1~WEB-4` 保持同级，不得弱化。
 
 ### [示例 - 非强制] u3d 工具链清单（4步）
 
