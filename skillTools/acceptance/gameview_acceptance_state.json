@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "boardVersion": "v1",
+    "updatedAt": 1776655924597,
+    "sourceRequirements": "skillTools/acceptance/requirements_input.json"
+  },
+  "items": [
+    {
+      "itemId": "REQ-GameViewImpl_U01",
+      "requirement": "drag tracking begins from hand area",
+      "requirementZh": "从手牌区域开始拖拽后，进入状态1跟随轨迹",
+      "requirementEn": "drag tracking begins from hand area",
+      "unitId": "GameViewImpl_U01",
+      "stepId": "GameViewImpl_U01_beginDrag",
+      "aiLogKeywords": [
+        "GameViewImpl_U01",
+        "GameViewImpl_U01_beginDrag"
+      ],
+      "sourceFile": "assets/src/core/tmpTrace/tmp/tmpTrace_GameViewImpl.ts",
+      "userAccepted": false,
+      "aiAccepted": false,
+      "mismatch": false,
+      "evidenceRef": "",
+      "note": "waiting-trace-evidence"
+    },
+    {
+      "itemId": "REQ-GameViewImpl_U02",
+      "requirement": "card preview enters preplace state2",
+      "requirementZh": "进入预放置状态2后，预览锚点应锁定到目标地块",
+      "requirementEn": "card preview enters preplace state2",
+      "unitId": "GameViewImpl_U02",
+      "stepId": "GameViewImpl_U02_enterPreplace2",
+      "aiLogKeywords": [
+        "GameViewImpl_U02",
+        "GameViewImpl_U02_enterPreplace2"
+      ],
+      "sourceFile": "assets/src/core/tmpTrace/tmp/tmpTrace_GameViewImpl.ts",
+      "userAccepted": false,
+      "aiAccepted": false,
+      "mismatch": false,
+      "evidenceRef": "",
+      "note": "waiting-trace-evidence"
+    },
+    {
+      "itemId": "REQ-GameViewImpl_U03",
+      "requirement": "preplace2 completes and returns to idle flow",
+      "requirementZh": "预放置流程结束后，应退出到 idle 主流程",
+      "requirementEn": "preplace2 completes and returns to idle flow",
+      "unitId": "GameViewImpl_U03",
+      "stepId": "GameViewImpl_U03_preplace2Exit",
+      "aiLogKeywords": [
+        "GameViewImpl_U03",
+        "GameViewImpl_U03_preplace2Exit"
+      ],
+      "sourceFile": "assets/src/core/tmpTrace/tmp/tmpTrace_GameViewImpl.ts",
+      "userAccepted": false,
+      "aiAccepted": false,
+      "mismatch": false,
+      "evidenceRef": "",
+      "note": "waiting-trace-evidence"
+    }
+  ]
+}
