@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "project": "cardDemo",
+    "boardVersion": "v1",
+    "updatedAt": 1776651796074
+  },
+  "items": [
+    {
+      "itemId": "A-WEB-1",
+      "requirement": "Browser runtime connectivity is available.",
+      "unitId": "WEB-1",
+      "userAccepted": false,
+      "aiAccepted": true,
+      "mismatch": true,
+      "evidenceRef": "E:\\cocos\\cardDemo\\skillTools\\web\\runtime\\browser_console_logs.json#items=4",
+      "note": "console-log-read-ok"
+    },
+    {
+      "itemId": "A-WEB-2",
+      "requirement": "Fallback trace path is available when primary chain fails.",
+      "unitId": "WEB-2",
+      "userAccepted": false,
+      "aiAccepted": true,
+      "mismatch": true,
+      "evidenceRef": "E:\\cocos\\cardDemo\\skillTools\\web\\runtime\\browser_console_bridge.jsonl#lines=8",
+      "note": "fallback-trace-available"
+    },
+    {
+      "itemId": "A-WEB-3",
+      "requirement": "Bridge writes structured browser logs to runtime jsonl.",
+      "unitId": "WEB-3",
+      "userAccepted": false,
+      "aiAccepted": true,
+      "mismatch": true,
+      "evidenceRef": "E:\\cocos\\cardDemo\\skillTools\\web\\runtime\\browser_console_bridge.jsonl#WEB-3=8",
+      "note": "bridge-write-ok"
+    },
+    {
+      "itemId": "A-WEB-4",
+      "requirement": "Polling can continuously print incremental records.",
+      "unitId": "WEB-4",
+      "userAccepted": false,
+      "aiAccepted": true,
+      "mismatch": true,
+      "evidenceRef": "E:\\cocos\\cardDemo\\skillTools\\web\\runtime\\browser_console_bridge.jsonl#poll-visible=8",
+      "note": "polling-evidence-visible"
+    }
+  ]
+}

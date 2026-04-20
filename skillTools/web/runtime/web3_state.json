@@ -1,0 +1,9 @@
+{
+  "seen": [
+    "{\"type\":\"timeEnd\",\"timestamp\":1776399021010.313,\"message\":\"Init Base: 0.333984375 ms\"}",
+    "{\"type\":\"timeEnd\",\"timestamp\":1776399021030.97,\"message\":\"Init Infrastructure: 20.447021484375 ms\"}",
+    "{\"type\":\"timeEnd\",\"timestamp\":1776399021952.192,\"message\":\"Init SubSystem: 808.01904296875 ms\"}",
+    "{\"type\":\"timeEnd\",\"timestamp\":1776399022366.638,\"message\":\"Init Project: 410.73486328125 ms\"}"
+  ],
+  "updatedAt": 1776412499282
+}
