@@ -1,7 +1,7 @@
 ---
 name: code-style-skill
 description: Enforces this project's highest-priority coding conventions: MVC-style module structure, minimal ui/event/model managers when missing, module naming and folder standards, utility placement, and project git workflow constraints. Use for any code creation, refactor, module setup, or git-related operation in this repository.
-version: 20260420-180328
+version: 20260421-140736
 ---
 
 # 代码习惯skill（项目级）
@@ -414,6 +414,30 @@ Inside `<ModuleName>Enum.<ext>`, follow:
   - first time guided assist is enabled in current project,
   - user explicitly requests: `自动工具链流程检查`.
 - If last check is still within a valid window and runtime environment has not changed, assistant may reuse the latest receipt and ask whether to force rerun.
+
+### Recommended Skills Bundle Prompt Rule (Mandatory)
+
+- Maintain a "guided-assist recommended skills bundle" (referred to as `skills bundle`).
+- Trigger points (either condition):
+  - right after first-time installation/loading of `code-style-skill`,
+  - when user enables guided assist.
+- After trigger, assistant must:
+  - check whether each item in the `skills bundle` is installed,
+  - report missing items (if any),
+  - ask user whether to install missing skills.
+- If user agrees, assistant should auto-install and run minimum usability checks under the Toolchain Priority Rule, then provide an installation receipt.
+- If user declines, assistant should continue current task and must not block development flow.
+
+### [PROJECT EXAMPLE - NON-NORMATIVE] Guided-Assist Recommended Skills Bundle
+
+- `find-skills`
+- `skill-creator`
+- `tmux`
+- `readme-i18n`
+- `refactor`
+- `requesting-code-review`
+- `tavily-research`
+- `agent-browser`
 
 ### Toolchain Alignment Receipt Rule
 

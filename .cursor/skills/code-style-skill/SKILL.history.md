@@ -1,5 +1,17 @@
 # code-style-skill History
 
+## 20260421-140736
+
+- version: `20260421-140736`
+- time: `2026-04-21`
+- type: `update`
+- scope:
+  - guided-assist skills bundle install prompt
+  - first-load install check trigger
+- summary:
+  - Added a mandatory rule to prompt and check the recommended skills bundle after first skill load or when guided assist is enabled.
+  - Required missing-item report and optional auto-install flow with minimal usability verification.
+
 ## 20260417-141826
 
 - version: `20260417-141826`
