@@ -1,10 +1,50 @@
 {
   "version": 1,
   "skills": {
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "computedHash": "2baa6d34a5d23e253a945f64ae9063a363387f5601d131cdc5cb129af6ba0b3e"
+    },
     "cloudbase": {
       "source": "tencentcloudbase/cloudbase-skills",
       "sourceType": "github",
       "computedHash": "4ae451a8c936e92a63bcdff15008f65acf84903bb9893d0897ba199524697752"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "computedHash": "645b891da1edbae76ab79c7b088d4e73397464f8396edaf773c0e01971ce75d6"
+    },
+    "readme-i18n": {
+      "source": "xixu-me/skills",
+      "sourceType": "github",
+      "computedHash": "d441385bfe267d3c66de52af6f969a837d9d3a35a3dac78568605aaad52e7241"
+    },
+    "refactor": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "87789a786b96f99ba0680e89345a975106e10e7db1071c7cdc2e76d507c449d6"
+    },
+    "requesting-code-review": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "246e65cd72a7e360987d94e6c61564ce6d71c6361d1784d529d70e4cbbe8522d"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "7e3c9cd74e9e2b4828527a857170e86310f2dab5ea8030a9043df2c7e6c88857"
+    },
+    "tavily-research": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "computedHash": "8f0d7dc0a3d838fc647c5666f7dd398626d35b8f95bd7f0ae2512df8927d8f29"
+    },
+    "tmux": {
+      "source": "steipete/clawdis",
+      "sourceType": "github",
+      "computedHash": "d9c56ff5d25a0a8217eaedfb64b46c05dd20a2c0e0edae75f059ecb1d8833c08"
     }
   }
 }
